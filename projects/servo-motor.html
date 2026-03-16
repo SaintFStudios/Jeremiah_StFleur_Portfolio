@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>360° Servo Motor | Jeremiah L. St. Fleur</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="nav-logo">J<span>.</span>StFleur</a>
+      <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="project-hero">
+    <div class="container">
+      <a href="../projects.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+      <div class="hero-label"><i class="fas fa-sync-alt"></i> Personal Project</div>
+      <h1 style="font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;">Custom 360&deg; <span>Positioning Servo Motor</span></h1>
+      <p style="color:var(--text-secondary);max-width:640px;font-size:1.05rem;">Design and fabrication of a high-precision, continuous-rotation robotic actuator from component selection to closed-loop control.</p>
+      <div class="project-meta">
+        <span><i class="fas fa-calendar"></i> Nov 2024 - Dec 2024</span>
+        <span><i class="fas fa-tag"></i> Robotics &amp; Mechanical Design</span>
+      </div>
+      <div class="tags" style="margin-top:20px;">
+        <span class="tag">Actuator Design</span>
+        <span class="tag">PID Control</span>
+        <span class="tag">Gear Design</span>
+        <span class="tag">System Integration</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="container">
+      <div class="project-body-content">
+
+        <h3>Project Overview</h3>
+        <p>This project involved designing, fabricating, and testing a custom continuous-rotation servo motor capable of precise 360-degree positioning. The actuator was built from individually selected components and features a fully 3D-printed housing with integrated mounting.</p>
+
+        <h3>Technical Specifications</h3>
+        <ul>
+          <li><strong>Motor:</strong> 12V DC motor with planetary gearbox</li>
+          <li><strong>Gear Train:</strong> Custom helical gear reduction for high efficiency</li>
+          <li><strong>Position Feedback:</strong> Magnetic encoder for continuous rotation sensing</li>
+          <li><strong>Control:</strong> PID controller with smoothing filter</li>
+          <li><strong>Housing:</strong> Fully 3D-printed for easy assembly and modification</li>
+        </ul>
+
+        <h3>Performance Upgrade: Helical Gears</h3>
+        <p>The original spur gear design was replaced with helical gears, resulting in significant improvements across all metrics. The helical tooth profile provides smoother engagement, reduced backlash, and quieter operation compared to straight-cut gears.</p>
+
+        <h3>Performance Metrics</h3>
+        <ul>
+          <li><strong>Positional Accuracy:</strong> &plusmn;2&deg; across full 360&deg; range</li>
+          <li><strong>Repeatability:</strong> &plusmn;0.5&deg; for return-to-position operations</li>
+          <li><strong>Speed:</strong> 0-180&deg; in 0.8 seconds with minimal overshoot</li>
+          <li><strong>Torque:</strong> 2.5 N&middot;m stall torque at 12V input</li>
+          <li><strong>Efficiency:</strong> 94% mechanical efficiency (vs. 85% for spur gear design)</li>
+        </ul>
+
+        <h3>Applications &amp; Future Development</h3>
+        <ul>
+          <li>Primary application: Robotic joint actuator for 4-DOF robotic arm</li>
+          <li>Potential: Camera gimbal control, automated valve positioning, precision pointing</li>
+          <li>Future: Integrated encoder for higher resolution, CAN bus communication, torque sensing</li>
+        </ul>
+
+        <div style="margin-top:48px;">
+          <a href="../projects.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> All Projects</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/jstfleur" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.3dprintclub.org" target="_blank"><i class="fas fa-print"></i></a>
+        <a href="mailto:Jeremiahstfleur@ufl.edu"><i class="fas fa-envelope"></i></a>
+      </div>
+      <p class="footer-copy">&copy; <span id="currentYear"></span> Jeremiah L. St. Fleur. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

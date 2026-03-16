@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S.C.A.N. Drone | Jeremiah L. St. Fleur</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="nav-logo">J<span>.</span>StFleur</a>
+      <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="project-hero">
+    <div class="container">
+      <a href="../projects.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+      <div class="hero-label"><i class="fas fa-robot"></i> Personal Project</div>
+      <h1 style="font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;">S.C.A.N. Drone <span>(Servo-Controlled App Navigator)</span></h1>
+      <p style="color:var(--text-secondary);max-width:640px;font-size:1.05rem;">A custom-designed terrestrial drone using continuous-rotation servos for differential steering, controlled via a mobile application with multiple operational modes.</p>
+      <div class="project-meta">
+        <span><i class="fas fa-calendar"></i> Mar 2025 - Present</span>
+        <span><i class="fas fa-tag"></i> Robotics &amp; Controls</span>
+      </div>
+      <div class="tags" style="margin-top:20px;">
+        <span class="tag">Robotics</span>
+        <span class="tag">ESP32</span>
+        <span class="tag">PID Control</span>
+        <span class="tag">Mobile UI</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="container">
+      <div class="project-body-content">
+
+        <h3>Project Overview</h3>
+        <p>The S.C.A.N. Drone is a terrestrial mobile platform designed for modular payload testing and educational demonstrations. The project emphasizes precise control, wireless communication, and system integration.</p>
+
+        <h3>Technical Specifications</h3>
+        <ul>
+          <li><strong>Microcontroller:</strong> ESP32 with BLE/Wi-Fi capabilities</li>
+          <li><strong>Actuation:</strong> Continuous-rotation servos with positional feedback</li>
+          <li><strong>Control Interface:</strong> RemoteXY mobile application with three operational modes</li>
+          <li><strong>Sensors:</strong> Ultrasonic distance sensor, IMU (planned)</li>
+          <li><strong>Communication:</strong> Bluetooth Low Energy (BLE) for real-time control</li>
+        </ul>
+
+        <h3>Engineering Challenges &amp; Solutions</h3>
+        <ul>
+          <li><strong>Brownout Issues:</strong> Consolidated all electronics onto a single PCB with proper power regulation, eliminating voltage drops during servo actuation.</li>
+          <li><strong>Precision Control:</strong> Implemented PID control with positional feedback for accurate differential steering (&plusmn;2&deg; accuracy).</li>
+          <li><strong>System Integration:</strong> Designed a modular chassis that accommodates various sensor payloads while maintaining a compact footprint.</li>
+        </ul>
+
+        <h3>Results &amp; Performance</h3>
+        <ul>
+          <li>Reduced system footprint by 20% through PCB consolidation</li>
+          <li>Achieved 95% reliability in wireless communication at 30m range</li>
+          <li>Implemented three operational modes: Reconnaissance, Communications Relay, and Decoy</li>
+          <li>Successfully demonstrated payload interchangeability with 5+ sensor configurations</li>
+        </ul>
+
+        <div style="margin-top:48px;">
+          <a href="../projects.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> All Projects</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/jstfleur" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.3dprintclub.org" target="_blank"><i class="fas fa-print"></i></a>
+        <a href="mailto:Jeremiahstfleur@ufl.edu"><i class="fas fa-envelope"></i></a>
+      </div>
+      <p class="footer-copy">&copy; <span id="currentYear"></span> Jeremiah L. St. Fleur. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
