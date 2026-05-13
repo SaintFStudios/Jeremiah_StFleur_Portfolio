@@ -18,150 +18,80 @@
         <li><a href="projects.html">Projects</a></li>
         <li><a href="teams.html" class="active">Teams</a></li>
         <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="teams-hero">
+  <section class="hero" style="padding:140px 0 60px;">
     <div class="container">
-      <h1>Teams &amp; <span>Group Projects</span></h1>
-      <p style="color:rgba(255,255,255,0.85);max-width:580px;margin:16px auto 0;font-size:1.05rem;">Collaborative engineering projects and competition teams I've contributed to — from ideation and design through fabrication and competition.</p>
+      <div class="hero-content">
+        <h1>Teams &amp; <span>Collaborations</span></h1>
+        <p class="hero-sub">Collaborative engineering projects and competition teams I've contributed to — from ideation and design through fabrication and competition.</p>
+      </div>
     </div>
   </section>
 
-  <!-- HIGH STRIKE -->
-  <section class="bg-light">
+  <section class="bg-light" style="padding-top:50px;">
     <div class="container">
+      <div class="teams-grid">
 
-      <div class="team-entry">
-        <div class="team-entry-header">
-          <div class="team-icon"><i class="fas fa-bolt"></i></div>
-          <div>
-            <h2>High-Strike Group Project</h2>
-            <p>EGN2020C — Introduction to Engineering Concepts &nbsp;|&nbsp; Fall 2023</p>
+        <!-- HIGH STRIKE -->
+        <a href="teams/high-strike.html" class="card team-card" style="text-decoration:none;color:inherit;padding:0;">
+          <div class="team-card-header">
+            <div class="team-icon-sm"><i class="fas fa-bolt"></i></div>
+            <h3>High-Strike Group Project</h3>
+            <p>EGN2020C &nbsp;|&nbsp; Fall 2023</p>
+          </div>
+          <div class="team-card-body">
+            <p>Designed and built a functional High-Strike carnival game mechanism — lever, striker, and bell tower — following the full engineering design process through live class demonstration.</p>
+            <div class="tags">
+              <span class="tag">Mechanism Design</span>
+              <span class="tag">CAD / Onshape</span>
+              <span class="tag">Fabrication</span>
+              <span class="tag">Team Project</span>
+            </div>
+            <span class="card-link" style="display:inline-block;margin-top:16px;">View Details <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <!-- TERRAGATOR -->
+        <a href="teams/terragator.html" class="card team-card" style="text-decoration:none;color:inherit;padding:0;">
+          <div class="team-card-header">
+            <div class="team-icon-sm"><i class="fas fa-satellite-dish"></i></div>
+            <h3>TerraGator — Machine Intelligence Lab</h3>
+            <p>Undergraduate Research &nbsp;|&nbsp; Jan 2025 &ndash; Present</p>
+          </div>
+          <div class="team-card-body">
+            <p>Modernizing MIL's flagship autonomous UGV — redesigned electrical box, performed motor torque analysis, and built 3 prototype drive system iterations for improved terrain performance.</p>
+            <div class="tags">
+              <span class="tag">Autonomous Systems</span>
+              <span class="tag">UGV</span>
+              <span class="tag">Electrical Design</span>
+              <span class="tag">Research</span>
+            </div>
+            <span class="card-link" style="display:inline-block;margin-top:16px;">View Details <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <!-- BATTLE BOT (coming soon) -->
+        <div class="card team-card" style="padding:0;cursor:default;">
+          <div class="team-card-header" style="opacity:0.7;">
+            <div class="team-icon-sm"><i class="fas fa-robot"></i></div>
+            <h3>Battle Bot</h3>
+            <p>Competition Robotics &nbsp;|&nbsp; Coming Soon</p>
+          </div>
+          <div class="team-card-body">
+            <p>A combat robotics build currently in the design phase. Full details and competition entry will be posted once the build is complete.</p>
+            <div class="tags">
+              <span class="tag">Combat Robotics</span>
+              <span class="tag">In Progress</span>
+            </div>
+            <span style="display:inline-block;margin-top:16px;color:var(--text-muted);font-size:0.88rem;"><i class="fas fa-clock"></i> Coming Soon</span>
           </div>
         </div>
 
-        <div class="team-entry-body">
-
-          <h3>Project Overview</h3>
-          <p>As part of EGN2020C, our team designed and built a functional High-Strike carnival game mechanism — the classic tower with a lever, striker, and bell at the top. The project followed the full engineering design process from problem definition and conceptual sketching through CAD modeling, fabrication, and live demonstration.</p>
-
-          <div class="tags" style="margin-bottom:24px;">
-            <span class="tag">Team Project</span>
-            <span class="tag">Mechanism Design</span>
-            <span class="tag">Fabrication</span>
-            <span class="tag">EGN2020C</span>
-          </div>
-
-          <h3>Design &amp; Concept</h3>
-          <p>The team explored several mechanism configurations before settling on a lever-and-puck design optimized for consistent force transmission. Early sketches focused on striker geometry and the sliding tower rail system.</p>
-
-          <div class="media-grid cols-3">
-            <figure class="media-figure">
-              <img src="images/teams/high-strike-design.png" alt="High-Strike design render">
-              <figcaption>CAD design — full mechanism assembly</figcaption>
-            </figure>
-            <figure class="media-figure">
-              <img src="images/teams/high-strike-sketch-01.png" alt="High-Strike sketch 1">
-              <figcaption>Concept sketch — striker and rail geometry</figcaption>
-            </figure>
-            <figure class="media-figure">
-              <img src="images/teams/high-strike-sketch-02.png" alt="High-Strike sketch 2">
-              <figcaption>Refined sketch — lever arm and pivot layout</figcaption>
-            </figure>
-          </div>
-
-          <h3>Build &amp; Demonstration</h3>
-          <p>The team fabricated the mechanism using a combination of laser-cut acrylic, 3D-printed components, and off-the-shelf hardware. The final build was demonstrated in a live class competition where teams tested striker force and consistency.</p>
-
-          <div class="media-grid cols-2">
-            <figure class="media-figure">
-              <video controls>
-                <source src="images/teams/high-strike-action.mp4" type="video/mp4">
-              </video>
-              <figcaption>Live demo — striker mechanism in action</figcaption>
-            </figure>
-            <figure class="media-figure">
-              <video controls>
-                <source src="images/teams/high-strike-demo.mp4" type="video/mp4">
-              </video>
-              <figcaption>Full group project demo — final presentation</figcaption>
-            </figure>
-          </div>
-
-          <h3>My Contributions</h3>
-          <ul>
-            <li><strong>Mechanism Design:</strong> Led the CAD modeling of the lever arm and striker puck geometry in Onshape.</li>
-            <li><strong>Sketching &amp; Concept:</strong> Produced the initial hand-sketched concept proposals used for team down-selection.</li>
-            <li><strong>Fabrication:</strong> Assisted in assembly and fit-up of the structural tower components.</li>
-            <li><strong>Documentation:</strong> Contributed to the engineering design report including design justification and performance analysis.</li>
-          </ul>
-
-        </div>
       </div>
-
-      <!-- MIL TERRAGATOR -->
-      <div class="team-entry">
-        <div class="team-entry-header">
-          <div class="team-icon"><i class="fas fa-satellite-dish"></i></div>
-          <div>
-            <h2>TerraGator &mdash; Machine Intelligence Lab</h2>
-            <p>Undergraduate Research &nbsp;|&nbsp; University of Florida &nbsp;|&nbsp; Jan 2025 &ndash; Present</p>
-          </div>
-        </div>
-
-        <div class="team-entry-body">
-
-          <h3>About the Platform</h3>
-          <p>TerraGator is MIL's flagship autonomous unmanned ground vehicle (UGV), built to showcase the lab's capabilities in full outdoor autonomy — perception, planning, and control on unstructured terrain. The platform is a long-running collaborative effort involving multiple undergraduate and graduate researchers, each owning specific subsystems.</p>
-
-          <div class="tags" style="margin-bottom:24px;">
-            <span class="tag">Autonomous Systems</span>
-            <span class="tag">UGV</span>
-            <span class="tag">Research</span>
-            <span class="tag">Mechanical Design</span>
-            <span class="tag">Electrical Systems</span>
-          </div>
-
-          <h3>My Contributions</h3>
-          <ul>
-            <li><strong>Electrical Box:</strong> Redesigned and fabricated a new modular enclosure with DIN rail organization, cable gland sealing, and integrated sensor mounts for field serviceability.</li>
-            <li><strong>Motor Sizing:</strong> Performed full torque analysis — computing required wheel torque from vehicle mass, grade angle, and rolling resistance — to validate and select replacement drive motors.</li>
-            <li><strong>Drive System Prototypes:</strong> Designed and built the first 3 prototype iterations of the upgraded wheel mounts, motor interfaces, and servo-steering linkage hardware.</li>
-            <li><strong>Collaboration:</strong> Coordinated with lab members working on perception and software to align mechanical interface dimensions and mounting points across subsystems.</li>
-          </ul>
-
-          <div class="media-grid cols-3">
-            <figure class="media-figure">
-              <img src="images/mil-rover/rover-photo-01.jpg" alt="TerraGator rover">
-              <figcaption>TerraGator — full platform in field configuration</figcaption>
-            </figure>
-            <figure class="media-figure">
-              <img src="images/mil-rover/rover-cad-01.png" alt="Drive system CAD">
-              <figcaption>Drive system CAD — prototype iteration</figcaption>
-            </figure>
-            <figure class="media-figure">
-              <img src="images/mil-rover/rover-cad-02.png" alt="Motor mount design">
-              <figcaption>Retrofit motor mount and wheel interface</figcaption>
-            </figure>
-          </div>
-
-          <a href="projects/mil-rover.html" class="btn btn-outline" style="margin-top:8px;"><i class="fas fa-arrow-right"></i> Full Project Page</a>
-
-        </div>
-      </div>
-
-      <!-- COMING SOON PLACEHOLDER -->
-      <div class="coming-soon-card">
-        <i class="fas fa-robot"></i>
-        <h3>Battle Bot — Coming Soon</h3>
-        <p>A combat robotics project currently in the design phase. Entry and full project details will be posted here once the build is complete.</p>
-      </div>
-
     </div>
   </section>
 
@@ -174,7 +104,6 @@
         <a href="mailto:Jeremiahstfleur@ufl.edu"><i class="fas fa-envelope"></i></a>
       </div>
       <p>&copy; <span id="currentYear"></span> Jeremiah L. St. Fleur. All rights reserved.</p>
-      <p class="footer-copy">This portfolio demonstrates engineering communication, design process documentation, and technical project execution.</p>
     </div>
   </footer>
 

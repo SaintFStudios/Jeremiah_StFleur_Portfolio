@@ -18,7 +18,6 @@
         <li><a href="projects.html">Projects</a></li>
         <li><a href="teams.html">Teams</a></li>
         <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
@@ -38,7 +37,6 @@
         </div>
         <div class="hero-cta">
           <a href="projects.html" class="btn btn-accent">View Engineering Projects</a>
-          <a href="about.html" class="btn btn-outline">About Me</a>
         </div>
       </div>
     </div>
@@ -61,9 +59,9 @@
           <h3>Education</h3>
           <p class="degree">B.S. Mechanical Engineering, Minor in Electrical Engineering</p>
           <p><strong>University of Florida</strong>, Herbert Wertheim College of Engineering</p>
-          <p>Expected Graduation: Dec 2027</p>
-          <p class="gpa">GPA: 3.83/4.00</p>
-          <p style="margin-top:12px;font-size:0.9rem;color:var(--text-secondary);"><strong style="color:var(--text-dark);">Relevant Coursework:</strong> Dynamics, Design &amp; Manufacturing Lab, Circuits I, Electronic Circuits I, Vibrations, System Dynamics &amp; Controls (Planned), Mechatronics (Planned)</p>
+          <p>Rising Senior &mdash; Expected Graduation: Aug 2027</p>
+          <p class="gpa">GPA: 3.64/4.00</p>
+          <p style="margin-top:12px;font-size:0.9rem;color:var(--text-secondary);"><strong style="color:var(--text-dark);">Relevant Coursework:</strong> Design &amp; Manufacturing Lab, Circuits &amp; Electronic Circuits I, Signals &amp; Controls, Robot Geometry</p>
         </div>
       </div>
     </div>
@@ -104,98 +102,161 @@
     </div>
   </section>
 
-  <!-- FEATURED PROJECTS -->
+  <!-- RESEARCH & LEADERSHIP -->
   <section class="bg-light">
+    <div class="container">
+      <div class="section-title-center">
+        <h2 class="section-title">Research &amp; Leadership</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-content">
+            <h3>Undergraduate Researcher</h3>
+            <p class="tl-date">Machine Intelligence Lab, University of Florida | Jan 2025 - Present</p>
+            <p>Contribute to the design and prototyping of subsystems for autonomous robotic platforms.</p>
+            <ul>
+              <li><strong>Terra Gator (UGV):</strong> Engineered 3 rover chassis/drive system iterations, enhancing structural integrity and terrain adaptability. Designed retrofit wheel/motor mounts for improved modularity.</li>
+              <li><strong>Sub9 (UUV):</strong> Designed 4 clevis pin-based gripper mechanisms enabling 90&deg; rotation between stable configurations with modular mounting interfaces.</li>
+              <li><strong>System Integration:</strong> Fabricated a modular electrical box with custom brackets and integrated sensor mounts for rapid repair and environmental monitoring.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-content">
+            <h3>President &amp; Technical Lead</h3>
+            <p class="tl-date">3D Printing Club, University of Florida | Apr 2025 - Present</p>
+            <p>Lead a 20+ member organization focused on hands-on engineering skill development.</p>
+            <ul>
+              <li>Develop and deliver workshops on CAD (Onshape/Fusion 360), Design for Manufacturing (DFM), and additive manufacturing principles.</li>
+              <li>Co-launched the club's educational website (<a href="https://www.3dprintclub.org" target="_blank">3dprintclub.org</a>) hosting 20+ tutorials.</li>
+              <li>Manage club makerspace operations: equipment maintenance (Prusa, LulzBot, Bambu Labs printers), inventory, and safety protocols.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-content">
+            <h3>Undergraduate Teaching Assistant / Peer Mentor</h3>
+            <p class="tl-date">EGN2020C, University of Florida | Aug 2024 - Present</p>
+            <p>Support introductory engineering design course instruction and lab operations.</p>
+            <ul>
+              <li>Mentor student teams through the complete engineering design process: ideation, CAD modeling, prototyping, and testing.</li>
+              <li>Maintain and repair makerspace equipment (3D printers, hand tools); instruct students on safe operation.</li>
+              <li>Assist instructor with lecture preparation, project grading, and providing constructive technical feedback.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS -->
+  <section>
     <div class="container">
       <div class="section-title-center">
         <h2 class="section-title">Engineering Projects</h2>
       </div>
       <p class="section-desc" style="text-align:center;margin:0 auto 40px;">A selection of personal and academic projects demonstrating applied engineering design, analysis, and fabrication.</p>
 
-      <div class="projects-grid">
-        <a href="projects/scan-drone.html" class="card project-card" style="text-decoration:none;color:inherit;padding:0;">
-          <div class="project-card-header">
-            <h3>S.C.A.N. Drone (Servo-Controlled App Navigator)</h3>
-            <p class="project-card-type">Personal Project | Mar 2025 - Present</p>
-          </div>
-          <div class="project-card-body">
-            <p>A custom-designed terrestrial drone using continuous-rotation servos for differential steering, controlled via a mobile application with multiple operational modes.</p>
-            <div class="tags">
-              <span class="tag">Robotics</span><span class="tag">ESP32</span><span class="tag">PID Control</span><span class="tag">Mobile UI</span>
-            </div>
-            <span class="card-link">View Details <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </a>
+      <div class="carousel-container" id="projectCarousel">
+        <button class="carousel-btn carousel-prev" aria-label="Previous project"><i class="fas fa-chevron-left"></i></button>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
 
-        <a href="projects/air-engine.html" class="card project-card" style="text-decoration:none;color:inherit;padding:0;">
-          <div class="project-card-header">
-            <h3>Compressed Air Engine &amp; Powered Slicer</h3>
-            <p class="project-card-type">Course Project (EML2322L) | Jan 2025 - May 2025</p>
-          </div>
-          <div class="project-card-body">
-            <p>A complete design-manufacture-assemble-test cycle project involving a machined air engine and an engine-powered slicing mechanism.</p>
-            <div class="tags">
-              <span class="tag">DFM</span><span class="tag">CNC/Lathe</span><span class="tag">Tolerance Analysis</span><span class="tag">Mechanism Design</span>
-            </div>
-            <span class="card-link">View Details <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </a>
+            <a href="projects/scan-drone.html" class="card project-card" style="text-decoration:none;color:inherit;padding:0;">
+              <div class="project-card-header">
+                <h3>S.C.A.N. Drone (Servo-Controlled App Navigator)</h3>
+                <p class="project-card-type">Personal Project | Mar 2025 - Present</p>
+              </div>
+              <div class="project-card-body">
+                <p>A custom-designed terrestrial drone using continuous-rotation servos for differential steering, controlled via a mobile application with multiple operational modes.</p>
+                <div class="tags">
+                  <span class="tag">Robotics</span><span class="tag">ESP32</span><span class="tag">PID Control</span><span class="tag">Mobile UI</span>
+                </div>
+                <span class="card-link">View Details <i class="fas fa-arrow-right"></i></span>
+              </div>
+            </a>
 
-        <a href="projects/servo-motor.html" class="card project-card" style="text-decoration:none;color:inherit;padding:0;">
-          <div class="project-card-header">
-            <h3>Custom 360&deg; Positioning Servo Motor</h3>
-            <p class="project-card-type">Personal Project | Nov 2024 - Dec 2024</p>
-          </div>
-          <div class="project-card-body">
-            <p>Design and fabrication of a high-precision, continuous-rotation robotic actuator from component selection to closed-loop control.</p>
-            <div class="tags">
-              <span class="tag">Actuator Design</span><span class="tag">PID Control</span><span class="tag">Gear Design</span><span class="tag">System Integration</span>
-            </div>
-            <span class="card-link">View Details <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </a>
+            <a href="projects/air-engine.html" class="card project-card" style="text-decoration:none;color:inherit;padding:0;">
+              <div class="project-card-header">
+                <h3>Compressed Air Engine &amp; Powered Slicer</h3>
+                <p class="project-card-type">Course Project (EML2322L) | Jan 2025 - May 2025</p>
+              </div>
+              <div class="project-card-body">
+                <p>A complete design-manufacture-assemble-test cycle project involving a machined air engine and an engine-powered slicing mechanism.</p>
+                <div class="tags">
+                  <span class="tag">DFM</span><span class="tag">CNC/Lathe</span><span class="tag">Tolerance Analysis</span><span class="tag">Mechanism Design</span>
+                </div>
+                <span class="card-link">View Details <i class="fas fa-arrow-right"></i></span>
+              </div>
+            </a>
 
-        <a href="projects/robotic-arm.html" class="card project-card" style="text-decoration:none;color:inherit;padding:0;">
-          <div class="project-card-header">
-            <h3>4-DOF Robotic Servo Arm</h3>
-            <p class="project-card-type">Personal Project | Jun 2022 - Present</p>
-          </div>
-          <div class="project-card-body">
-            <p>A continually developed, modular robotic manipulator platform for pick-and-place and manipulation tasks, featuring interchangeable end-effectors.</p>
-            <div class="tags">
-              <span class="tag">Robotic Arm</span><span class="tag">Fusion 360</span><span class="tag">Arduino</span><span class="tag">Iterative Design</span>
-            </div>
-            <span class="card-link">View Details <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </a>
+            <a href="projects/servo-motor.html" class="card project-card" style="text-decoration:none;color:inherit;padding:0;">
+              <div class="project-card-header">
+                <h3>Custom 360&deg; Positioning Servo Motor</h3>
+                <p class="project-card-type">Personal Project | Nov 2024 - Dec 2024</p>
+              </div>
+              <div class="project-card-body">
+                <p>Design and fabrication of a high-precision, continuous-rotation robotic actuator from component selection to closed-loop control.</p>
+                <div class="tags">
+                  <span class="tag">Actuator Design</span><span class="tag">PID Control</span><span class="tag">Gear Design</span><span class="tag">System Integration</span>
+                </div>
+                <span class="card-link">View Details <i class="fas fa-arrow-right"></i></span>
+              </div>
+            </a>
 
-        <a href="projects/potato-slicer.html" class="card project-card" style="text-decoration:none;color:inherit;padding:0;">
-          <div class="project-card-header">
-            <h3>Potato Slicer CAD Design</h3>
-            <p class="project-card-type">Course Project (EGN2020C) | Fall 2023</p>
-          </div>
-          <div class="project-card-body">
-            <p>An introductory CAD project designing a fully modeled, self-conceived potato slicer mechanism — first exposure to parametric 3D modeling in Onshape.</p>
-            <div class="tags">
-              <span class="tag">CAD</span><span class="tag">Onshape</span><span class="tag">Mechanism Design</span><span class="tag">Intro Engineering</span>
-            </div>
-            <span class="card-link">View Details <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </a>
+            <a href="projects/robotic-arm.html" class="card project-card" style="text-decoration:none;color:inherit;padding:0;">
+              <div class="project-card-header">
+                <h3>4-DOF Robotic Servo Arm</h3>
+                <p class="project-card-type">Personal Project | Jun 2022 - Present</p>
+              </div>
+              <div class="project-card-body">
+                <p>A continually developed, modular robotic manipulator platform for pick-and-place and manipulation tasks, featuring interchangeable end-effectors.</p>
+                <div class="tags">
+                  <span class="tag">Robotic Arm</span><span class="tag">Fusion 360</span><span class="tag">Arduino</span><span class="tag">Iterative Design</span>
+                </div>
+                <span class="card-link">View Details <i class="fas fa-arrow-right"></i></span>
+              </div>
+            </a>
 
-        <a href="projects/apollo.html" class="card project-card" style="text-decoration:none;color:inherit;padding:0;">
-          <div class="project-card-header">
-            <h3>Apollo 11 3D Animation</h3>
-            <p class="project-card-type">MITES @ MIT Summer Intensive | Summer 2023</p>
+            <a href="projects/mil-rover.html" class="card project-card" style="text-decoration:none;color:inherit;padding:0;">
+              <div class="project-card-header">
+                <h3>TerraGator Autonomous UGV</h3>
+                <p class="project-card-type">Undergraduate Research &mdash; MIL, UF | Jan 2025 &ndash; Present</p>
+              </div>
+              <div class="project-card-body">
+                <p>Modernization of MIL's flagship autonomous ground vehicle — electrical box redesign, motor sizing with torque analysis, and first-generation drive/steering prototypes.</p>
+                <div class="tags">
+                  <span class="tag">UGV</span><span class="tag">Autonomous Systems</span><span class="tag">Electrical Design</span><span class="tag">Torque Analysis</span>
+                </div>
+                <span class="card-link">View Details <i class="fas fa-arrow-right"></i></span>
+              </div>
+            </a>
+
+            <a href="projects/apollo.html" class="card project-card" style="text-decoration:none;color:inherit;padding:0;">
+              <div class="project-card-header">
+                <h3>Apollo 11 3D Animation</h3>
+                <p class="project-card-type">MITES @ MIT Summer Intensive | Summer 2023</p>
+              </div>
+              <div class="project-card-body">
+                <p>A fully original 3D animated recreation of the Apollo 11 Saturn V launch and lunar landing, built from scratch in Autodesk Maya over 6 weeks.</p>
+                <div class="tags">
+                  <span class="tag">Autodesk Maya</span><span class="tag">3D Animation</span><span class="tag">MITES @ MIT</span><span class="tag">Rendering</span>
+                </div>
+                <span class="card-link">View Details <i class="fas fa-arrow-right"></i></span>
+              </div>
+            </a>
+
           </div>
-          <div class="project-card-body">
-            <p>A fully original 3D animated recreation of the Apollo 11 Saturn V launch and lunar landing, built from scratch in Autodesk Maya over 6 weeks.</p>
-            <div class="tags">
-              <span class="tag">Autodesk Maya</span><span class="tag">3D Animation</span><span class="tag">MITES @ MIT</span><span class="tag">Rendering</span>
-            </div>
-            <span class="card-link">View Details <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </a>
+        </div>
+        <button class="carousel-btn carousel-next" aria-label="Next project"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div class="carousel-dots" id="carouselDots"></div>
+
+      <div style="text-align:center;margin-top:36px;">
+        <a href="projects.html" class="btn btn-accent">View All Projects <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </section>
@@ -210,10 +271,66 @@
         <a href="mailto:Jeremiahstfleur@ufl.edu" title="Email"><i class="fas fa-envelope"></i></a>
       </div>
       <p>&copy; <span id="currentYear"></span> Jeremiah L. St. Fleur. All rights reserved.</p>
-      <p class="footer-copy">This portfolio demonstrates engineering communication, design process documentation, and technical project execution.</p>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+  (function () {
+    var track = document.querySelector('.carousel-track');
+    if (!track) return;
+    var container = document.querySelector('.carousel-container');
+    var cards = Array.from(track.children);
+    var n = cards.length;
+    var idx = 0;
+    var timer;
+
+    function vis() {
+      return window.innerWidth <= 540 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+    }
+    function maxIdx() { return Math.max(0, n - vis()); }
+    function cardW() { return cards[0].getBoundingClientRect().width + 24; }
+
+    function slide(i) {
+      idx = Math.max(0, Math.min(i, maxIdx()));
+      track.style.transform = 'translateX(-' + (idx * cardW()) + 'px)';
+      document.querySelectorAll('.carousel-dot').forEach(function (d, j) {
+        d.classList.toggle('active', j === idx);
+      });
+    }
+
+    function buildDots() {
+      var dc = document.querySelector('.carousel-dots');
+      dc.innerHTML = '';
+      var max = maxIdx();
+      for (var i = 0; i <= max; i++) {
+        var d = document.createElement('span');
+        d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('role', 'button');
+        d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        (function (ii) {
+          d.addEventListener('click', function () { slide(ii); resetTimer(); });
+        })(i);
+        dc.appendChild(d);
+      }
+    }
+
+    function auto() { slide(idx < maxIdx() ? idx + 1 : 0); }
+    function resetTimer() { clearInterval(timer); timer = setInterval(auto, 4000); }
+
+    document.querySelector('.carousel-prev').addEventListener('click', function () {
+      slide(idx > 0 ? idx - 1 : maxIdx()); resetTimer();
+    });
+    document.querySelector('.carousel-next').addEventListener('click', function () {
+      slide(idx < maxIdx() ? idx + 1 : 0); resetTimer();
+    });
+    container.addEventListener('mouseenter', function () { clearInterval(timer); });
+    container.addEventListener('mouseleave', resetTimer);
+    window.addEventListener('resize', function () { buildDots(); slide(Math.min(idx, maxIdx())); });
+
+    buildDots();
+    resetTimer();
+  })();
+  </script>
 </body>
 </html>
