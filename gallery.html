@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Printing Gallery | Jeremiah L. St. Fleur</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">J<span>.</span>StFleur</a>
+      <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="teams.html">Teams</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="gallery-hero">
+    <div class="container">
+      <div class="hero-label" style="justify-content:center;"><i class="fas fa-print"></i> Personal Fabrication</div>
+      <h1 style="font-size:clamp(2.2rem,4vw,3rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:16px;">3D Printing <span>Gallery</span></h1>
+      <p>A collection of personal additive manufacturing projects — cosplay props, custom wearables, and fabricated replicas built outside of coursework for fun, skill-building, and creative exploration.</p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="bg-light">
+    <div class="container">
+
+      <!-- MANDALORIAN ARMOR -->
+      <div class="gallery-section-label">
+        <i class="fas fa-shield-alt"></i> Mandalorian Armor
+      </div>
+      <p style="color:var(--text-secondary);margin-bottom:24px;font-size:0.95rem;">Full cosplay armor set modeled in CAD and 3D-printed in PLA, then sanded, primed, and painted to match screen-accurate Mandalorian aesthetics. Designed to be wearable with custom fit adjustments for each panel.</p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="images/gallery/mando-armor-01.png" alt="Mandalorian armor front view">
+          <div class="gallery-item-caption">
+            <h4>Mandalorian Armor — Front</h4>
+            <p>Full chest and shoulder assembly, PLA printed &amp; painted</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery/mando-armor-02.png" alt="Mandalorian armor detail view">
+          <div class="gallery-item-caption">
+            <h4>Mandalorian Armor — Detail</h4>
+            <p>Surface finish after sanding, priming, and weathering</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CUSTOM SHOE -->
+      <div class="gallery-section-label">
+        <i class="fas fa-shoe-prints"></i> 3D Printed Custom Shoe
+      </div>
+      <p style="color:var(--text-secondary);margin-bottom:24px;font-size:0.95rem;">A fully custom-designed shoe sole and upper structure, modeled to fit and printed in flexible TPU. This project explored ergonomic form fitting, flexible filament printing parameters, and post-processing for wearable parts.</p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="images/gallery/shoe-printing.png" alt="Shoe printing in progress">
+          <div class="gallery-item-caption">
+            <h4>Print in Progress</h4>
+            <p>TPU sole mid-print — layer adhesion and flex tuning</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery/shoe-final.png" alt="Final printed shoe">
+          <div class="gallery-item-caption">
+            <h4>Final Result</h4>
+            <p>Completed shoe — custom fit, flexible sole, wearable</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SWORD -->
+      <div class="gallery-section-label">
+        <i class="fas fa-gavel"></i> Replica Sword
+      </div>
+      <p style="color:var(--text-secondary);margin-bottom:24px;font-size:0.95rem;">A multi-part replica sword printed in sections and assembled with structural inserts. The project required careful tolerancing of interlocking joints and extensive post-processing — sanding, priming, filling, and metallic paint finishing — to achieve a realistic prop appearance.</p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="images/gallery/sword-01.png" alt="Sword view 1">
+          <div class="gallery-item-caption">
+            <h4>Sword — Full Length</h4>
+            <p>Assembled multi-part print, raw off the printer</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery/sword-02.png" alt="Sword view 2">
+          <div class="gallery-item-caption">
+            <h4>Sword — Guard Detail</h4>
+            <p>Guard and grip assembly — interlocking joint design</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery/sword-03.png" alt="Sword finished">
+          <div class="gallery-item-caption">
+            <h4>Sword — Finished</h4>
+            <p>Final result after sanding, priming, and metallic finishing</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/jstfleur" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.3dprintclub.org" target="_blank"><i class="fas fa-print"></i></a>
+        <a href="mailto:Jeremiahstfleur@ufl.edu"><i class="fas fa-envelope"></i></a>
+      </div>
+      <p>&copy; <span id="currentYear"></span> Jeremiah L. St. Fleur. All rights reserved.</p>
+      <p class="footer-copy">This portfolio demonstrates engineering communication, design process documentation, and technical project execution.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

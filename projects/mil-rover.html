@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TerraGator UGV | Jeremiah L. St. Fleur</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="nav-logo">J<span>.</span>StFleur</a>
+      <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../teams.html">Teams</a></li>
+        <li><a href="../gallery.html">Gallery</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="project-hero">
+    <div class="container">
+      <a href="../projects.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+      <div class="hero-label"><i class="fas fa-satellite-dish"></i> Undergraduate Research &mdash; Machine Intelligence Lab, UF</div>
+      <h1 style="font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;">TerraGator <span>Autonomous UGV</span></h1>
+      <p style="color:var(--text-secondary);max-width:640px;font-size:1.05rem;">A multi-year lab modernization effort on MIL's flagship autonomous ground vehicle — redesigning the electrical system, re-sizing drive motors with torque analysis, and prototyping an upgraded servo-steered drivetrain.</p>
+      <div class="project-meta">
+        <span><i class="fas fa-calendar"></i> Jan 2025 &ndash; Present</span>
+        <span><i class="fas fa-tag"></i> Robotics &amp; Autonomous Systems</span>
+      </div>
+      <div class="tags" style="margin-top:20px;">
+        <span class="tag">UGV</span>
+        <span class="tag">Autonomous Systems</span>
+        <span class="tag">Electrical Design</span>
+        <span class="tag">Torque Analysis</span>
+        <span class="tag">Drive System</span>
+        <span class="tag">Research</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="container">
+      <div class="project-body-content">
+
+        <h3>Project Context</h3>
+        <p>The TerraGator is the Machine Intelligence Lab's (MIL) long-running autonomous ground vehicle platform, designed to demonstrate the lab's capability in fully autonomous outdoor navigation, perception, and control. As an undergraduate researcher, I joined the TerraGator modernization effort — a collaborative push to bring the aging platform up to current engineering and electronics standards while preserving the core vehicle architecture.</p>
+        <p>My contributions focused on three interconnected areas: the electrical infrastructure, the drive motor sizing, and the mechanical redesign of the drivetrain and steering system prototypes.</p>
+
+        <div class="media-grid cols-3">
+          <figure class="media-figure">
+            <img src="../images/mil-rover/rover-photo-01.jpg" alt="TerraGator rover photo 1">
+            <figcaption>TerraGator — full vehicle in field configuration</figcaption>
+          </figure>
+          <figure class="media-figure">
+            <img src="../images/mil-rover/rover-photo-02.jpg" alt="TerraGator rover photo 2">
+            <figcaption>Drivetrain and chassis detail</figcaption>
+          </figure>
+          <figure class="media-figure">
+            <img src="../images/mil-rover/rover-photo-03.jpg" alt="TerraGator rover photo 3">
+            <figcaption>Platform during systems integration testing</figcaption>
+          </figure>
+        </div>
+
+        <h3>Electrical Box Redesign</h3>
+        <p>The original electrical enclosure was undersized, poorly organized, and difficult to service in the field. I redesigned and fabricated a new modular electrical box that consolidates all power distribution, fusing, and signal routing into a single, accessible enclosure with standardized mounting interfaces.</p>
+        <ul>
+          <li><strong>Layout:</strong> Designed internal DIN rail layout with labeled terminal blocks for rapid diagnosis and field repair.</li>
+          <li><strong>Fabrication:</strong> Machined custom aluminum brackets and 3D-printed component mounts for secure internal routing.</li>
+          <li><strong>Modularity:</strong> Integrated sensor mounts directly into the enclosure lid, eliminating the need for external harness runs to peripheral sensors.</li>
+          <li><strong>Environmental Sealing:</strong> Added cable gland entry points and gasket sealing to protect electronics during outdoor operation.</li>
+        </ul>
+
+        <h3>Motor Sizing &amp; Torque Analysis</h3>
+        <p>To support the drivetrain upgrade, I performed a full motor sizing analysis to validate and select replacement drive motors capable of meeting the vehicle's updated performance targets on varied terrain.</p>
+        <ul>
+          <li><strong>Torque Calculations:</strong> Computed required wheel torque using vehicle mass, target grade angle, rolling resistance coefficient, and dynamic load transfer during acceleration.</li>
+          <li><strong>Motor Selection:</strong> Evaluated candidate motors against the torque/speed curve requirements, accounting for efficiency losses through the gearbox and wheel interface.</li>
+          <li><strong>Safety Factor:</strong> Applied a 1.5&times; design safety factor to all torque requirements to accommodate rough terrain and obstacle loading conditions.</li>
+          <li><strong>Validation:</strong> Cross-referenced selections against published dynometer data and lab bench tests to confirm real-world output matches calculated specifications.</li>
+        </ul>
+
+        <h3>Drive System &amp; Servo-Steering Prototypes</h3>
+        <p>The original drive and steering system required a full mechanical overhaul to support the new motor specifications and improve reliability. I designed and built the first round of prototype hardware for the upgraded system.</p>
+
+        <div class="media-grid cols-3">
+          <figure class="media-figure">
+            <img src="../images/mil-rover/rover-cad-01.png" alt="TerraGator CAD design 1">
+            <figcaption>Drive system CAD — iteration 1</figcaption>
+          </figure>
+          <figure class="media-figure">
+            <img src="../images/mil-rover/rover-cad-02.png" alt="TerraGator CAD design 2">
+            <figcaption>Motor mount and wheel interface redesign</figcaption>
+          </figure>
+          <figure class="media-figure">
+            <img src="../images/mil-rover/rover-cad-03.png" alt="TerraGator CAD design 3">
+            <figcaption>Servo-steering geometry — first prototype revision</figcaption>
+          </figure>
+        </div>
+
+        <ul>
+          <li><strong>Chassis Iterations:</strong> Engineered 3 drive system iterations, progressively improving structural integrity and terrain adaptability.</li>
+          <li><strong>Retrofit Mounts:</strong> Designed retrofit wheel and motor mounts compatible with the existing frame, minimizing required structural modifications.</li>
+          <li><strong>Servo-Steering:</strong> Developed a servo-actuated steering linkage prototype replacing the legacy mechanical configuration, improving steering authority and reducing play.</li>
+          <li><strong>Modularity:</strong> All new components designed for rapid disassembly and replacement — a key requirement for a lab platform that must be maintainable by multiple team members.</li>
+        </ul>
+
+        <h3>Collaboration &amp; Role</h3>
+        <p>TerraGator is a multi-contributor lab project. My specific ownership areas were the electrical enclosure, motor sizing analysis, and the drive/steering prototype hardware. Other lab members contributed to perception, software, and sensor integration in parallel. Working within a shared engineering environment required disciplined version control of CAD files, clear documentation of design decisions, and coordination on interface dimensions between subsystems.</p>
+
+        <div style="margin-top:48px;">
+          <a href="../projects.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> All Projects</a>
+          <a href="../teams.html" class="btn btn-accent" style="margin-left:12px;"><i class="fas fa-users"></i> View Teams Page</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/jstfleur" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.3dprintclub.org" target="_blank"><i class="fas fa-print"></i></a>
+        <a href="mailto:Jeremiahstfleur@ufl.edu"><i class="fas fa-envelope"></i></a>
+      </div>
+      <p class="footer-copy">&copy; <span id="currentYear"></span> Jeremiah L. St. Fleur. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
