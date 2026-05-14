@@ -75,34 +75,42 @@
         <div>
           <div class="card" style="padding:32px;">
             <h3 style="margin-bottom:24px;">Send a Message</h3>
+            <div id="formSuccess" style="display:none;text-align:center;padding:32px 0;">
+              <i class="fas fa-check-circle" style="font-size:3rem;color:var(--primary-orange);margin-bottom:16px;display:block;"></i>
+              <h4 style="margin-bottom:8px;">Message Sent!</h4>
+              <p style="color:var(--text-secondary);">Thanks for reaching out. I'll get back to you soon.</p>
+            </div>
             <form id="contactForm">
+              <input type="hidden" name="access_key" value="9565afab-8e1b-4f4c-ac6e-f2977883b6c7">
+              <input type="hidden" name="subject" id="hiddenSubject" value="Portfolio Contact Form">
+              <input type="hidden" name="from_name" value="Portfolio Contact Form">
               <div class="form-group">
                 <label for="name">Your Name *</label>
-                <input type="text" id="name" required>
+                <input type="text" id="name" name="name" required>
               </div>
               <div class="form-group">
                 <label for="email">Your Email *</label>
-                <input type="email" id="email" required>
+                <input type="email" id="email" name="email" required>
               </div>
               <div class="form-group">
                 <label for="subject">Subject</label>
-                <input type="text" id="subject">
+                <input type="text" id="subject" name="subject_line">
               </div>
               <div class="form-group">
                 <label for="inquiry">Type of Inquiry</label>
-                <select id="inquiry">
-                  <option value="general">General Inquiry</option>
-                  <option value="research">Research Opportunity</option>
-                  <option value="internship">Internship / Co-op</option>
-                  <option value="collab">Project Collaboration</option>
-                  <option value="other">Other</option>
+                <select id="inquiry" name="inquiry_type">
+                  <option value="General Inquiry">General Inquiry</option>
+                  <option value="Research Opportunity">Research Opportunity</option>
+                  <option value="Internship / Co-op">Internship / Co-op</option>
+                  <option value="Project Collaboration">Project Collaboration</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="message">Message *</label>
-                <textarea id="message" rows="5" required></textarea>
+                <textarea id="message" name="message" rows="5" required></textarea>
               </div>
-              <button type="submit" class="btn btn-accent" style="width:100%;justify-content:center;"><i class="fas fa-paper-plane"></i> Send Message</button>
+              <button type="submit" id="submitBtn" class="btn btn-accent" style="width:100%;justify-content:center;"><i class="fas fa-paper-plane"></i> Send Message</button>
             </form>
           </div>
         </div>
@@ -123,5 +131,31 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var btn = document.getElementById('submitBtn');
+      var subjectLine = document.getElementById('subject').value;
+      var inquiryType = document.getElementById('inquiry').value;
+      document.getElementById('hiddenSubject').value = (subjectLine || inquiryType || 'Portfolio Contact') + ' — via Portfolio';
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      var data = new FormData(this);
+      try {
+        var res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+        var json = await res.json();
+        if (json.success) {
+          document.getElementById('contactForm').style.display = 'none';
+          document.getElementById('formSuccess').style.display = 'block';
+        } else {
+          throw new Error(json.message);
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+        alert('Send failed: ' + (err.message || 'Unknown error. Try emailing directly.'));
+      }
+    });
+  </script>
 </body>
 </html>
