@@ -116,7 +116,7 @@ img { max-width: 100%; display: block; }
 .hero-avatar img {
   width: 160px !important; height: 160px !important;
   max-width: 160px !important;
-  object-fit: cover; object-position: center top;
+  object-fit: cover; object-position: 50% 15%;
   border-radius: 50%; display: block;
 }
 
