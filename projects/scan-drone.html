@@ -3,110 +3,695 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>S.C.A.N. Drone | Jeremiah L. St. Fleur</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title>S.C.A.N. Drone — Jeremiah St. Fleur</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* ── Page-specific overrides ── */
+    body { font-family: 'Outfit', sans-serif; }
+
+    .sd-nav {
+      background: rgba(30,58,95,0.97);
+      padding: 18px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .sd-nav .logo {
+      font: 800 1.4rem 'Outfit', sans-serif;
+      color: #f39c12;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+    .sd-nav .logo span { color: #4a90e2; }
+    .sd-nav .nav-links { display: flex; gap: 28px; align-items: center; }
+    .sd-nav .nav-links a {
+      font: 500 0.9rem 'Outfit', sans-serif;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .sd-nav .nav-links a:hover { color: #fff; }
+    .sd-nav .nav-links a.active {
+      color: #f39c12;
+      padding-bottom: 3px;
+      border-bottom: 2px solid #f39c12;
+    }
+
+    /* HERO */
+    .sd-hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .sd-hero img.bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .sd-hero .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(13,27,46,0.93) 0%, rgba(30,58,95,0.87) 60%, rgba(44,82,130,0.75) 100%);
+    }
+    .sd-hero .content {
+      position: relative;
+      padding: 56px 48px 48px;
+    }
+    .sd-hero .back-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font: 500 0.82rem 'Outfit', sans-serif;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      margin-bottom: 22px;
+      width: fit-content;
+    }
+    .sd-hero .back-link:hover { color: rgba(255,255,255,0.8); }
+    .sd-hero .label {
+      color: #f39c12;
+      font: 500 0.88rem 'Outfit', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+    .sd-hero h1 {
+      font: 800 2.8rem 'Outfit', sans-serif;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: white;
+      margin-bottom: 6px;
+    }
+    .sd-hero .subtitle {
+      font: 400 1rem 'Outfit', sans-serif;
+      color: rgba(243,156,18,0.85);
+      margin-bottom: 14px;
+    }
+    .sd-hero p {
+      font: 400 0.97rem 'Outfit', sans-serif;
+      color: rgba(255,255,255,0.8);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .sd-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+    .sd-meta span {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.8);
+      font: 500 0.82rem 'Outfit', sans-serif;
+      padding: 6px 14px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .sd-meta span i { color: #f39c12; }
+    .sd-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .sd-tags span {
+      background: rgba(243,156,18,0.18);
+      border: 1px solid rgba(243,156,18,0.35);
+      color: #f39c12;
+      font: 600 0.76rem 'Outfit', sans-serif;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* SECTIONS */
+    .sd-section { padding: 60px 48px; }
+    .sd-section-light { background: #f0f6fb; padding: 60px 48px; }
+    .sd-section-dark { background: #0d1117; padding: 60px 48px; }
+
+    .sd-eyebrow {
+      font: 600 0.72rem 'JetBrains Mono', monospace;
+      color: #d35400;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+    .sd-h2 {
+      font: 700 1.55rem 'Outfit', sans-serif;
+      color: #1e3a5f;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    /* OVERVIEW */
+    .sd-overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 52px;
+      align-items: center;
+    }
+    .sd-overview-grid p {
+      font: 400 0.95rem 'Outfit', sans-serif;
+      color: #4a5568;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .sd-img-card {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(30,58,95,0.14);
+      border: 1px solid #dee2e6;
+    }
+    .sd-img-card img { width: 100%; height: 300px; object-fit: cover; display: block; }
+    .sd-img-cap {
+      padding: 10px 16px;
+      background: #f8f9fa;
+      font: 400 0.78rem 'JetBrains Mono', monospace;
+      color: #718096;
+      border-top: 1px solid #dee2e6;
+    }
+
+    /* GALLERY */
+    .sd-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .sd-figure {
+      margin: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #dee2e6;
+      box-shadow: 0 4px 12px rgba(0,0,0,.05);
+    }
+    .sd-figure img { width: 100%; height: 190px; object-fit: cover; display: block; }
+    .sd-figure figcaption {
+      padding: 10px 14px;
+      font: 400 0.75rem 'JetBrains Mono', monospace;
+      color: #718096;
+      border-top: 1px solid #dee2e6;
+    }
+    .sd-figure-full {
+      margin: 0 0 16px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #dee2e6;
+      box-shadow: 0 4px 12px rgba(0,0,0,.05);
+    }
+    .sd-figure-full img {
+      width: 100%;
+      height: 220px;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      background: #f8f9fa;
+    }
+    .sd-figure-full figcaption {
+      padding: 10px 14px;
+      font: 400 0.75rem 'JetBrains Mono', monospace;
+      color: #718096;
+      border-top: 1px solid #dee2e6;
+    }
+    .sd-remotexy {
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #dee2e6;
+      box-shadow: 0 4px 12px rgba(0,0,0,.05);
+      margin-bottom: 16px;
+    }
+    .sd-remotexy img {
+      width: 100%;
+      max-height: 260px;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      background: #f0f6fb;
+    }
+    .sd-remotexy .cap {
+      padding: 10px 14px;
+      font: 400 0.75rem 'JetBrains Mono', monospace;
+      color: #718096;
+      border-top: 1px solid #dee2e6;
+    }
+    .sd-video-placeholder {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 2px dashed #4a90e2;
+      background: #e8f1f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .sd-video-placeholder .play-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #1e3a5f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sd-video-placeholder .play-btn i { color: #f39c12; font-size: 1.1rem; margin-left: 3px; }
+    .sd-video-placeholder .title { font: 600 0.95rem 'Outfit', sans-serif; color: #1e3a5f; }
+    .sd-video-placeholder .sub { font: 400 0.8rem 'Outfit', sans-serif; color: #718096; }
+
+    /* SPECS */
+    .sd-specs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .sd-spec-card {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 10px;
+      padding: 20px 18px;
+      border-top: 3px solid #d35400;
+    }
+    .sd-spec-card .s-label {
+      font: 600 0.7rem 'JetBrains Mono', monospace;
+      color: #718096;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+    .sd-spec-card .s-value {
+      font: 700 1.05rem 'Outfit', sans-serif;
+      color: #1e3a5f;
+      margin-bottom: 3px;
+    }
+    .sd-spec-card .s-sub { font: 400 0.8rem 'Outfit', sans-serif; color: #718096; }
+
+    /* CODE + WIRING */
+    .sd-code-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 20px;
+      align-items: start;
+    }
+    .sd-code-block {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #30363d;
+    }
+    .sd-code-header {
+      background: #161b22;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #30363d;
+    }
+    .sd-code-header .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .sd-code-header .filename {
+      font: 400 0.78rem 'JetBrains Mono', monospace;
+      color: #8b949e;
+      margin-left: 8px;
+    }
+    .sd-code-header .lang {
+      font: 400 0.72rem 'JetBrains Mono', monospace;
+      color: rgba(255,255,255,0.18);
+      margin-left: auto;
+    }
+    .sd-code-body {
+      background: #0d1117;
+      padding: 22px 26px;
+      font: 400 13px/1.85 'JetBrains Mono', monospace;
+      color: #e6edf3;
+    }
+    .sd-code-body div { white-space: pre; }
+    .c-comment { color: #8b949e; }
+    .c-kw { color: #ff7b72; }
+    .c-macro { color: #ffa657; }
+    .c-str { color: #a5d6ff; }
+    .c-fn { color: #d2a8ff; }
+    .c-num { color: #79c0ff; }
+
+    .sd-wiring-card {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #dee2e6;
+      background: #fff;
+    }
+    .sd-wiring-card .header {
+      background: #1e3a5f;
+      padding: 10px 16px;
+      font: 600 0.68rem 'JetBrains Mono', monospace;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .sd-wiring-card img { width: 100%; display: block; object-fit: contain; background: #f8f9fa; }
+    .sd-wiring-card .cap {
+      padding: 8px 14px;
+      font: 400 0.72rem 'JetBrains Mono', monospace;
+      color: #718096;
+      border-top: 1px solid #dee2e6;
+    }
+
+    /* BOM */
+    .sd-bom {
+      border: 1px solid #dee2e6;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .sd-bom .bom-header {
+      display: grid;
+      grid-template-columns: 60px 1fr 130px;
+      background: #1e3a5f;
+      padding: 12px 20px;
+    }
+    .sd-bom .bom-header div {
+      font: 600 0.7rem 'JetBrains Mono', monospace;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+    }
+    .sd-bom .bom-row {
+      display: grid;
+      grid-template-columns: 60px 1fr 130px;
+      padding: 13px 20px;
+      border-top: 1px solid #dee2e6;
+      background: white;
+      align-items: center;
+    }
+    .sd-bom .bom-qty { font: 600 0.85rem 'JetBrains Mono', monospace; color: #d35400; }
+    .sd-bom .bom-part { font: 500 0.92rem 'Outfit', sans-serif; color: #1e3a5f; }
+    .sd-bom .bom-cat {
+      font: 400 0.78rem 'Outfit', sans-serif;
+      color: #718096;
+      background: #f0f6fb;
+      padding: 3px 10px;
+      border-radius: 20px;
+      width: fit-content;
+    }
+
+    /* FOOTER NAV */
+    .sd-footer-nav {
+      background: #f0f6fb;
+      padding: 36px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 3px solid #1e3a5f;
+    }
+    .sd-footer-nav .all-projects {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font: 600 0.88rem 'Outfit', sans-serif;
+      color: #4a90e2;
+      text-decoration: none;
+    }
+    .sd-footer-nav .all-projects:hover { color: #1e3a5f; }
+    .sd-footer-nav .next-label {
+      font: 400 0.72rem 'JetBrains Mono', monospace;
+      color: #718096;
+      margin-bottom: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .sd-footer-nav .next-link {
+      font: 700 0.95rem 'Outfit', sans-serif;
+      color: #1e3a5f;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      justify-content: flex-end;
+      text-decoration: none;
+    }
+    .sd-footer-nav .next-link:hover { color: #d35400; }
+    .sd-footer-nav .next-link i { color: #d35400; font-size: 0.82rem; }
+
+    /* SITE FOOTER */
+    .site-footer { background: #0d1b2e; padding: 32px 48px; text-align: center; }
+    .site-footer .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 12px; }
+    .site-footer .footer-links a {
+      font: 500 0.85rem 'Outfit', sans-serif;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+    }
+    .site-footer .footer-links a:hover { color: #f39c12; }
+    .site-footer p {
+      font: 400 0.78rem 'Outfit', sans-serif;
+      color: rgba(255,255,255,0.25);
+    }
+
+    @media (max-width: 900px) {
+      .sd-nav { padding: 16px 24px; }
+      .sd-hero .content { padding: 40px 24px 32px; }
+      .sd-overview-grid { grid-template-columns: 1fr; gap: 24px; }
+      .sd-gallery-grid { grid-template-columns: 1fr 1fr; }
+      .sd-specs-grid { grid-template-columns: 1fr 1fr; }
+      .sd-code-grid { grid-template-columns: 1fr; }
+      .sd-section, .sd-section-light, .sd-section-dark { padding: 40px 24px; }
+      .sd-bom .bom-header, .sd-bom .bom-row { grid-template-columns: 50px 1fr 90px; }
+      .sd-footer-nav { padding: 28px 24px; flex-direction: column; gap: 16px; align-items: flex-start; }
+    }
+    @media (max-width: 580px) {
+      .sd-nav .nav-links { display: none; }
+      .sd-gallery-grid { grid-template-columns: 1fr; }
+      .sd-specs-grid { grid-template-columns: 1fr; }
+      .sd-hero h1 { font-size: 2rem; }
+    }
+  </style>
 </head>
 <body>
 
-  <nav class="site-nav">
-    <div class="container nav-inner">
-      <a href="../index.html" class="nav-logo">J<span>.</span>StFleur</a>
-      <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
-      <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../projects.html">Projects</a></li>
-        <li><a href="../teams.html">Teams</a></li>
-        <li><a href="../gallery.html">Gallery</a></li>
-        <li><a href="../contact.html">Contact</a></li>
-      </ul>
+  <!-- NAV -->
+  <nav class="sd-nav">
+    <a href="../index.html" class="logo">J<span>.</span>StFleur</a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../projects.html" class="active">Projects</a>
+      <a href="../teams.html">Teams</a>
+      <a href="../gallery.html">Gallery</a>
+      <a href="../contact.html">Contact</a>
     </div>
   </nav>
 
-  <section class="project-hero">
-    <div class="container">
+  <!-- HERO -->
+  <div class="sd-hero">
+    <img class="bg" src="../images/scan-drone/drone-top-view.png" alt="">
+    <div class="overlay"></div>
+    <div class="content">
       <a href="../projects.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
-      <div class="hero-label"><i class="fas fa-robot"></i> Personal Project</div>
-      <h1 style="font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;">S.C.A.N. Drone <span>(Servo-Controlled App Navigator)</span></h1>
-      <p style="color:var(--text-secondary);max-width:640px;font-size:1.05rem;">A custom-designed terrestrial drone using continuous-rotation servos for differential steering, controlled via a mobile application with multiple operational modes.</p>
-      <div class="project-meta">
-        <span><i class="fas fa-calendar"></i> Mar 2025 - Present</span>
+      <div class="label"><i class="fas fa-robot"></i> Personal Project</div>
+      <h1>S.C.A.N. Drone</h1>
+      <div class="subtitle">Servo-Controlled App Navigator</div>
+      <p>Inspired by Rainbow Six Siege, built as a surprise gift for my roommate over spring break — a 3D-printed terrestrial drone testing the RemoteXY library with BLE control, continuous servos, time-of-flight sensing, TPU wheels, and RGB feedback.</p>
+      <div class="sd-meta">
+        <span><i class="fas fa-calendar"></i> Mar 2025 – Mar 2025</span>
         <span><i class="fas fa-tag"></i> Robotics &amp; Controls</span>
       </div>
-      <div class="tags" style="margin-top:20px;">
-        <span class="tag">Robotics</span>
-        <span class="tag">ESP32</span>
-        <span class="tag">PID Control</span>
-        <span class="tag">Mobile UI</span>
+      <div class="sd-tags">
+        <span>Robotics</span>
+        <span>ESP32</span>
+        <span>PID Control</span>
+        <span>BLE</span>
+        <span>Custom PCB</span>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section style="padding-top:0;">
-    <div class="container">
-      <div class="project-body-content">
-
-        <h3>Project Overview</h3>
-        <p>The S.C.A.N. Drone is a terrestrial mobile platform designed for modular payload testing and educational demonstrations. The project emphasizes precise control, wireless communication, and system integration.</p>
-
-        <div class="media-grid cols-3">
-          <figure class="media-figure">
-            <img src="../images/scan-drone/drone-top-view.png" alt="S.C.A.N. Drone top view">
-            <figcaption>Top view — chassis layout</figcaption>
-          </figure>
-          <figure class="media-figure">
-            <img src="../images/scan-drone/drone-side-view.png" alt="S.C.A.N. Drone side view">
-            <figcaption>Side profile — servo and sensor stack</figcaption>
-          </figure>
-          <figure class="media-figure">
-            <img src="../images/scan-drone/drone-detail-view.png" alt="S.C.A.N. Drone detail view">
-            <figcaption>Detail view — electronics integration</figcaption>
-          </figure>
-        </div>
-
-        <h3>Technical Specifications</h3>
-        <ul>
-          <li><strong>Microcontroller:</strong> ESP32 with BLE/Wi-Fi capabilities</li>
-          <li><strong>Actuation:</strong> Continuous-rotation servos with positional feedback</li>
-          <li><strong>Control Interface:</strong> RemoteXY mobile application with three operational modes</li>
-          <li><strong>Sensors:</strong> Ultrasonic distance sensor, IMU (planned)</li>
-          <li><strong>Communication:</strong> Bluetooth Low Energy (BLE) for real-time control</li>
-        </ul>
-
-        <h3>Engineering Challenges &amp; Solutions</h3>
-        <ul>
-          <li><strong>Brownout Issues:</strong> Consolidated all electronics onto a single PCB with proper power regulation, eliminating voltage drops during servo actuation.</li>
-          <li><strong>Precision Control:</strong> Implemented PID control with positional feedback for accurate differential steering (&plusmn;2&deg; accuracy).</li>
-          <li><strong>System Integration:</strong> Designed a modular chassis that accommodates various sensor payloads while maintaining a compact footprint.</li>
-        </ul>
-
-        <h3>Results &amp; Performance</h3>
-        <ul>
-          <li>Reduced system footprint by 20% through PCB consolidation</li>
-          <li>Achieved 95% reliability in wireless communication at 30m range</li>
-          <li>Implemented three operational modes: Reconnaissance, Communications Relay, and Decoy</li>
-          <li>Successfully demonstrated payload interchangeability with 5+ sensor configurations</li>
-        </ul>
-
-        <div style="margin-top:48px;">
-          <a href="../projects.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> All Projects</a>
-        </div>
+  <!-- OVERVIEW -->
+  <div class="sd-section">
+    <div class="sd-overview-grid">
+      <div>
+        <div class="sd-eyebrow">// Overview</div>
+        <h2 class="sd-h2" style="font-size:1.75rem;line-height:1.25;">A surprise gift. A skill test. A Rainbow Six drone.</h2>
+        <p>The S.C.A.N. Drone was built as a surprise gift for my roommate over spring break — inspired by the recon drone from Rainbow Six Siege. It was also a hands-on application of my embedded systems skills and a real-world test of the RemoteXY app and library.</p>
+        <p>The platform features a 3D-printed chassis, continuous rotation servo motors, a time-of-flight distance sensor, TPU wheels, RGB status indicator, and Bluetooth control — all designed and assembled in one week.</p>
+      </div>
+      <div class="sd-img-card">
+        <img src="../images/scan-drone/drone-top-view.png" alt="Drone top view">
+        <div class="sd-img-cap">Top view — chassis layout</div>
       </div>
     </div>
-  </section>
+  </div>
 
+  <!-- MEDIA GALLERY -->
+  <div class="sd-section-light">
+    <div style="margin-bottom:32px">
+      <div class="sd-eyebrow">// In the Lab</div>
+      <h2 class="sd-h2">Hardware &amp; Build</h2>
+    </div>
+    <div class="sd-gallery-grid">
+      <figure class="sd-figure">
+        <img src="../images/scan-drone/drone-top-view.png" alt="Top view">
+        <figcaption>Top view — chassis layout</figcaption>
+      </figure>
+      <figure class="sd-figure">
+        <img src="../images/scan-drone/drone-side-view.png" alt="Side view">
+        <figcaption>Side profile — servo stack</figcaption>
+      </figure>
+      <figure class="sd-figure">
+        <img src="../images/scan-drone/drone-detail-view.png" alt="Detail view">
+        <figcaption>Detail — electronics integration</figcaption>
+      </figure>
+    </div>
+    <div class="sd-video-placeholder">
+      <div class="play-btn"><i class="fas fa-play"></i></div>
+      <div class="title">Demo Video</div>
+      <div class="sub">Embed YouTube or Vimeo link here</div>
+    </div>
+  </div>
+
+  <!-- TECH SPECS -->
+  <div class="sd-section">
+    <div style="margin-bottom:32px">
+      <div class="sd-eyebrow">// Under the Hood</div>
+      <h2 class="sd-h2">Technical Specifications</h2>
+    </div>
+    <div class="sd-specs-grid">
+      <div class="sd-spec-card">
+        <div class="s-label">Microcontroller</div>
+        <div class="s-value">ESP32 DevKit v4</div>
+        <div class="s-sub">Dual-core, BLE + Wi-Fi</div>
+      </div>
+      <div class="sd-spec-card">
+        <div class="s-label">Actuation</div>
+        <div class="s-value">2× MG996R Servo</div>
+        <div class="s-sub">Continuous rotation</div>
+      </div>
+      <div class="sd-spec-card">
+        <div class="s-label">Control Interface</div>
+        <div class="s-value">RemoteXY App</div>
+        <div class="s-sub">3 operational modes</div>
+      </div>
+      <div class="sd-spec-card">
+        <div class="s-label">Primary Sensor</div>
+        <div class="s-value">HC-SR04</div>
+        <div class="s-sub">Ultrasonic distance</div>
+      </div>
+      <div class="sd-spec-card">
+        <div class="s-label">Communication</div>
+        <div class="s-value">BLE 4.2</div>
+        <div class="s-sub">30m effective range</div>
+      </div>
+      <div class="sd-spec-card">
+        <div class="s-label">Power</div>
+        <div class="s-value">LiPo 3.7V</div>
+        <div class="s-sub">1000mAh single cell</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIRMWARE + WIRING -->
+  <div class="sd-section">
+    <div style="margin-bottom:26px">
+      <div class="sd-eyebrow">// Firmware</div>
+      <h2 class="sd-h2">REMOTE_XY_SLIDER_AND_DIST_SENSOR.ino</h2>
+      <p style="font:400 0.9rem 'Outfit',sans-serif;color:#718096;margin-top:6px">Full BLE control firmware — dual slider input maps to continuous servo angles, with live VL53L0X distance fed back to the app</p>
+    </div>
+    <div class="sd-code-grid">
+      <div class="sd-code-block">
+        <div class="sd-code-header">
+          <div class="dot" style="background:#ff5f57"></div>
+          <div class="dot" style="background:#febc2e"></div>
+          <div class="dot" style="background:#28c840"></div>
+          <span class="filename">REMOTE_XY_SLIDER_AND_DIST_SENSOR.ino</span>
+          <span class="lang">C++ / Arduino</span>
+        </div>
+        <div class="sd-code-body">
+          <div><span class="c-comment">// RemoteXY — BLE connection mode</span></div>
+          <div><span class="c-kw">#define</span> <span class="c-macro">REMOTEXY_MODE__ESP32CORE_BLUETOOTH</span></div>
+          <div><span class="c-kw">#define</span> <span class="c-macro">REMOTEXY_BLUETOOTH_NAME</span> <span class="c-str">"R6 Drone"</span></div>
+          <div><span class="c-kw">#include</span> <span class="c-str">&lt;RemoteXY.h&gt;</span></div>
+          <div><span class="c-kw">#include</span> <span class="c-str">&lt;ESP32Servo.h&gt;</span></div>
+          <div><span class="c-kw">#include</span> <span class="c-str">&lt;VL53L0X.h&gt;</span></div>
+          <div>&nbsp;</div>
+          <div><span class="c-comment">// GUI struct — auto-generated by RemoteXY editor</span></div>
+          <div><span class="c-kw">struct</span> {</div>
+          <div><span class="c-kw">&nbsp;&nbsp;int8_t</span>&nbsp; <span class="c-macro">Left_Motor</span>;&nbsp;&nbsp;&nbsp;<span class="c-comment">// slider: -100 to 100</span></div>
+          <div><span class="c-kw">&nbsp;&nbsp;int8_t</span>&nbsp; <span class="c-macro">Right_Motor</span>;&nbsp;&nbsp;<span class="c-comment">// slider: -100 to 100</span></div>
+          <div><span class="c-kw">&nbsp;&nbsp;float</span>&nbsp;&nbsp; <span class="c-macro">value_01</span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-comment">// distance sensor out</span></div>
+          <div><span class="c-kw">&nbsp;&nbsp;uint8_t</span> <span class="c-macro">connect_flag</span>;</div>
+          <div>} RemoteXY;</div>
+          <div>&nbsp;</div>
+          <div><span class="c-kw">void</span> <span class="c-fn">setup</span>() {</div>
+          <div>&nbsp;&nbsp;<span class="c-fn">RemoteXY_Init</span>();</div>
+          <div>&nbsp;&nbsp;leftServo.<span class="c-fn">attach</span>(leftServoPin, <span class="c-num">1000</span>, <span class="c-num">2000</span>);</div>
+          <div>&nbsp;&nbsp;rightServo.<span class="c-fn">attach</span>(rightServoPin, <span class="c-num">1000</span>, <span class="c-num">2000</span>);</div>
+          <div>}</div>
+          <div>&nbsp;</div>
+          <div><span class="c-kw">void</span> <span class="c-fn">loop</span>() {</div>
+          <div>&nbsp;&nbsp;<span class="c-fn">RemoteXY_Handler</span>();</div>
+          <div><span class="c-comment">&nbsp;&nbsp;// read distance sensor → send to app</span></div>
+          <div><span class="c-kw">&nbsp;&nbsp;int</span> <span class="c-macro">sensorValue</span> = <span class="c-fn">analogRead</span>(distanceSensorPin);</div>
+          <div>&nbsp;&nbsp;RemoteXY.value_01 = <span class="c-macro">sensorValue</span>;</div>
+          <div>&nbsp;</div>
+          <div><span class="c-comment">&nbsp;&nbsp;// map slider → servo angle</span></div>
+          <div><span class="c-kw">&nbsp;&nbsp;int</span> <span class="c-macro">leftAngle</span>  = <span class="c-fn">map</span>(RemoteXY.Left_Motor,  -<span class="c-num">100</span>, <span class="c-num">100</span>, <span class="c-num">0</span>, <span class="c-num">180</span>);</div>
+          <div><span class="c-kw">&nbsp;&nbsp;int</span> <span class="c-macro">rightAngle</span> = <span class="c-fn">map</span>(RemoteXY.Right_Motor, <span class="c-num">100</span>, -<span class="c-num">100</span>, <span class="c-num">0</span>, <span class="c-num">180</span>);</div>
+          <div>&nbsp;</div>
+          <div>&nbsp;&nbsp;leftServo.<span class="c-fn">write</span>(leftAngle);</div>
+          <div>&nbsp;&nbsp;rightServo.<span class="c-fn">write</span>(rightAngle);</div>
+          <div>&nbsp;&nbsp;<span class="c-fn">delay</span>(<span class="c-num">20</span>);</div>
+          <div>}</div>
+        </div>
+      </div>
+      <div class="sd-wiring-card">
+        <div class="header">Wiring Diagram</div>
+        <img src="../images/scan-drone/drone-detail-view.png" alt="Wiring / detail view">
+        <div class="cap">Power + signal routing</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOM -->
+  <div class="sd-section-light">
+    <div style="margin-bottom:28px">
+      <div class="sd-eyebrow">// Parts List</div>
+      <h2 class="sd-h2">Bill of Materials</h2>
+    </div>
+    <div class="sd-bom">
+      <div class="bom-header">
+        <div>Qty</div>
+        <div>Component</div>
+        <div>Category</div>
+      </div>
+      <div class="bom-row"><div class="bom-qty">×1</div><div class="bom-part">ESP32 DevKit v4</div><div class="bom-cat">Electronics</div></div>
+      <div class="bom-row"><div class="bom-qty">×2</div><div class="bom-part">MG996R Servo</div><div class="bom-cat">Actuation</div></div>
+      <div class="bom-row"><div class="bom-qty">×1</div><div class="bom-part">HC-SR04 Ultrasonic</div><div class="bom-cat">Sensors</div></div>
+      <div class="bom-row"><div class="bom-qty">×1</div><div class="bom-part">Custom PCB</div><div class="bom-cat">Electronics</div></div>
+      <div class="bom-row"><div class="bom-qty">×1</div><div class="bom-part">LiPo 3.7V 1000mAh</div><div class="bom-cat">Power</div></div>
+      <div class="bom-row"><div class="bom-qty">×4</div><div class="bom-part">65mm Rubber Wheels</div><div class="bom-cat">Mechanical</div></div>
+      <div class="bom-row"><div class="bom-qty">×1</div><div class="bom-part">PLA Printed Frame</div><div class="bom-cat">Mechanical</div></div>
+    </div>
+  </div>
+
+  <!-- FOOTER NAV -->
+  <div class="sd-footer-nav">
+    <a href="../projects.html" class="all-projects"><i class="fas fa-arrow-left"></i> All Projects</a>
+    <div style="text-align:right">
+      <div class="next-label">Next Project</div>
+      <a href="servo-motor.html" class="next-link">360° Servo Motor <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <!-- SITE FOOTER -->
   <footer class="site-footer">
-    <div class="container">
-      <div class="footer-links">
-        <a href="https://www.linkedin.com/in/jstfleur" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.3dprintclub.org" target="_blank"><i class="fas fa-print"></i></a>
-        <a href="mailto:Jeremiahstfleur@ufl.edu"><i class="fas fa-envelope"></i></a>
-      </div>
-      <p class="footer-copy">&copy; <span id="currentYear"></span> Jeremiah L. St. Fleur. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/jstfleur" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://3dprintclub.org" target="_blank"><i class="fas fa-print"></i> 3D Print Club</a>
+      <a href="mailto:Jeremiahstfleur@ufl.edu"><i class="fas fa-envelope"></i> Email</a>
     </div>
+    <p>&copy; <span id="currentYear"></span> Jeremiah St. Fleur</p>
   </footer>
 
   <script src="../js/main.js"></script>
+  <script>document.getElementById('currentYear').textContent = new Date().getFullYear();</script>
 </body>
 </html>
