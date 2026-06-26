@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>S.C.A.N. Drone — Jeremiah St. Fleur</title>
+  <title>S.C.A.N. Drone â€” Jeremiah St. Fleur</title>
   <link rel="stylesheet" href="../css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    /* ── Page-specific overrides ── */
+    /* â”€â”€ Page-specific overrides â”€â”€ */
     body { font-family: 'Outfit', sans-serif; }
 
     .sd-nav {
@@ -490,7 +490,7 @@
       <h1>S.C.A.N. Drone</h1>
       <div class="subtitle">Servo-Controlled App Navigator</div>
       <div class="sd-meta">
-        <span><i class="fas fa-calendar"></i> Mar 2025 – Mar 2025</span>
+        <span><i class="fas fa-calendar"></i> Mar 2025 â€“ Mar 2025</span>
         <span><i class="fas fa-tag"></i> Robotics &amp; Controls</span>
       </div>
       <div class="sd-tags">
@@ -512,7 +512,7 @@
       </div>
       <div class="sd-img-card">
         <img src="../images/scan-drone/drone-top-view.png" alt="Drone top view">
-        <div class="sd-img-cap">Top view — chassis layout</div>
+        <div class="sd-img-cap">Top view â€” chassis layout</div>
       </div>
     </div>
   </div>
@@ -526,25 +526,25 @@
     <div class="sd-gallery-grid">
       <figure class="sd-figure">
         <img src="../images/scan-drone/drone-top-view.png" alt="Top view">
-        <figcaption>Top view — chassis layout</figcaption>
+        <figcaption>Top view â€” chassis layout</figcaption>
       </figure>
       <figure class="sd-figure">
         <img src="../images/scan-drone/drone-side-view.png" alt="Side view">
-        <figcaption>Side profile — servo stack</figcaption>
+        <figcaption>Side profile â€” servo stack</figcaption>
       </figure>
       <figure class="sd-figure">
         <img src="../images/scan-drone/drone-detail-view.png" alt="Detail view">
-        <figcaption>Detail — electronics integration</figcaption>
+        <figcaption>Detail â€” electronics integration</figcaption>
       </figure>
     </div>
     <div class="sd-gallery-grid" style="margin-bottom:16px">
       <figure class="sd-figure" style="grid-column:span 2">
         <img src="../images/scan-drone/drone-04-Fusion360_fullrender.png" alt="Fusion 360 render" style="height:220px;object-fit:contain;background:#f8f9fa">
-        <figcaption>Fusion 360 — full render</figcaption>
+        <figcaption>Fusion 360 â€” full render</figcaption>
       </figure>
       <figure class="sd-figure">
         <img src="../images/scan-drone/drone-04-Remotexyz_screenshot.png" alt="RemoteXY app interface" style="height:220px;object-fit:contain;background:#e8f1f8">
-        <figcaption>RemoteXY — BLE control layout</figcaption>
+        <figcaption>RemoteXY â€” BLE control layout</figcaption>
       </figure>
     </div>
     <video controls style="width:100%;border-radius:10px;display:block;background:#000" preload="metadata">
@@ -566,7 +566,7 @@
       </div>
       <div class="sd-spec-card">
         <div class="s-label">Actuation</div>
-        <div class="s-value">2× MG996R Servo</div>
+        <div class="s-value">2Ã— MG996R Servo</div>
         <div class="s-sub">Continuous rotation</div>
       </div>
       <div class="sd-spec-card">
@@ -597,7 +597,7 @@
     <div style="margin-bottom:26px">
       <div class="sd-eyebrow">// Firmware</div>
       <h2 class="sd-h2">REMOTE_XY_SLIDER_AND_DIST_SENSOR.ino</h2>
-      <p style="font:400 0.9rem 'Outfit',sans-serif;color:#718096;margin-top:6px">Full BLE control firmware — dual slider input maps to continuous servo angles, with live VL53L0X distance fed back to the app</p>
+      <p style="font:400 0.9rem 'Outfit',sans-serif;color:#718096;margin-top:6px">Full BLE control firmware â€” dual slider input maps to continuous servo angles, with live VL53L0X distance fed back to the app</p>
     </div>
     <div class="sd-code-grid">
       <div class="sd-code-block">
@@ -609,14 +609,14 @@
           <span class="lang">C++ / Arduino</span>
         </div>
         <div class="sd-code-body">
-          <div><span class="c-comment">// RemoteXY — BLE connection mode</span></div>
+          <div><span class="c-comment">// RemoteXY â€” BLE connection mode</span></div>
           <div><span class="c-kw">#define</span> <span class="c-macro">REMOTEXY_MODE__ESP32CORE_BLUETOOTH</span></div>
           <div><span class="c-kw">#define</span> <span class="c-macro">REMOTEXY_BLUETOOTH_NAME</span> <span class="c-str">"R6 Drone"</span></div>
           <div><span class="c-kw">#include</span> <span class="c-str">&lt;RemoteXY.h&gt;</span></div>
           <div><span class="c-kw">#include</span> <span class="c-str">&lt;ESP32Servo.h&gt;</span></div>
           <div><span class="c-kw">#include</span> <span class="c-str">&lt;VL53L0X.h&gt;</span></div>
           <div>&nbsp;</div>
-          <div><span class="c-comment">// GUI struct — auto-generated by RemoteXY editor</span></div>
+          <div><span class="c-comment">// GUI struct â€” auto-generated by RemoteXY editor</span></div>
           <div><span class="c-kw">struct</span> {</div>
           <div><span class="c-kw">&nbsp;&nbsp;int8_t</span>&nbsp; <span class="c-macro">Left_Motor</span>;&nbsp;&nbsp;&nbsp;<span class="c-comment">// slider: -100 to 100</span></div>
           <div><span class="c-kw">&nbsp;&nbsp;int8_t</span>&nbsp; <span class="c-macro">Right_Motor</span>;&nbsp;&nbsp;<span class="c-comment">// slider: -100 to 100</span></div>
@@ -632,11 +632,11 @@
           <div>&nbsp;</div>
           <div><span class="c-kw">void</span> <span class="c-fn">loop</span>() {</div>
           <div>&nbsp;&nbsp;<span class="c-fn">RemoteXY_Handler</span>();</div>
-          <div><span class="c-comment">&nbsp;&nbsp;// read distance sensor → send to app</span></div>
+          <div><span class="c-comment">&nbsp;&nbsp;// read distance sensor â†’ send to app</span></div>
           <div><span class="c-kw">&nbsp;&nbsp;int</span> <span class="c-macro">sensorValue</span> = <span class="c-fn">analogRead</span>(distanceSensorPin);</div>
           <div>&nbsp;&nbsp;RemoteXY.value_01 = <span class="c-macro">sensorValue</span>;</div>
           <div>&nbsp;</div>
-          <div><span class="c-comment">&nbsp;&nbsp;// map slider → servo angle</span></div>
+          <div><span class="c-comment">&nbsp;&nbsp;// map slider â†’ servo angle</span></div>
           <div><span class="c-kw">&nbsp;&nbsp;int</span> <span class="c-macro">leftAngle</span>  = <span class="c-fn">map</span>(RemoteXY.Left_Motor,  -<span class="c-num">100</span>, <span class="c-num">100</span>, <span class="c-num">0</span>, <span class="c-num">180</span>);</div>
           <div><span class="c-kw">&nbsp;&nbsp;int</span> <span class="c-macro">rightAngle</span> = <span class="c-fn">map</span>(RemoteXY.Right_Motor, <span class="c-num">100</span>, -<span class="c-num">100</span>, <span class="c-num">0</span>, <span class="c-num">180</span>);</div>
           <div>&nbsp;</div>
@@ -666,13 +666,13 @@
         <div>Component</div>
         <div>Category</div>
       </div>
-      <div class="bom-row"><div class="bom-qty">×1</div><div class="bom-part">ESP32 DevKit v4</div><div class="bom-cat">Electronics</div></div>
-      <div class="bom-row"><div class="bom-qty">×2</div><div class="bom-part">MG996R Servo</div><div class="bom-cat">Actuation</div></div>
-      <div class="bom-row"><div class="bom-qty">×1</div><div class="bom-part">HC-SR04 Ultrasonic</div><div class="bom-cat">Sensors</div></div>
-      <div class="bom-row"><div class="bom-qty">×1</div><div class="bom-part">Custom PCB</div><div class="bom-cat">Electronics</div></div>
-      <div class="bom-row"><div class="bom-qty">×1</div><div class="bom-part">LiPo 3.7V 1000mAh</div><div class="bom-cat">Power</div></div>
-      <div class="bom-row"><div class="bom-qty">×4</div><div class="bom-part">65mm Rubber Wheels</div><div class="bom-cat">Mechanical</div></div>
-      <div class="bom-row"><div class="bom-qty">×1</div><div class="bom-part">PLA Printed Frame</div><div class="bom-cat">Mechanical</div></div>
+      <div class="bom-row"><div class="bom-qty">Ã—1</div><div class="bom-part">ESP32 DevKit v4</div><div class="bom-cat">Electronics</div></div>
+      <div class="bom-row"><div class="bom-qty">Ã—2</div><div class="bom-part">MG996R Servo</div><div class="bom-cat">Actuation</div></div>
+      <div class="bom-row"><div class="bom-qty">Ã—1</div><div class="bom-part">VL53L0X Time-of-Flight</div><div class="bom-cat">Sensors</div></div>
+      <div class="bom-row"><div class="bom-qty">Ã—1</div><div class="bom-part">Custom PCB</div><div class="bom-cat">Electronics</div></div>
+      <div class="bom-row"><div class="bom-qty">Ã—1</div><div class="bom-part">LiPo 7.4V 2000mAh</div><div class="bom-cat">Power</div></div>
+      <div class="bom-row"><div class="bom-qty">Ã—4</div><div class="bom-part">65mm Rubber Wheels</div><div class="bom-cat">Mechanical</div></div>
+      <div class="bom-row"><div class="bom-qty">Ã—1</div><div class="bom-part">PLA Printed Frame</div><div class="bom-cat">Mechanical</div></div>
     </div>
   </div>
 
@@ -681,7 +681,7 @@
     <a href="../projects.html" class="all-projects"><i class="fas fa-arrow-left"></i> All Projects</a>
     <div style="text-align:right">
       <div class="next-label">Next Project</div>
-      <a href="servo-motor.html" class="next-link">360° Servo Motor <i class="fas fa-arrow-right"></i></a>
+      <a href="servo-motor.html" class="next-link">360Â° Servo Motor <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
 
@@ -700,3 +700,4 @@
   <script>document.getElementById('currentYear').textContent = new Date().getFullYear();</script>
 </body>
 </html>
+
