@@ -1,14 +1,13 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>S.C.A.N. Drone â€” Jeremiah St. Fleur</title>
+  <title>S.C.A.N. Drone &mdash; Jeremiah St. Fleur</title>
   <link rel="stylesheet" href="../css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    /* â”€â”€ Page-specific overrides â”€â”€ */
     body { font-family: 'Outfit', sans-serif; }
 
     .sd-nav {
@@ -62,10 +61,7 @@
       inset: 0;
       background: linear-gradient(135deg, rgba(13,27,46,0.93) 0%, rgba(30,58,95,0.87) 60%, rgba(44,82,130,0.75) 100%);
     }
-    .sd-hero .content {
-      position: relative;
-      padding: 56px 48px 48px;
-    }
+    .sd-hero .content { position: relative; padding: 56px 48px 48px; }
     .sd-hero .back-link {
       display: flex;
       align-items: center;
@@ -131,14 +127,13 @@
     /* SECTIONS */
     .sd-section { padding: 60px 48px; }
     .sd-section-light { background: #f0f6fb; padding: 60px 48px; }
-    .sd-section-dark { background: #0d1117; padding: 60px 48px; }
 
     .sd-eyebrow {
       font: 600 0.72rem 'JetBrains Mono', monospace;
       color: #d35400;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      margin-bottom: 10px;
+      margin-bottom: 18px;
     }
     .sd-h2 {
       font: 700 1.55rem 'Outfit', sans-serif;
@@ -160,14 +155,19 @@
       line-height: 1.9;
       margin-bottom: 0;
     }
-    .sd-overview-grid .sd-eyebrow { margin-bottom: 18px; }
     .sd-img-card {
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 8px 32px rgba(30,58,95,0.14);
       border: 1px solid #dee2e6;
     }
-    .sd-img-card img { width: 100%; height: 320px; object-fit: contain; background: #f8f9fa; display: block; }
+    .sd-img-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: contain;
+      background: #f8f9fa;
+      display: block;
+    }
     .sd-img-cap {
       padding: 10px 16px;
       background: #f8f9fa;
@@ -177,23 +177,17 @@
     }
 
     /* CAROUSEL */
-    .sd-carousel { position: relative; overflow: hidden; border-radius: 10px; }
-    .sd-carousel-track {
-      display: flex;
-      transition: transform 0.4s ease;
-    }
+    .sd-carousel { position: relative; overflow: hidden; border-radius: 10px; border: 1px solid #dee2e6; }
+    .sd-carousel-track { display: flex; transition: transform 0.4s ease; }
     .sd-carousel-track figure {
       min-width: 100%;
       margin: 0;
       background: #fff;
-      border: 1px solid #dee2e6;
-      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,.05);
     }
     .sd-carousel-track figure img {
       width: 100%;
-      height: 260px;
+      height: 300px;
       object-fit: cover;
       display: block;
     }
@@ -202,10 +196,11 @@
       font: 400 0.75rem 'JetBrains Mono', monospace;
       color: #718096;
       border-top: 1px solid #dee2e6;
+      background: #fff;
     }
     .sd-carousel-btn {
       position: absolute;
-      top: 50%;
+      top: calc(50% - 16px);
       transform: translateY(-50%);
       width: 38px;
       height: 38px;
@@ -219,18 +214,13 @@
       align-items: center;
       justify-content: center;
       z-index: 2;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
       transition: background 0.2s;
     }
     .sd-carousel-btn:hover { background: #d35400; }
     .sd-carousel-btn.prev { left: 10px; }
     .sd-carousel-btn.next { right: 10px; }
-    .sd-carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 12px;
-    }
+    .sd-carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 12px; }
     .sd-carousel-dots button {
       width: 8px;
       height: 8px;
@@ -243,103 +233,8 @@
     }
     .sd-carousel-dots button.active { background: #1e3a5f; }
 
-    /* GALLERY */
-    .sd-gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-    .sd-figure {
-      margin: 0;
-      border-radius: 10px;
-      overflow: hidden;
-      background: #fff;
-      border: 1px solid #dee2e6;
-      box-shadow: 0 4px 12px rgba(0,0,0,.05);
-    }
-    .sd-figure img { width: 100%; height: 190px; object-fit: cover; display: block; }
-    .sd-figure figcaption {
-      padding: 10px 14px;
-      font: 400 0.75rem 'JetBrains Mono', monospace;
-      color: #718096;
-      border-top: 1px solid #dee2e6;
-    }
-    .sd-figure-full {
-      margin: 0 0 16px;
-      border-radius: 10px;
-      overflow: hidden;
-      background: #fff;
-      border: 1px solid #dee2e6;
-      box-shadow: 0 4px 12px rgba(0,0,0,.05);
-    }
-    .sd-figure-full img {
-      width: 100%;
-      height: 220px;
-      object-fit: contain;
-      object-position: center;
-      display: block;
-      background: #f8f9fa;
-    }
-    .sd-figure-full figcaption {
-      padding: 10px 14px;
-      font: 400 0.75rem 'JetBrains Mono', monospace;
-      color: #718096;
-      border-top: 1px solid #dee2e6;
-    }
-    .sd-remotexy {
-      border-radius: 10px;
-      overflow: hidden;
-      background: #fff;
-      border: 1px solid #dee2e6;
-      box-shadow: 0 4px 12px rgba(0,0,0,.05);
-      margin-bottom: 16px;
-    }
-    .sd-remotexy img {
-      width: 100%;
-      max-height: 260px;
-      object-fit: contain;
-      object-position: center;
-      display: block;
-      background: #f0f6fb;
-    }
-    .sd-remotexy .cap {
-      padding: 10px 14px;
-      font: 400 0.75rem 'JetBrains Mono', monospace;
-      color: #718096;
-      border-top: 1px solid #dee2e6;
-    }
-    .sd-video-placeholder {
-      border-radius: 10px;
-      overflow: hidden;
-      border: 2px dashed #4a90e2;
-      background: #e8f1f8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 200px;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .sd-video-placeholder .play-btn {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: #1e3a5f;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .sd-video-placeholder .play-btn i { color: #f39c12; font-size: 1.1rem; margin-left: 3px; }
-    .sd-video-placeholder .title { font: 600 0.95rem 'Outfit', sans-serif; color: #1e3a5f; }
-    .sd-video-placeholder .sub { font: 400 0.8rem 'Outfit', sans-serif; color: #718096; }
-
     /* SPECS */
-    .sd-specs-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
+    .sd-specs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
     .sd-spec-card {
       background: #f8f9fa;
       border: 1px solid #dee2e6;
@@ -354,25 +249,12 @@
       letter-spacing: 0.08em;
       margin-bottom: 6px;
     }
-    .sd-spec-card .s-value {
-      font: 700 1.05rem 'Outfit', sans-serif;
-      color: #1e3a5f;
-      margin-bottom: 3px;
-    }
+    .sd-spec-card .s-value { font: 700 1.05rem 'Outfit', sans-serif; color: #1e3a5f; margin-bottom: 3px; }
     .sd-spec-card .s-sub { font: 400 0.8rem 'Outfit', sans-serif; color: #718096; }
 
-    /* CODE + WIRING */
-    .sd-code-grid {
-      display: grid;
-      grid-template-columns: 3fr 2fr;
-      gap: 20px;
-      align-items: start;
-    }
-    .sd-code-block {
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid #30363d;
-    }
+    /* CODE */
+    .sd-code-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 20px; align-items: start; }
+    .sd-code-block { border-radius: 10px; overflow: hidden; border: 1px solid #30363d; }
     .sd-code-header {
       background: #161b22;
       padding: 12px 20px;
@@ -382,36 +264,21 @@
       border-bottom: 1px solid #30363d;
     }
     .sd-code-header .dot { width: 12px; height: 12px; border-radius: 50%; }
-    .sd-code-header .filename {
-      font: 400 0.78rem 'JetBrains Mono', monospace;
-      color: #8b949e;
-      margin-left: 8px;
-    }
-    .sd-code-header .lang {
-      font: 400 0.72rem 'JetBrains Mono', monospace;
-      color: rgba(255,255,255,0.18);
-      margin-left: auto;
-    }
+    .sd-code-header .filename { font: 400 0.78rem 'JetBrains Mono', monospace; color: #8b949e; margin-left: 8px; }
+    .sd-code-header .lang { font: 400 0.72rem 'JetBrains Mono', monospace; color: rgba(255,255,255,0.18); margin-left: auto; }
     .sd-code-body {
       background: #0d1117;
       padding: 22px 26px;
       font: 400 13px/1.85 'JetBrains Mono', monospace;
       color: #e6edf3;
     }
-    .sd-code-body div { white-space: pre; }
     .c-comment { color: #8b949e; }
     .c-kw { color: #ff7b72; }
     .c-macro { color: #ffa657; }
     .c-str { color: #a5d6ff; }
     .c-fn { color: #d2a8ff; }
     .c-num { color: #79c0ff; }
-
-    .sd-wiring-card {
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid #dee2e6;
-      background: #fff;
-    }
+    .sd-wiring-card { border-radius: 10px; overflow: hidden; border: 1px solid #dee2e6; background: #fff; }
     .sd-wiring-card .header {
       background: #1e3a5f;
       padding: 10px 16px;
@@ -421,48 +288,16 @@
       letter-spacing: 0.08em;
     }
     .sd-wiring-card img { width: 100%; display: block; object-fit: contain; background: #f8f9fa; }
-    .sd-wiring-card .cap {
-      padding: 8px 14px;
-      font: 400 0.72rem 'JetBrains Mono', monospace;
-      color: #718096;
-      border-top: 1px solid #dee2e6;
-    }
+    .sd-wiring-card .cap { padding: 8px 14px; font: 400 0.72rem 'JetBrains Mono', monospace; color: #718096; border-top: 1px solid #dee2e6; }
 
     /* BOM */
-    .sd-bom {
-      border: 1px solid #dee2e6;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    .sd-bom .bom-header {
-      display: grid;
-      grid-template-columns: 60px 1fr 130px;
-      background: #1e3a5f;
-      padding: 12px 20px;
-    }
-    .sd-bom .bom-header div {
-      font: 600 0.7rem 'JetBrains Mono', monospace;
-      color: rgba(255,255,255,0.45);
-      text-transform: uppercase;
-    }
-    .sd-bom .bom-row {
-      display: grid;
-      grid-template-columns: 60px 1fr 130px;
-      padding: 13px 20px;
-      border-top: 1px solid #dee2e6;
-      background: white;
-      align-items: center;
-    }
+    .sd-bom { border: 1px solid #dee2e6; border-radius: 10px; overflow: hidden; }
+    .sd-bom .bom-header { display: grid; grid-template-columns: 60px 1fr 130px; background: #1e3a5f; padding: 12px 20px; }
+    .sd-bom .bom-header div { font: 600 0.7rem 'JetBrains Mono', monospace; color: rgba(255,255,255,0.45); text-transform: uppercase; }
+    .sd-bom .bom-row { display: grid; grid-template-columns: 60px 1fr 130px; padding: 13px 20px; border-top: 1px solid #dee2e6; background: white; align-items: center; }
     .sd-bom .bom-qty { font: 600 0.85rem 'JetBrains Mono', monospace; color: #d35400; }
     .sd-bom .bom-part { font: 500 0.92rem 'Outfit', sans-serif; color: #1e3a5f; }
-    .sd-bom .bom-cat {
-      font: 400 0.78rem 'Outfit', sans-serif;
-      color: #718096;
-      background: #f0f6fb;
-      padding: 3px 10px;
-      border-radius: 20px;
-      width: fit-content;
-    }
+    .sd-bom .bom-cat { font: 400 0.78rem 'Outfit', sans-serif; color: #718096; background: #f0f6fb; padding: 3px 10px; border-radius: 20px; width: fit-content; }
 
     /* FOOTER NAV */
     .sd-footer-nav {
@@ -473,62 +308,31 @@
       align-items: center;
       border-top: 3px solid #1e3a5f;
     }
-    .sd-footer-nav .all-projects {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font: 600 0.88rem 'Outfit', sans-serif;
-      color: #4a90e2;
-      text-decoration: none;
-    }
+    .sd-footer-nav .all-projects { display: flex; align-items: center; gap: 8px; font: 600 0.88rem 'Outfit', sans-serif; color: #4a90e2; text-decoration: none; }
     .sd-footer-nav .all-projects:hover { color: #1e3a5f; }
-    .sd-footer-nav .next-label {
-      font: 400 0.72rem 'JetBrains Mono', monospace;
-      color: #718096;
-      margin-bottom: 3px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-    .sd-footer-nav .next-link {
-      font: 700 0.95rem 'Outfit', sans-serif;
-      color: #1e3a5f;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      justify-content: flex-end;
-      text-decoration: none;
-    }
+    .sd-footer-nav .next-label { font: 400 0.72rem 'JetBrains Mono', monospace; color: #718096; margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .sd-footer-nav .next-link { font: 700 0.95rem 'Outfit', sans-serif; color: #1e3a5f; display: flex; align-items: center; gap: 6px; justify-content: flex-end; text-decoration: none; }
     .sd-footer-nav .next-link:hover { color: #d35400; }
     .sd-footer-nav .next-link i { color: #d35400; font-size: 0.82rem; }
 
-    /* SITE FOOTER */
     .site-footer { background: #0d1b2e; padding: 32px 48px; text-align: center; }
     .site-footer .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 12px; }
-    .site-footer .footer-links a {
-      font: 500 0.85rem 'Outfit', sans-serif;
-      color: rgba(255,255,255,0.5);
-      text-decoration: none;
-    }
+    .site-footer .footer-links a { font: 500 0.85rem 'Outfit', sans-serif; color: rgba(255,255,255,0.5); text-decoration: none; }
     .site-footer .footer-links a:hover { color: #f39c12; }
-    .site-footer p {
-      font: 400 0.78rem 'Outfit', sans-serif;
-      color: rgba(255,255,255,0.25);
-    }
+    .site-footer p { font: 400 0.78rem 'Outfit', sans-serif; color: rgba(255,255,255,0.25); }
 
     @media (max-width: 900px) {
       .sd-nav { padding: 16px 24px; }
       .sd-hero .content { padding: 40px 24px 32px; }
       .sd-overview-grid { grid-template-columns: 1fr; gap: 24px; }
-      .sd-gallery-grid { grid-template-columns: 1fr 1fr; }
       .sd-specs-grid { grid-template-columns: 1fr 1fr; }
       .sd-code-grid { grid-template-columns: 1fr; }
-      .sd-section, .sd-section-light, .sd-section-dark { padding: 40px 24px; }
+      .sd-section, .sd-section-light { padding: 40px 24px; }
       .sd-bom .bom-header, .sd-bom .bom-row { grid-template-columns: 50px 1fr 90px; }
       .sd-footer-nav { padding: 28px 24px; flex-direction: column; gap: 16px; align-items: flex-start; }
     }
     @media (max-width: 580px) {
       .sd-nav .nav-links { display: none; }
-      .sd-gallery-grid { grid-template-columns: 1fr; }
       .sd-specs-grid { grid-template-columns: 1fr; }
       .sd-hero h1 { font-size: 2rem; }
     }
@@ -558,7 +362,7 @@
       <h1>S.C.A.N. Drone</h1>
       <div class="subtitle">Servo-Controlled App Navigator</div>
       <div class="sd-meta">
-        <span><i class="fas fa-calendar"></i> Mar 2025 â€“ Mar 2025</span>
+        <span><i class="fas fa-calendar"></i> Mar 2025 &ndash; Mar 2025</span>
         <span><i class="fas fa-tag"></i> Robotics &amp; Controls</span>
       </div>
       <div class="sd-tags">
@@ -572,59 +376,58 @@
   </div>
 
   <!-- OVERVIEW -->
-  <div class=”sd-section”>
-    <div class=”sd-overview-grid”>
+  <div class="sd-section">
+    <div class="sd-overview-grid">
       <div>
-        <div class=”sd-eyebrow”>// Overview</div>
+        <div class="sd-eyebrow">// Overview</div>
         <p>Inspired by Rainbow Six Siege, this 3D-printed terrestrial drone was crafted to test the capabilities of the RemoteXY library with BLE control. It uses continuous servos and a time-of-flight sensor for navigation and motion, TPU wheels for extra traction, and a tiny RGB light for visual feedback.</p>
       </div>
-      <div class=”sd-img-card”>
-        <img src=”../images/scan-drone/drone-04-Fusion360_fullrender.png” alt=”Fusion 360 full render”>
-        <div class=”sd-img-cap”>Fusion 360 — full render</div>
+      <div class="sd-img-card">
+        <img src="../images/scan-drone/drone-04-Fusion360_fullrender.png" alt="Fusion 360 full render">
+        <div class="sd-img-cap">Fusion 360 &mdash; full render</div>
       </div>
     </div>
   </div>
 
   <!-- MEDIA GALLERY -->
-  <div class=”sd-section-light”>
-    <div style=”margin-bottom:32px”>
-      <div class=”sd-eyebrow”>// In the Lab</div>
-      <h2 class=”sd-h2”>Hardware &amp; Build</h2>
+  <div class="sd-section-light">
+    <div style="margin-bottom:32px">
+      <div class="sd-eyebrow">// In the Lab</div>
+      <h2 class="sd-h2">Hardware &amp; Build</h2>
     </div>
 
-    <!-- Carousel -->
-    <div class=”sd-carousel” id=”sdCarousel”>
-      <div class=”sd-carousel-track” id=”sdTrack”>
+    <div class="sd-carousel" id="sdCarousel">
+      <div class="sd-carousel-track" id="sdTrack">
         <figure>
-          <img src=”../images/scan-drone/drone-top-view.png” alt=”Isometric section cut view”>
+          <img src="../images/scan-drone/drone-top-view.png" alt="Isometric section cut view">
           <figcaption>Isometric section cut view</figcaption>
         </figure>
         <figure>
-          <img src=”../images/scan-drone/drone-side-view.png” alt=”Front view”>
+          <img src="../images/scan-drone/drone-side-view.png" alt="Front view">
           <figcaption>Front view</figcaption>
         </figure>
         <figure>
-          <img src=”../images/scan-drone/drone-detail-view.png” alt=”Full isometric view”>
+          <img src="../images/scan-drone/drone-detail-view.png" alt="Full isometric view">
           <figcaption>Full isometric view</figcaption>
         </figure>
         <figure>
-          <img src=”../images/scan-drone/drone-04-Remotexyz_screenshot.png” alt=”RemoteXY control GUI” style=”object-fit:contain;background:#e8f1f8”>
-          <figcaption>RemoteXY control GUI — website setup</figcaption>
+          <img src="../images/scan-drone/drone-04-Remotexyz_screenshot.png" alt="RemoteXY control GUI" style="object-fit:contain;background:#e8f1f8">
+          <figcaption>RemoteXY control GUI &mdash; website setup</figcaption>
         </figure>
       </div>
-      <button class=”sd-carousel-btn prev” id=”sdPrev” aria-label=”Previous”><i class=”fas fa-chevron-left”></i></button>
-      <button class=”sd-carousel-btn next” id=”sdNext” aria-label=”Next”><i class=”fas fa-chevron-right”></i></button>
+      <button class="sd-carousel-btn prev" id="sdPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+      <button class="sd-carousel-btn next" id="sdNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
     </div>
-    <div class=”sd-carousel-dots” id=”sdDots”>
-      <button class=”active” aria-label=”Slide 1”></button>
-      <button aria-label=”Slide 2”></button>
-      <button aria-label=”Slide 3”></button>
-      <button aria-label=”Slide 4”></button>
+    <div class="sd-carousel-dots" id="sdDots">
+      <button class="active" aria-label="Slide 1"></button>
+      <button aria-label="Slide 2"></button>
+      <button aria-label="Slide 3"></button>
+      <button aria-label="Slide 4"></button>
     </div>
 
-    <div style=”margin-top:24px”>
-      <video controls style=”width:100%;border-radius:10px;display:block;background:#000” preload=”metadata”>
-        <source src=”../images/scan-drone/scan-drone-demo.mp4” type=”video/mp4”>
+    <div style="margin-top:24px">
+      <video controls style="width:100%;border-radius:10px;display:block;background:#000" preload="metadata">
+        <source src="../images/scan-drone/scan-drone-demo.mp4" type="video/mp4">
       </video>
     </div>
   </div>
@@ -643,7 +446,7 @@
       </div>
       <div class="sd-spec-card">
         <div class="s-label">Actuation</div>
-        <div class="s-value">2Ã— MG996R Servo</div>
+        <div class="s-value">2&times; MG996R Servo</div>
         <div class="s-sub">Continuous rotation</div>
       </div>
       <div class="sd-spec-card">
@@ -654,7 +457,7 @@
       <div class="sd-spec-card">
         <div class="s-label">Primary Sensor</div>
         <div class="s-value">VL53L0X</div>
-        <div class="s-sub">Time-of-Flight Sensor</div>
+        <div class="s-sub">Time-of-flight distance</div>
       </div>
       <div class="sd-spec-card">
         <div class="s-label">Communication</div>
@@ -664,17 +467,17 @@
       <div class="sd-spec-card">
         <div class="s-label">Power</div>
         <div class="s-value">LiPo 7.4V</div>
-        <div class="s-sub">2000mAh single cell</div>
+        <div class="s-sub">2000mAh 2S cell</div>
       </div>
     </div>
   </div>
 
   <!-- FIRMWARE + WIRING -->
-  <div class="sd-section">
+  <div class="sd-section" style="background:#f8f9fa">
     <div style="margin-bottom:26px">
       <div class="sd-eyebrow">// Firmware</div>
       <h2 class="sd-h2">REMOTE_XY_SLIDER_AND_DIST_SENSOR.ino</h2>
-      <p style="font:400 0.9rem 'Outfit',sans-serif;color:#718096;margin-top:6px">Full BLE control firmware â€” dual slider input maps to continuous servo angles, with live VL53L0X distance fed back to the app</p>
+      <p style="font:400 0.9rem 'Outfit',sans-serif;color:#718096;margin-top:6px">Full BLE control firmware &mdash; dual slider input maps to continuous servo angles, with live VL53L0X distance fed back to the app</p>
     </div>
     <div class="sd-code-grid">
       <div class="sd-code-block">
@@ -686,14 +489,14 @@
           <span class="lang">C++ / Arduino</span>
         </div>
         <div class="sd-code-body">
-          <div><span class="c-comment">// RemoteXY â€” BLE connection mode</span></div>
+          <div><span class="c-comment">// RemoteXY &mdash; BLE connection mode</span></div>
           <div><span class="c-kw">#define</span> <span class="c-macro">REMOTEXY_MODE__ESP32CORE_BLUETOOTH</span></div>
           <div><span class="c-kw">#define</span> <span class="c-macro">REMOTEXY_BLUETOOTH_NAME</span> <span class="c-str">"R6 Drone"</span></div>
           <div><span class="c-kw">#include</span> <span class="c-str">&lt;RemoteXY.h&gt;</span></div>
           <div><span class="c-kw">#include</span> <span class="c-str">&lt;ESP32Servo.h&gt;</span></div>
           <div><span class="c-kw">#include</span> <span class="c-str">&lt;VL53L0X.h&gt;</span></div>
           <div>&nbsp;</div>
-          <div><span class="c-comment">// GUI struct â€” auto-generated by RemoteXY editor</span></div>
+          <div><span class="c-comment">// GUI struct &mdash; auto-generated by RemoteXY editor</span></div>
           <div><span class="c-kw">struct</span> {</div>
           <div><span class="c-kw">&nbsp;&nbsp;int8_t</span>&nbsp; <span class="c-macro">Left_Motor</span>;&nbsp;&nbsp;&nbsp;<span class="c-comment">// slider: -100 to 100</span></div>
           <div><span class="c-kw">&nbsp;&nbsp;int8_t</span>&nbsp; <span class="c-macro">Right_Motor</span>;&nbsp;&nbsp;<span class="c-comment">// slider: -100 to 100</span></div>
@@ -709,11 +512,11 @@
           <div>&nbsp;</div>
           <div><span class="c-kw">void</span> <span class="c-fn">loop</span>() {</div>
           <div>&nbsp;&nbsp;<span class="c-fn">RemoteXY_Handler</span>();</div>
-          <div><span class="c-comment">&nbsp;&nbsp;// read distance sensor â†’ send to app</span></div>
+          <div><span class="c-comment">&nbsp;&nbsp;// read distance sensor &rarr; send to app</span></div>
           <div><span class="c-kw">&nbsp;&nbsp;int</span> <span class="c-macro">sensorValue</span> = <span class="c-fn">analogRead</span>(distanceSensorPin);</div>
           <div>&nbsp;&nbsp;RemoteXY.value_01 = <span class="c-macro">sensorValue</span>;</div>
           <div>&nbsp;</div>
-          <div><span class="c-comment">&nbsp;&nbsp;// map slider â†’ servo angle</span></div>
+          <div><span class="c-comment">&nbsp;&nbsp;// map slider &rarr; servo angle</span></div>
           <div><span class="c-kw">&nbsp;&nbsp;int</span> <span class="c-macro">leftAngle</span>  = <span class="c-fn">map</span>(RemoteXY.Left_Motor,  -<span class="c-num">100</span>, <span class="c-num">100</span>, <span class="c-num">0</span>, <span class="c-num">180</span>);</div>
           <div><span class="c-kw">&nbsp;&nbsp;int</span> <span class="c-macro">rightAngle</span> = <span class="c-fn">map</span>(RemoteXY.Right_Motor, <span class="c-num">100</span>, -<span class="c-num">100</span>, <span class="c-num">0</span>, <span class="c-num">180</span>);</div>
           <div>&nbsp;</div>
@@ -743,13 +546,13 @@
         <div>Component</div>
         <div>Category</div>
       </div>
-      <div class="bom-row"><div class="bom-qty">Ã—1</div><div class="bom-part">ESP32 DevKit v4</div><div class="bom-cat">Electronics</div></div>
-      <div class="bom-row"><div class="bom-qty">Ã—2</div><div class="bom-part">MG996R Servo</div><div class="bom-cat">Actuation</div></div>
-      <div class="bom-row"><div class="bom-qty">Ã—1</div><div class="bom-part">VL53L0X Time-of-Flight</div><div class="bom-cat">Sensors</div></div>
-      <div class="bom-row"><div class="bom-qty">Ã—1</div><div class="bom-part">Custom PCB</div><div class="bom-cat">Electronics</div></div>
-      <div class="bom-row"><div class="bom-qty">Ã—1</div><div class="bom-part">LiPo 7.4V 2000mAh</div><div class="bom-cat">Power</div></div>
-      <div class="bom-row"><div class="bom-qty">Ã—4</div><div class="bom-part">65mm Rubber Wheels</div><div class="bom-cat">Mechanical</div></div>
-      <div class="bom-row"><div class="bom-qty">Ã—1</div><div class="bom-part">PLA Printed Frame</div><div class="bom-cat">Mechanical</div></div>
+      <div class="bom-row"><div class="bom-qty">&times;1</div><div class="bom-part">ESP32 DevKit v4</div><div class="bom-cat">Electronics</div></div>
+      <div class="bom-row"><div class="bom-qty">&times;2</div><div class="bom-part">MG996R Servo</div><div class="bom-cat">Actuation</div></div>
+      <div class="bom-row"><div class="bom-qty">&times;1</div><div class="bom-part">VL53L0X Time-of-Flight</div><div class="bom-cat">Sensors</div></div>
+      <div class="bom-row"><div class="bom-qty">&times;1</div><div class="bom-part">Custom PCB</div><div class="bom-cat">Electronics</div></div>
+      <div class="bom-row"><div class="bom-qty">&times;1</div><div class="bom-part">LiPo 7.4V 2000mAh</div><div class="bom-cat">Power</div></div>
+      <div class="bom-row"><div class="bom-qty">&times;4</div><div class="bom-part">65mm Rubber Wheels</div><div class="bom-cat">Mechanical</div></div>
+      <div class="bom-row"><div class="bom-qty">&times;1</div><div class="bom-part">PLA Printed Frame</div><div class="bom-cat">Mechanical</div></div>
     </div>
   </div>
 
@@ -758,7 +561,7 @@
     <a href="../projects.html" class="all-projects"><i class="fas fa-arrow-left"></i> All Projects</a>
     <div style="text-align:right">
       <div class="next-label">Next Project</div>
-      <a href="servo-motor.html" class="next-link">360Â° Servo Motor <i class="fas fa-arrow-right"></i></a>
+      <a href="servo-motor.html" class="next-link">360&deg; Servo Motor <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
 
@@ -776,21 +579,20 @@
   <script src="../js/main.js"></script>
   <script>
     document.getElementById('currentYear').textContent = new Date().getFullYear();
-    (function() {
-      const track = document.getElementById('sdTrack');
-      const dots = document.querySelectorAll('#sdDots button');
-      let current = 0;
-      const total = dots.length;
+    (function () {
+      var track = document.getElementById('sdTrack');
+      var dots = document.querySelectorAll('#sdDots button');
+      var current = 0;
+      var total = dots.length;
       function goTo(i) {
         current = (i + total) % total;
         track.style.transform = 'translateX(-' + (current * 100) + '%)';
-        dots.forEach(function(d, idx) { d.classList.toggle('active', idx === current); });
+        dots.forEach(function (d, idx) { d.classList.toggle('active', idx === current); });
       }
-      document.getElementById('sdPrev').addEventListener('click', function() { goTo(current - 1); });
-      document.getElementById('sdNext').addEventListener('click', function() { goTo(current + 1); });
-      dots.forEach(function(d, i) { d.addEventListener('click', function() { goTo(i); }); });
+      document.getElementById('sdPrev').addEventListener('click', function () { goTo(current - 1); });
+      document.getElementById('sdNext').addEventListener('click', function () { goTo(current + 1); });
+      dots.forEach(function (d, i) { d.addEventListener('click', function () { goTo(i); }); });
     })();
   </script>
 </body>
 </html>
-
