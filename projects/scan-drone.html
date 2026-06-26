@@ -155,18 +155,19 @@
       align-items: center;
     }
     .sd-overview-grid p {
-      font: 400 0.95rem 'Outfit', sans-serif;
+      font: 400 1.05rem 'Outfit', sans-serif;
       color: #4a5568;
-      line-height: 1.75;
-      margin-bottom: 14px;
+      line-height: 1.9;
+      margin-bottom: 0;
     }
+    .sd-overview-grid .sd-eyebrow { margin-bottom: 18px; }
     .sd-img-card {
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 8px 32px rgba(30,58,95,0.14);
       border: 1px solid #dee2e6;
     }
-    .sd-img-card img { width: 100%; height: 300px; object-fit: cover; display: block; }
+    .sd-img-card img { width: 100%; height: 320px; object-fit: contain; background: #f8f9fa; display: block; }
     .sd-img-cap {
       padding: 10px 16px;
       background: #f8f9fa;
@@ -174,6 +175,73 @@
       color: #718096;
       border-top: 1px solid #dee2e6;
     }
+
+    /* CAROUSEL */
+    .sd-carousel { position: relative; overflow: hidden; border-radius: 10px; }
+    .sd-carousel-track {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+    .sd-carousel-track figure {
+      min-width: 100%;
+      margin: 0;
+      background: #fff;
+      border: 1px solid #dee2e6;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,.05);
+    }
+    .sd-carousel-track figure img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+    }
+    .sd-carousel-track figure figcaption {
+      padding: 10px 14px;
+      font: 400 0.75rem 'JetBrains Mono', monospace;
+      color: #718096;
+      border-top: 1px solid #dee2e6;
+    }
+    .sd-carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #1e3a5f;
+      border: none;
+      color: white;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: background 0.2s;
+    }
+    .sd-carousel-btn:hover { background: #d35400; }
+    .sd-carousel-btn.prev { left: 10px; }
+    .sd-carousel-btn.next { right: 10px; }
+    .sd-carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .sd-carousel-dots button {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: none;
+      background: #dee2e6;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s;
+    }
+    .sd-carousel-dots button.active { background: #1e3a5f; }
 
     /* GALLERY */
     .sd-gallery-grid {
@@ -504,52 +572,61 @@
   </div>
 
   <!-- OVERVIEW -->
-  <div class="sd-section">
-    <div class="sd-overview-grid">
+  <div class=”sd-section”>
+    <div class=”sd-overview-grid”>
       <div>
-        <div class="sd-eyebrow">// Overview</div>
-        <p>Inspired by Rainbow Six Siege, this 3D-printed terrestrial drone was crafted to test the capabilities of the RemoteXY library with BLE control. It uses continuous servos and time-of-flight sensor for navigation and motion, TPU wheels for extra traction, and and a tiny RGB light for visual feedback.</p>
+        <div class=”sd-eyebrow”>// Overview</div>
+        <p>Inspired by Rainbow Six Siege, this 3D-printed terrestrial drone was crafted to test the capabilities of the RemoteXY library with BLE control. It uses continuous servos and a time-of-flight sensor for navigation and motion, TPU wheels for extra traction, and a tiny RGB light for visual feedback.</p>
       </div>
-      <div class="sd-img-card">
-        <img src="../images/scan-drone/drone-top-view.png" alt="Drone top view">
-        <div class="sd-img-cap">Top view â€” chassis layout</div>
+      <div class=”sd-img-card”>
+        <img src=”../images/scan-drone/drone-04-Fusion360_fullrender.png” alt=”Fusion 360 full render”>
+        <div class=”sd-img-cap”>Fusion 360 — full render</div>
       </div>
     </div>
   </div>
 
   <!-- MEDIA GALLERY -->
-  <div class="sd-section-light">
-    <div style="margin-bottom:32px">
-      <div class="sd-eyebrow">// In the Lab</div>
-      <h2 class="sd-h2">Hardware &amp; Build</h2>
+  <div class=”sd-section-light”>
+    <div style=”margin-bottom:32px”>
+      <div class=”sd-eyebrow”>// In the Lab</div>
+      <h2 class=”sd-h2”>Hardware &amp; Build</h2>
     </div>
-    <div class="sd-gallery-grid">
-      <figure class="sd-figure">
-        <img src="../images/scan-drone/drone-top-view.png" alt="Top view">
-        <figcaption>Top view â€” chassis layout</figcaption>
-      </figure>
-      <figure class="sd-figure">
-        <img src="../images/scan-drone/drone-side-view.png" alt="Side view">
-        <figcaption>Side profile â€” servo stack</figcaption>
-      </figure>
-      <figure class="sd-figure">
-        <img src="../images/scan-drone/drone-detail-view.png" alt="Detail view">
-        <figcaption>Detail â€” electronics integration</figcaption>
-      </figure>
+
+    <!-- Carousel -->
+    <div class=”sd-carousel” id=”sdCarousel”>
+      <div class=”sd-carousel-track” id=”sdTrack”>
+        <figure>
+          <img src=”../images/scan-drone/drone-top-view.png” alt=”Isometric section cut view”>
+          <figcaption>Isometric section cut view</figcaption>
+        </figure>
+        <figure>
+          <img src=”../images/scan-drone/drone-side-view.png” alt=”Front view”>
+          <figcaption>Front view</figcaption>
+        </figure>
+        <figure>
+          <img src=”../images/scan-drone/drone-detail-view.png” alt=”Full isometric view”>
+          <figcaption>Full isometric view</figcaption>
+        </figure>
+        <figure>
+          <img src=”../images/scan-drone/drone-04-Remotexyz_screenshot.png” alt=”RemoteXY control GUI” style=”object-fit:contain;background:#e8f1f8”>
+          <figcaption>RemoteXY control GUI — website setup</figcaption>
+        </figure>
+      </div>
+      <button class=”sd-carousel-btn prev” id=”sdPrev” aria-label=”Previous”><i class=”fas fa-chevron-left”></i></button>
+      <button class=”sd-carousel-btn next” id=”sdNext” aria-label=”Next”><i class=”fas fa-chevron-right”></i></button>
     </div>
-    <div class="sd-gallery-grid" style="margin-bottom:16px">
-      <figure class="sd-figure" style="grid-column:span 2">
-        <img src="../images/scan-drone/drone-04-Fusion360_fullrender.png" alt="Fusion 360 render" style="height:220px;object-fit:contain;background:#f8f9fa">
-        <figcaption>Fusion 360 â€” full render</figcaption>
-      </figure>
-      <figure class="sd-figure">
-        <img src="../images/scan-drone/drone-04-Remotexyz_screenshot.png" alt="RemoteXY app interface" style="height:220px;object-fit:contain;background:#e8f1f8">
-        <figcaption>RemoteXY â€” BLE control layout</figcaption>
-      </figure>
+    <div class=”sd-carousel-dots” id=”sdDots”>
+      <button class=”active” aria-label=”Slide 1”></button>
+      <button aria-label=”Slide 2”></button>
+      <button aria-label=”Slide 3”></button>
+      <button aria-label=”Slide 4”></button>
     </div>
-    <video controls style="width:100%;border-radius:10px;display:block;background:#000" preload="metadata">
-      <source src="../images/scan-drone/scan-drone-demo.mp4" type="video/mp4">
-    </video>
+
+    <div style=”margin-top:24px”>
+      <video controls style=”width:100%;border-radius:10px;display:block;background:#000” preload=”metadata”>
+        <source src=”../images/scan-drone/scan-drone-demo.mp4” type=”video/mp4”>
+      </video>
+    </div>
   </div>
 
   <!-- TECH SPECS -->
@@ -697,7 +774,23 @@
   </footer>
 
   <script src="../js/main.js"></script>
-  <script>document.getElementById('currentYear').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    (function() {
+      const track = document.getElementById('sdTrack');
+      const dots = document.querySelectorAll('#sdDots button');
+      let current = 0;
+      const total = dots.length;
+      function goTo(i) {
+        current = (i + total) % total;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dots.forEach(function(d, idx) { d.classList.toggle('active', idx === current); });
+      }
+      document.getElementById('sdPrev').addEventListener('click', function() { goTo(current - 1); });
+      document.getElementById('sdNext').addEventListener('click', function() { goTo(current + 1); });
+      dots.forEach(function(d, i) { d.addEventListener('click', function() { goTo(i); }); });
+    })();
+  </script>
 </body>
 </html>
 
