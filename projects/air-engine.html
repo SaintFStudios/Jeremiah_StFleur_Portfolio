@@ -3,137 +3,414 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Air Engine & Slicer | Jeremiah L. St. Fleur</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title>Compressed Air Engine &mdash; Jeremiah St. Fleur</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body { font-family: 'Outfit', sans-serif; }
+
+    .ae-nav { background: rgba(30,58,95,0.97); padding: 18px 48px; display: flex; align-items: center; justify-content: space-between; }
+    .ae-nav .logo { font: 800 1.4rem 'Outfit', sans-serif; color: #f39c12; letter-spacing: -0.02em; text-decoration: none; }
+    .ae-nav .logo span { color: #4a90e2; }
+    .ae-nav .nav-links { display: flex; gap: 28px; align-items: center; }
+    .ae-nav .nav-links a { font: 500 0.9rem 'Outfit', sans-serif; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .ae-nav .nav-links a:hover { color: #fff; }
+    .ae-nav .nav-links a.active { color: #f39c12; padding-bottom: 3px; border-bottom: 2px solid #f39c12; }
+
+    .ae-hero { position: relative; overflow: hidden; min-height: 380px; display: flex; flex-direction: column; justify-content: flex-end; }
+    .ae-hero img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    .ae-hero .overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,27,46,0.93) 0%, rgba(30,58,95,0.87) 60%, rgba(44,82,130,0.75) 100%); }
+    .ae-hero .content { position: relative; padding: 56px 48px 48px; }
+    .ae-hero .back-link { display: flex; align-items: center; gap: 6px; font: 500 0.82rem 'Outfit', sans-serif; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 22px; width: fit-content; }
+    .ae-hero .back-link:hover { color: rgba(255,255,255,0.8); }
+    .ae-hero .label { color: #f39c12; font: 500 0.88rem 'Outfit', sans-serif; display: flex; align-items: center; gap: 6px; font-style: italic; margin-bottom: 14px; }
+    .ae-hero h1 { font: 800 2.8rem 'Outfit', sans-serif; letter-spacing: -0.03em; line-height: 1.1; color: white; margin-bottom: 6px; }
+    .ae-hero .subtitle { font: 400 1rem 'Outfit', sans-serif; color: rgba(243,156,18,0.85); margin-bottom: 14px; }
+    .ae-hero p { font: 400 0.97rem 'Outfit', sans-serif; color: rgba(255,255,255,0.8); max-width: 560px; line-height: 1.65; margin-bottom: 20px; }
+    .ae-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+    .ae-meta span { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.8); font: 500 0.82rem 'Outfit', sans-serif; padding: 6px 14px; border-radius: 30px; display: flex; align-items: center; gap: 6px; }
+    .ae-meta span i { color: #f39c12; }
+    .ae-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .ae-tags span { background: rgba(243,156,18,0.18); border: 1px solid rgba(243,156,18,0.35); color: #f39c12; font: 600 0.76rem 'Outfit', sans-serif; padding: 4px 12px; border-radius: 20px; }
+
+    .ae-section { padding: 60px 48px; }
+    .ae-section-light { background: #f0f6fb; padding: 60px 48px; }
+    .ae-h2 { font: 700 1.55rem 'Outfit', sans-serif; color: #1e3a5f; letter-spacing: -0.02em; margin-bottom: 16px; }
+
+    .ae-overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+    .ae-overview-grid p { font: 400 1.05rem 'Outfit', sans-serif; color: #4a5568; line-height: 1.9; margin-bottom: 0; }
+    .ae-img-card { border-radius: 10px; overflow: hidden; box-shadow: 0 8px 32px rgba(30,58,95,0.14); border: 1px solid #dee2e6; }
+    .ae-img-card img { width: 100%; height: 320px; object-fit: contain; background: #f8f9fa; display: block; }
+    .ae-img-cap { padding: 10px 16px; background: #f8f9fa; font: 400 0.78rem 'JetBrains Mono', monospace; color: #718096; border-top: 1px solid #dee2e6; }
+
+    .ae-carousel { position: relative; overflow: hidden; border-radius: 10px; border: 1px solid #dee2e6; }
+    .ae-carousel-track { display: flex; transition: transform 0.4s ease; }
+    .ae-carousel-track figure { min-width: 100%; margin: 0; background: #fff; overflow: hidden; }
+    .ae-carousel-track figure img { width: 100%; height: 400px; object-fit: contain; background: #f8f9fa; display: block; }
+    .ae-carousel-track figure figcaption { padding: 10px 14px; font: 400 0.75rem 'JetBrains Mono', monospace; color: #718096; border-top: 1px solid #dee2e6; background: #fff; }
+    .ae-carousel-btn { position: absolute; top: calc(50% - 16px); transform: translateY(-50%); width: 38px; height: 38px; border-radius: 50%; background: #1e3a5f; border: none; color: white; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.25); transition: background 0.2s; }
+    .ae-carousel-btn:hover { background: #d35400; }
+    .ae-carousel-btn.prev { left: 10px; }
+    .ae-carousel-btn.next { right: 10px; }
+    .ae-carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 12px; }
+    .ae-carousel-dots button { width: 8px; height: 8px; border-radius: 50%; border: none; background: #dee2e6; cursor: pointer; padding: 0; transition: background 0.2s; }
+    .ae-carousel-dots button.active { background: #1e3a5f; }
+
+    .ae-specs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .ae-spec-card { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 10px; padding: 20px 18px; border-top: 3px solid #d35400; }
+    .ae-spec-card .s-label { font: 600 0.7rem 'JetBrains Mono', monospace; color: #718096; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+    .ae-spec-card .s-value { font: 700 1.05rem 'Outfit', sans-serif; color: #1e3a5f; margin-bottom: 3px; }
+    .ae-spec-card .s-sub { font: 400 0.8rem 'Outfit', sans-serif; color: #718096; }
+
+    .ae-docs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .ae-doc-card { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 10px; padding: 22px 20px; }
+    .ae-doc-card .d-label { font: 600 0.7rem 'JetBrains Mono', monospace; color: #d35400; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+    .ae-doc-card ul { list-style: none; }
+    .ae-doc-card ul li { font: 400 0.88rem 'Outfit', sans-serif; color: #4a5568; padding: 5px 0 5px 16px; position: relative; border-bottom: 1px dashed #dee2e6; line-height: 1.5; }
+    .ae-doc-card ul li:last-child { border-bottom: none; }
+    .ae-doc-card ul li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; border-radius: 50%; background: #f39c12; }
+    .ae-doc-card ul li strong { color: #1e3a5f; }
+
+    .ae-bom { border: 1px solid #dee2e6; border-radius: 10px; overflow: hidden; }
+    .ae-bom .bom-header { display: grid; grid-template-columns: 60px 1fr 130px; background: #1e3a5f; padding: 12px 20px; }
+    .ae-bom .bom-header div { font: 600 0.7rem 'JetBrains Mono', monospace; color: rgba(255,255,255,0.45); text-transform: uppercase; }
+    .ae-bom .bom-row { display: grid; grid-template-columns: 60px 1fr 130px; padding: 13px 20px; border-top: 1px solid #dee2e6; background: white; align-items: center; }
+    .ae-bom .bom-qty { font: 600 0.85rem 'JetBrains Mono', monospace; color: #d35400; }
+    .ae-bom .bom-part { font: 500 0.92rem 'Outfit', sans-serif; color: #1e3a5f; }
+    .ae-bom .bom-cat { font: 400 0.78rem 'Outfit', sans-serif; color: #718096; background: #f0f6fb; padding: 3px 10px; border-radius: 20px; width: fit-content; }
+
+    .ae-footer-nav { background: #f0f6fb; padding: 36px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 3px solid #1e3a5f; }
+    .ae-footer-nav .all-projects { display: flex; align-items: center; gap: 8px; font: 600 0.88rem 'Outfit', sans-serif; color: #4a90e2; text-decoration: none; }
+    .ae-footer-nav .all-projects:hover { color: #1e3a5f; }
+    .ae-footer-nav .next-label { font: 400 0.72rem 'JetBrains Mono', monospace; color: #718096; margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .ae-footer-nav .next-link { font: 700 0.95rem 'Outfit', sans-serif; color: #1e3a5f; display: flex; align-items: center; gap: 6px; justify-content: flex-end; text-decoration: none; }
+    .ae-footer-nav .next-link:hover { color: #d35400; }
+    .ae-footer-nav .next-link i { color: #d35400; font-size: 0.82rem; }
+
+    .site-footer { background: #0d1b2e; padding: 32px 48px; text-align: center; }
+    .site-footer .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 12px; }
+    .site-footer .footer-links a { font: 500 0.85rem 'Outfit', sans-serif; color: rgba(255,255,255,0.5); text-decoration: none; }
+    .site-footer .footer-links a:hover { color: #f39c12; }
+    .site-footer p { font: 400 0.78rem 'Outfit', sans-serif; color: rgba(255,255,255,0.25); }
+
+    @media (max-width: 900px) {
+      .ae-nav { padding: 16px 24px; }
+      .ae-hero .content { padding: 40px 24px 32px; }
+      .ae-overview-grid { grid-template-columns: 1fr; gap: 24px; }
+      .ae-specs-grid { grid-template-columns: 1fr 1fr; }
+      .ae-docs-grid { grid-template-columns: 1fr; }
+      .ae-section, .ae-section-light { padding: 40px 24px; }
+      .ae-bom .bom-header, .ae-bom .bom-row { grid-template-columns: 50px 1fr 90px; }
+      .ae-footer-nav { padding: 28px 24px; flex-direction: column; gap: 16px; align-items: flex-start; }
+    }
+    @media (max-width: 580px) {
+      .ae-nav .nav-links { display: none; }
+      .ae-specs-grid { grid-template-columns: 1fr; }
+      .ae-hero h1 { font-size: 2rem; }
+    }
+  </style>
 </head>
 <body>
 
-  <nav class="site-nav">
-    <div class="container nav-inner">
-      <a href="../index.html" class="nav-logo">J<span>.</span>StFleur</a>
-      <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
-      <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../projects.html">Projects</a></li>
-        <li><a href="../teams.html">Teams</a></li>
-        <li><a href="../gallery.html">Gallery</a></li>
-        <li><a href="../contact.html">Contact</a></li>
-      </ul>
+  <!-- NAV -->
+  <nav class="ae-nav">
+    <a href="../index.html" class="logo">J<span>.</span>StFleur</a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../projects.html" class="active">Projects</a>
+      <a href="../teams.html">Teams</a>
+      <a href="../gallery.html">Gallery</a>
+      <a href="../contact.html">Contact</a>
     </div>
   </nav>
 
-  <section class="project-hero">
-    <div class="container">
+  <!-- HERO -->
+  <div class="ae-hero">
+    <img class="bg" src="../images/air-engine/air-engine-machined.png" alt="">
+    <div class="overlay"></div>
+    <div class="content">
       <a href="../projects.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
-      <div class="hero-label"><i class="fas fa-cog"></i> Course Project (EML2322L)</div>
-      <h1 style="font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;">Compressed Air Engine <span>&amp; Powered Slicer</span></h1>
-      <p style="color:var(--text-secondary);max-width:640px;font-size:1.05rem;">A complete design-manufacture-assemble-test cycle project involving a machined air engine and an engine-powered slicing mechanism.</p>
-      <div class="project-meta">
-        <span><i class="fas fa-calendar"></i> Jan 2025 - May 2025</span>
+      <div class="label"><i class="fas fa-cog"></i> Course Project (EML2322L)</div>
+      <h1>Compressed Air Engine</h1>
+      <div class="subtitle">Design &middot; Manufacture &middot; Assemble &middot; Test</div>
+      <p>A complete engineering design cycle project &mdash; machined air engine powering a four-bar slicer mechanism, built to tight tolerances on lathe and mill.</p>
+      <div class="ae-meta">
+        <span><i class="fas fa-calendar"></i> Jan 2025 &ndash; May 2025</span>
         <span><i class="fas fa-tag"></i> Mechanical Design &amp; Academic</span>
       </div>
-      <div class="tags" style="margin-top:20px;">
-        <span class="tag">DFM</span>
-        <span class="tag">CNC/Lathe</span>
-        <span class="tag">Tolerance Analysis</span>
-        <span class="tag">Mechanism Design</span>
+      <div class="ae-tags">
+        <span>DFM</span>
+        <span>CNC / Lathe</span>
+        <span>Tolerance Analysis</span>
+        <span>Mechanism Design</span>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section style="padding-top:0;">
-    <div class="container">
-      <div class="project-body-content">
+  <!-- OVERVIEW -->
+  <div class="ae-section">
+    <div class="ae-overview-grid">
+      <div>
+        <p>This academic project walked the full design-manufacture-assemble-test cycle. The compressed air engine serves as a power source driving a rocker four-bar slicing mechanism. Components were machined from aluminum 6061 and UHMW on a manual lathe and mill, held to thou-level fits throughout, then assembled and tested against RPM and budget targets.</p>
+      </div>
+      <div class="ae-img-card">
+        <img src="../images/air-engine/air-engine-machined.png" alt="Machined air engine components">
+        <div class="ae-img-cap">Final machined engine components &mdash; lathe and mill operations</div>
+      </div>
+    </div>
+  </div>
 
-        <h3>Project Overview</h3>
-        <p>This academic project involved the complete engineering design cycle: from conceptualization and detailed design to manufacturing, assembly, testing, and documentation. The compressed air engine serves as a power source for a mechanical slicing mechanism.</p>
-
-        <div class="media-grid cols-2">
-          <figure class="media-figure">
-            <img src="../images/air-engine/sketch-01.png" alt="Air engine concept sketch">
-            <figcaption>Initial engine concept sketch</figcaption>
-          </figure>
-          <figure class="media-figure">
-            <img src="../images/air-engine/sketch-02.png" alt="Air engine design sketch">
-            <figcaption>Detailed design sketch — cylinder and piston</figcaption>
-          </figure>
-        </div>
-
-        <h3>Design Constraints &amp; Specifications</h3>
-        <ul>
-          <li><strong>Part Count:</strong> 4-12 machined components</li>
-          <li><strong>Manufacturing:</strong> &le;1 CNC operation, primarily manual machining (lathe, mill)</li>
-          <li><strong>Budget:</strong> &le;$75 total cost</li>
-          <li><strong>Engine Performance:</strong> Target RPM: 500-800 under 40 PSI input</li>
-          <li><strong>Slicer Mechanism:</strong> Rocker four-bar with ~3.5" stroke length</li>
-        </ul>
-
-        <h3>Manufacturing Documentation</h3>
-        <div class="media-grid cols-3">
-          <figure class="media-figure">
-            <img src="../images/air-engine/manufacturing-sketches-01.jpg" alt="Manufacturing sketches">
-            <figcaption>Manufacturing sketches — page 1</figcaption>
-          </figure>
-          <figure class="media-figure">
-            <img src="../images/air-engine/manufacturing-sketches-02.jpg" alt="Manufacturing sketches">
-            <figcaption>Manufacturing sketches — page 2</figcaption>
-          </figure>
-          <figure class="media-figure">
-            <img src="../images/air-engine/manufacturing-sketches-03.jpg" alt="Manufacturing sketches">
-            <figcaption>Manufacturing sketches — page 3</figcaption>
-          </figure>
-        </div>
-
-        <h3>Manufacturing &amp; Assembly</h3>
-        <ul>
-          <li><strong>Engine Components:</strong> Produced 3 interchangeable builds with "thou-level" fits (&plusmn;0.001-0.003" tolerance)</li>
-          <li><strong>Machining Processes:</strong> Lathe turning, milling, drilling, tapping, CNC contouring</li>
-          <li><strong>Material Selection:</strong> Aluminum 6061 for engine, UHMW for slider, PETG for chassis</li>
-          <li><strong>Assembly:</strong> Press-fit blade holder, clearance fits for moving parts, sealed air connections</li>
-        </ul>
-
-        <h3>Engineering Documentation</h3>
-        <ul>
-          <li><strong>DFM:</strong> Issued revised drawings with tolerance stack-up analysis</li>
-          <li><strong>ECNs:</strong> Documented 5 major design revisions</li>
-          <li><strong>MIRs:</strong> Quality control for all machined parts</li>
-          <li><strong>BOM:</strong> Costed BOM with vendor sourcing; leveraged OTS stainless brackets to reduce machining time by 30%</li>
-        </ul>
-
-        <h3>Machined Components</h3>
-        <figure class="media-full">
-          <img src="../images/air-engine/air-engine-machined.png" alt="Machined air engine components" style="width:100%;border-radius:var(--radius);">
-          <figcaption>Final machined engine components — lathe and mill operations</figcaption>
+  <!-- MANUFACTURING GALLERY -->
+  <div class="ae-section-light">
+    <div style="margin-bottom:32px">
+      <h2 class="ae-h2">Design &amp; Manufacturing Documentation</h2>
+    </div>
+    <div class="ae-carousel" id="aeCarousel">
+      <div class="ae-carousel-track" id="aeTrack">
+        <figure>
+          <img src="../images/air-engine/manufacturing-sketches-01.jpg" alt="Manufacturing sketches — page 1">
+          <figcaption>Manufacturing sketches &mdash; page 1</figcaption>
         </figure>
+        <figure>
+          <img src="../images/air-engine/manufacturing-sketches-02.jpg" alt="Manufacturing sketches — page 2">
+          <figcaption>Manufacturing sketches &mdash; page 2</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/air-engine/manufacturing-sketches-03.jpg" alt="Manufacturing sketches — page 3">
+          <figcaption>Manufacturing sketches &mdash; page 3</figcaption>
+        </figure>
+        <figure>
+          <!-- dr1-front-view.jpg: rotate this image -90deg if it loads portrait -->
+          <img src="../images/air-engine/dr1-front-view.jpg" alt="DR1 — Front View, Full assembly">
+          <figcaption>DR1 &mdash; Front View, Full (flywheel, floating link, coupler, blade, slider cup)</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/air-engine/dr1-chassis-top.png" alt="DR1 — Chassis Top View">
+          <figcaption>DR1 &mdash; Chassis Top View (four-bar linkage &amp; slider cup)</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/air-engine/dr1-chassis-right.png" alt="DR1 — Chassis Right Side View">
+          <figcaption>DR1 &mdash; Chassis Right Side View</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/air-engine/dr1-linkages.png" alt="DR1 — Linkages Top and Front View">
+          <figcaption>DR1 &mdash; Linkages Top &amp; Front View (no chassis)</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/air-engine/dr1-chassis-front-section.jpg" alt="DR1 — Chassis Front Section View">
+          <figcaption>DR1 &mdash; Chassis Front Section View</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/air-engine/dr1-slider-cup.jpg" alt="DR1 — Slider Cup Views">
+          <figcaption>DR1 &mdash; Slider Cup Top, Right &amp; Section Views</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/air-engine/dr1-ots-knife.jpg" alt="DR1 — OTS Knife Top View">
+          <figcaption>DR1 &mdash; OTS Knife Top View (base + cut)</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/air-engine/dr1-fourbar-movement.jpg" alt="DR1 — Four-Bar Linkage Movement">
+          <figcaption>DR1 &mdash; Four-Bar Linkage Movement, Front View (1/2 scale)</figcaption>
+        </figure>
+      </div>
+      <button class="ae-carousel-btn prev" id="aePrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+      <button class="ae-carousel-btn next" id="aeNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="ae-carousel-dots" id="aeDots">
+      <button class="active" aria-label="Slide 1"></button>
+      <button aria-label="Slide 2"></button>
+      <button aria-label="Slide 3"></button>
+      <button aria-label="Slide 4"></button>
+      <button aria-label="Slide 5"></button>
+      <button aria-label="Slide 6"></button>
+      <button aria-label="Slide 7"></button>
+      <button aria-label="Slide 8"></button>
+      <button aria-label="Slide 9"></button>
+      <button aria-label="Slide 10"></button>
+      <button aria-label="Slide 11"></button>
+    </div>
+  </div>
 
-        <h3>Performance Results</h3>
+  <!-- VIDEO -->
+  <div class="ae-section">
+    <div style="margin-bottom:26px">
+      <h2 class="ae-h2">Engine in Action</h2>
+      <p style="font:400 0.9rem 'Outfit',sans-serif;color:#718096;margin-top:6px">Compressed air engine running at 40 PSI, driving the four-bar slicer mechanism</p>
+    </div>
+    <div style="border:1px solid #dee2e6;border-radius:10px;overflow:hidden;background:#0d1b2e">
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden">
+        <video controls id="aeVideo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0d1b2e">
+          <source src="../videos/air-engine-demo.mp4" type="video/mp4">
+          Your browser does not support video playback.
+        </video>
+      </div>
+      <div style="padding:10px 16px;background:#1e3a5f;display:flex;align-items:center;gap:8px">
+        <i class="fas fa-video" style="color:#f39c12;font-size:0.8rem"></i>
+        <span style="font:400 0.75rem 'JetBrains Mono',monospace;color:rgba(255,255,255,0.45)">Air Engine Demo &mdash; EML2322L, Spring 2025</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DR1 DOCUMENT -->
+  <div class="ae-section" style="background:#fff">
+    <div style="margin-bottom:26px">
+      <h2 class="ae-h2">Design Review 1 &mdash; Document</h2>
+      <p style="font:400 0.9rem 'Outfit',sans-serif;color:#718096;margin-top:6px">Full DR1 package: concept sketches, linkage analysis, chassis drawings, and part specifications</p>
+    </div>
+    <div style="border:1px solid #dee2e6;border-radius:10px;overflow:hidden">
+      <div style="background:#1e3a5f;padding:12px 20px;display:flex;align-items:center;justify-content:space-between">
+        <span style="font:600 0.7rem 'JetBrains Mono',monospace;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.08em">DR1 &mdash; Design Review 1.pdf</span>
+        <a href="../docs/DR1-Design-Review-1.pdf" target="_blank" download style="display:flex;align-items:center;gap:6px;font:600 0.78rem 'Outfit',sans-serif;color:#f39c12;text-decoration:none">
+          <i class="fas fa-download"></i> Download PDF
+        </a>
+      </div>
+      <iframe src="../docs/DR1-Design-Review-1.pdf" style="width:100%;height:640px;border:none;display:block;background:#f8f9fa" title="Design Review 1"></iframe>
+    </div>
+  </div>
+
+  <!-- DESIGN SPECS -->
+  <div class="ae-section">
+    <div style="margin-bottom:32px">
+      <h2 class="ae-h2">Design Constraints &amp; Specifications</h2>
+    </div>
+    <div class="ae-specs-grid">
+      <div class="ae-spec-card">
+        <div class="s-label">Part Count</div>
+        <div class="s-value">4 &ndash; 12 parts</div>
+        <div class="s-sub">Machined components</div>
+      </div>
+      <div class="ae-spec-card">
+        <div class="s-label">Target RPM</div>
+        <div class="s-value">500 &ndash; 800 RPM</div>
+        <div class="s-sub">At 40 PSI input</div>
+      </div>
+      <div class="ae-spec-card">
+        <div class="s-label">Slicer Stroke</div>
+        <div class="s-value">~3.5 in</div>
+        <div class="s-sub">Rocker four-bar linkage</div>
+      </div>
+      <div class="ae-spec-card">
+        <div class="s-label">Tolerance</div>
+        <div class="s-value">&plusmn;0.001 &ndash; 0.003&Prime;</div>
+        <div class="s-sub">Thou-level fits throughout</div>
+      </div>
+      <div class="ae-spec-card">
+        <div class="s-label">CNC Limit</div>
+        <div class="s-value">&le;1 Operation</div>
+        <div class="s-sub">Primarily manual machining</div>
+      </div>
+      <div class="ae-spec-card">
+        <div class="s-label">Budget</div>
+        <div class="s-value">&le;$75 total</div>
+        <div class="s-sub">Achieved $68</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENGINEERING DOCS -->
+  <div class="ae-section" style="background:#f8f9fa">
+    <div style="margin-bottom:26px">
+      <h2 class="ae-h2">Engineering Documentation</h2>
+      <p style="font:400 0.9rem 'Outfit',sans-serif;color:#718096;margin-top:6px">DFM drawings, ECNs, MIRs, and material selections produced through the full design cycle</p>
+    </div>
+    <div class="ae-docs-grid">
+      <div class="ae-doc-card">
+        <div class="d-label">Manufacturing</div>
         <ul>
-          <li>Engine achieved 650 RPM at 40 PSI (meeting design target)</li>
-          <li>Slicer successfully cut through test materials at operating speed</li>
-          <li>All machined parts passed dimensional inspection within spec</li>
-          <li>Total project cost: $68 (under $75 budget)</li>
+          <li><strong>Processes:</strong> Lathe turning, milling, drilling, tapping, CNC contouring</li>
+          <li><strong>Engine builds:</strong> 3 interchangeable assemblies produced</li>
+          <li><strong>Assembly:</strong> Press-fit blade holder; clearance fits for moving parts; sealed air connections</li>
         </ul>
-
-        <div style="margin-top:48px;">
-          <a href="../projects.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> All Projects</a>
-        </div>
+      </div>
+      <div class="ae-doc-card">
+        <div class="d-label">Materials</div>
+        <ul>
+          <li><strong>Engine body:</strong> Aluminum 6061</li>
+          <li><strong>Slider:</strong> UHMW polyethylene</li>
+          <li><strong>Chassis:</strong> PETG (3D printed)</li>
+          <li><strong>Hardware:</strong> OTS stainless brackets &mdash; reduced machining time 30%</li>
+        </ul>
+      </div>
+      <div class="ae-doc-card">
+        <div class="d-label">DFM &amp; Change Control</div>
+        <ul>
+          <li><strong>DFM:</strong> Revised drawings with tolerance stack-up analysis</li>
+          <li><strong>ECNs:</strong> 5 major design revisions documented</li>
+          <li><strong>MIRs:</strong> Quality control records for all machined parts</li>
+        </ul>
+      </div>
+      <div class="ae-doc-card">
+        <div class="d-label">Performance Results</div>
+        <ul>
+          <li><strong>Achieved:</strong> 650 RPM at 40 PSI (within target range)</li>
+          <li><strong>Slicer:</strong> Successfully cut through test materials at speed</li>
+          <li><strong>Inspection:</strong> All parts passed dimensional check within spec</li>
+          <li><strong>Cost:</strong> $68 total &mdash; $7 under budget</li>
+        </ul>
       </div>
     </div>
-  </section>
+  </div>
 
+  <!-- BOM -->
+  <div class="ae-section-light">
+    <div style="margin-bottom:28px">
+      <h2 class="ae-h2">Bill of Materials</h2>
+    </div>
+    <div class="ae-bom">
+      <div class="bom-header">
+        <div>Qty</div>
+        <div>Component</div>
+        <div>Category</div>
+      </div>
+      <div class="bom-row"><div class="bom-qty">&times;1</div><div class="bom-part">Aluminum 6061 Bar Stock</div><div class="bom-cat">Material</div></div>
+      <div class="bom-row"><div class="bom-qty">&times;1</div><div class="bom-part">UHMW Rod Stock</div><div class="bom-cat">Material</div></div>
+      <div class="bom-row"><div class="bom-qty">&times;1</div><div class="bom-part">PETG Filament</div><div class="bom-cat">3D Print</div></div>
+      <div class="bom-row"><div class="bom-qty">&times;4</div><div class="bom-part">OTS Stainless Brackets</div><div class="bom-cat">Hardware</div></div>
+      <div class="bom-row"><div class="bom-qty">&times;1</div><div class="bom-part">Piston / Cylinder Assembly</div><div class="bom-cat">Machined</div></div>
+      <div class="bom-row"><div class="bom-qty">&times;1</div><div class="bom-part">Crankshaft</div><div class="bom-cat">Machined</div></div>
+      <div class="bom-row"><div class="bom-qty">&times;1</div><div class="bom-part">Rocker Four-Bar Linkage</div><div class="bom-cat">Machined</div></div>
+      <div class="bom-row"><div class="bom-qty">&times;1</div><div class="bom-part">Blade Holder (press-fit)</div><div class="bom-cat">Machined</div></div>
+    </div>
+  </div>
+
+  <!-- FOOTER NAV -->
+  <div class="ae-footer-nav">
+    <a href="../projects.html" class="all-projects"><i class="fas fa-arrow-left"></i> All Projects</a>
+    <div style="text-align:right">
+      <div class="next-label">Next Project</div>
+      <a href="servo-motor.html" class="next-link">360&deg; Servo Motor <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <!-- SITE FOOTER -->
   <footer class="site-footer">
-    <div class="container">
-      <div class="footer-links">
-        <a href="https://www.linkedin.com/in/jstfleur" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.3dprintclub.org" target="_blank"><i class="fas fa-print"></i></a>
-        <a href="mailto:Jeremiahstfleur@ufl.edu"><i class="fas fa-envelope"></i></a>
-      </div>
-      <p class="footer-copy">&copy; <span id="currentYear"></span> Jeremiah L. St. Fleur. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/jstfleur" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://3dprintclub.org" target="_blank"><i class="fas fa-print"></i> 3D Print Club</a>
+      <a href="mailto:Jeremiahstfleur@ufl.edu"><i class="fas fa-envelope"></i> Email</a>
     </div>
+    <p>&copy; <span id="currentYear"></span> Jeremiah St. Fleur</p>
   </footer>
 
   <script src="../js/main.js"></script>
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    (function () {
+      var track = document.getElementById('aeTrack');
+      var dots = document.querySelectorAll('#aeDots button');
+      var current = 0;
+      var total = dots.length;
+      function goTo(i) {
+        current = (i + total) % total;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dots.forEach(function (d, idx) { d.classList.toggle('active', idx === current); });
+      }
+      document.getElementById('aePrev').addEventListener('click', function () { goTo(current - 1); });
+      document.getElementById('aeNext').addEventListener('click', function () { goTo(current + 1); });
+      dots.forEach(function (d, i) { d.addEventListener('click', function () { goTo(i); }); });
+    })();
+  </script>
 </body>
 </html>
