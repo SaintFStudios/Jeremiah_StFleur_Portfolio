@@ -231,40 +231,45 @@
     </div>
   </div>
 
-  <!-- VIDEO -->
-  <div class="ae-section">
-    <div style="margin-bottom:26px">
-      <h2 class="ae-h2">Engine in Action</h2>
-      <p style="font:400 0.9rem 'Outfit',sans-serif;color:#718096;margin-top:6px">Compressed air engine running at 40 PSI, driving the four-bar slicer mechanism</p>
-    </div>
-    <div style="border:1px solid #dee2e6;border-radius:10px;overflow:hidden;background:#0d1b2e">
-      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden">
-        <video controls id="aeVideo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0d1b2e">
-          <source src="../videos/air-engine-demo.mp4" type="video/mp4">
-          Your browser does not support video playback.
-        </video>
-      </div>
-      <div style="padding:10px 16px;background:#1e3a5f;display:flex;align-items:center;gap:8px">
-        <i class="fas fa-video" style="color:#f39c12;font-size:0.8rem"></i>
-        <span style="font:400 0.75rem 'JetBrains Mono',monospace;color:rgba(255,255,255,0.45)">Air Engine Demo &mdash; EML2322L, Spring 2025</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- DR1 DOCUMENT -->
+  <!-- VIDEO & DOCUMENT SIDE-BY-SIDE -->
   <div class="ae-section" style="background:#fff">
-    <div style="margin-bottom:26px">
-      <h2 class="ae-h2">Design Review 1 &mdash; Document</h2>
-      <p style="font:400 0.9rem 'Outfit',sans-serif;color:#718096;margin-top:6px">Full DR1 package: concept sketches, linkage analysis, chassis drawings, and part specifications</p>
-    </div>
-    <div style="border:1px solid #dee2e6;border-radius:10px;overflow:hidden">
-      <div style="background:#1e3a5f;padding:12px 20px;display:flex;align-items:center;justify-content:space-between">
-        <span style="font:600 0.7rem 'JetBrains Mono',monospace;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.08em">DR1 &mdash; Design Review 1.pdf</span>
-        <a href="../docs/DR1-Design-Review-1.pdf" target="_blank" download style="display:flex;align-items:center;gap:6px;font:600 0.78rem 'Outfit',sans-serif;color:#f39c12;text-decoration:none">
-          <i class="fas fa-download"></i> Download PDF
-        </a>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:flex-start">
+      <!-- VIDEO -->
+      <div>
+        <div style="margin-bottom:26px">
+          <h2 class="ae-h2">Engine in Action</h2>
+          <p style="font:400 0.9rem 'Outfit',sans-serif;color:#718096;margin-top:6px">Compressed air engine running at 40 PSI, driving the four-bar slicer mechanism</p>
+        </div>
+        <div style="border:1px solid #dee2e6;border-radius:10px;overflow:hidden;background:#0d1b2e">
+          <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden">
+            <video controls id="aeVideo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0d1b2e">
+              <source src="../videos/air-engine-demo.mp4" type="video/mp4">
+              Your browser does not support video playback.
+            </video>
+          </div>
+          <div style="padding:10px 16px;background:#1e3a5f;display:flex;align-items:center;gap:8px">
+            <i class="fas fa-video" style="color:#f39c12;font-size:0.8rem"></i>
+            <span style="font:400 0.75rem 'JetBrains Mono',monospace;color:rgba(255,255,255,0.45)">Air Engine Demo &mdash; EML2322L, Spring 2025</span>
+          </div>
+        </div>
       </div>
-      <iframe src="../docs/DR1-Design-Review-1.pdf" style="width:100%;height:640px;border:none;display:block;background:#f8f9fa" title="Design Review 1"></iframe>
+
+      <!-- DR1 DOCUMENT -->
+      <div>
+        <div style="margin-bottom:26px">
+          <h2 class="ae-h2">Design Review 1 &mdash; Document</h2>
+          <p style="font:400 0.9rem 'Outfit',sans-serif;color:#718096;margin-top:6px">Full DR1 package: concept sketches, linkage analysis, chassis drawings, and part specifications</p>
+        </div>
+        <div style="border:1px solid #dee2e6;border-radius:10px;overflow:hidden">
+          <div style="background:#1e3a5f;padding:12px 20px;display:flex;align-items:center;justify-content:space-between">
+            <span style="font:600 0.7rem 'JetBrains Mono',monospace;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.08em">DR1 &mdash; Design Review 1.pdf</span>
+            <a href="../docs/DR1-Design-Review-1.pdf" target="_blank" download style="display:flex;align-items:center;gap:6px;font:600 0.78rem 'Outfit',sans-serif;color:#f39c12;text-decoration:none">
+              <i class="fas fa-download"></i> Download PDF
+            </a>
+          </div>
+          <iframe src="../docs/DR1-Design-Review-1.pdf" style="width:100%;height:480px;border:none;display:block;background:#f8f9fa" title="Design Review 1"></iframe>
+        </div>
+      </div>
     </div>
   </div>
 
