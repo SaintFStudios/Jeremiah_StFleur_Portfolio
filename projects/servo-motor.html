@@ -1,139 +1,482 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>360° Servo Motor | Jeremiah L. St. Fleur</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Custom 360° Positioning Servo Motor — Jeremiah St. Fleur</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Outfit', sans-serif; background: #fff; color: #2d3436; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: #4a90e2; text-decoration: none; transition: color 0.2s; }
+    a:hover { color: #d35400; }
+    img { max-width: 100%; display: block; }
+
+    .sd-nav { background: rgba(30,58,95,0.97); padding: 18px 48px; display: flex; align-items: center; justify-content: space-between; }
+    .sd-nav .logo { font: 800 1.4rem 'Outfit', sans-serif; color: #f39c12; letter-spacing: -0.02em; text-decoration: none; }
+    .sd-nav .logo span { color: #4a90e2; }
+    .sd-nav .nav-links { display: flex; gap: 28px; align-items: center; }
+    .sd-nav .nav-links a { font: 500 0.9rem 'Outfit', sans-serif; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .sd-nav .nav-links a:hover { color: #fff; }
+    .sd-nav .nav-links a.active { color: #f39c12; padding-bottom: 3px; border-bottom: 2px solid #f39c12; }
+
+    .sd-hero { position: relative; overflow: hidden; min-height: 380px; display: flex; flex-direction: column; justify-content: flex-end; }
+    .sd-hero img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    .sd-hero .overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,27,46,0.93) 0%, rgba(30,58,95,0.87) 60%, rgba(44,82,130,0.75) 100%); }
+    .sd-hero .content { position: relative; padding: 56px 48px 48px; }
+    .sd-hero .back-link { display: flex; align-items: center; gap: 6px; font: 500 0.82rem 'Outfit', sans-serif; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 22px; width: fit-content; }
+    .sd-hero .back-link:hover { color: rgba(255,255,255,0.8); }
+    .sd-hero .label { color: #f39c12; font: 500 0.88rem 'Outfit', sans-serif; display: flex; align-items: center; gap: 6px; font-style: italic; margin-bottom: 14px; }
+    .sd-hero h1 { font: 800 2.8rem 'Outfit', sans-serif; letter-spacing: -0.03em; line-height: 1.1; color: white; margin-bottom: 6px; }
+    .sd-hero .subtitle { font: 400 1rem 'Outfit', sans-serif; color: rgba(243,156,18,0.85); margin-bottom: 14px; }
+    .sd-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+    .sd-meta span { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.8); font: 500 0.82rem 'Outfit', sans-serif; padding: 6px 14px; border-radius: 30px; display: flex; align-items: center; gap: 6px; }
+    .sd-meta span i { color: #f39c12; }
+    .sd-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .sd-tags span { background: rgba(243,156,18,0.18); border: 1px solid rgba(243,156,18,0.35); color: #f39c12; font: 600 0.76rem 'Outfit', sans-serif; padding: 4px 12px; border-radius: 20px; }
+
+    .sd-section { padding: 60px 48px; }
+    .sd-section-light { background: #f0f6fb; padding: 60px 48px; }
+    .sd-h2 { font: 700 1.55rem 'Outfit', sans-serif; color: #1e3a5f; letter-spacing: -0.02em; margin-bottom: 16px; }
+
+    .sd-overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+    .sd-overview-grid p { font: 400 1.05rem 'Outfit', sans-serif; color: #4a5568; line-height: 1.9; }
+    .sd-img-card { border-radius: 10px; overflow: hidden; box-shadow: 0 8px 32px rgba(30,58,95,0.14); border: 1px solid #dee2e6; }
+    .sd-img-card img { width: 100%; height: 320px; object-fit: contain; background: #f8f9fa; display: block; }
+    .sd-img-cap { padding: 10px 16px; background: #f8f9fa; font: 400 0.78rem 'JetBrains Mono', monospace; color: #718096; border-top: 1px solid #dee2e6; }
+
+    .sd-carousel { position: relative; overflow: hidden; border-radius: 10px; border: 1px solid #dee2e6; }
+    .sd-carousel-track { display: flex; transition: transform 0.4s ease; }
+    .sd-carousel-track figure { min-width: 100%; margin: 0; background: #0d1117; overflow: hidden; }
+    .sd-carousel-track figure img { width: 100%; height: 400px; object-fit: contain; background: #0d1117; display: block; }
+    .sd-carousel-track figure figcaption { padding: 10px 14px; font: 400 0.75rem 'JetBrains Mono', monospace; color: #718096; border-top: 1px solid #dee2e6; background: #fff; }
+    .sd-carousel-btn { position: absolute; top: calc(50% - 16px); transform: translateY(-50%); width: 38px; height: 38px; border-radius: 50%; background: #1e3a5f; border: none; color: white; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.25); transition: background 0.2s; }
+    .sd-carousel-btn:hover { background: #d35400; }
+    .sd-carousel-btn.prev { left: 10px; }
+    .sd-carousel-btn.next { right: 10px; }
+    .sd-carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 12px; }
+    .sd-carousel-dots button { width: 8px; height: 8px; border-radius: 50%; border: none; background: #dee2e6; cursor: pointer; padding: 0; transition: background 0.2s; }
+    .sd-carousel-dots button.active { background: #1e3a5f; }
+
+    .sd-specs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .sd-spec-card { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 10px; padding: 20px 18px; border-top: 3px solid #d35400; }
+    .sd-spec-card .s-label { font: 600 0.7rem 'JetBrains Mono', monospace; color: #718096; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+    .sd-spec-card .s-value { font: 700 1.05rem 'Outfit', sans-serif; color: #1e3a5f; margin-bottom: 3px; }
+    .sd-spec-card .s-sub { font: 400 0.8rem 'Outfit', sans-serif; color: #718096; }
+
+    .sd-code-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 20px; align-items: start; }
+    .sd-code-block { border-radius: 10px; overflow: hidden; border: 1px solid #30363d; }
+    .sd-code-header { background: #161b22; padding: 12px 20px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #30363d; }
+    .sd-code-header .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .sd-code-header .filename { font: 400 0.78rem 'JetBrains Mono', monospace; color: #8b949e; margin-left: 8px; }
+    .sd-code-header .lang { font: 400 0.72rem 'JetBrains Mono', monospace; color: rgba(255,255,255,0.18); margin-left: auto; }
+    .sd-code-body { background: #0d1117; padding: 22px 26px; font: 400 12.5px/1.85 'JetBrains Mono', monospace; color: #e6edf3; overflow-x: auto; }
+    .c-comment { color: #8b949e; }
+    .c-kw { color: #ff7b72; }
+    .c-macro { color: #ffa657; }
+    .c-fn { color: #d2a8ff; }
+    .c-num { color: #79c0ff; }
+
+    .sd-wiring-card { border-radius: 10px; overflow: hidden; border: 1px solid #dee2e6; background: #fff; }
+    .sd-wiring-card .wiring-header { background: #1e3a5f; padding: 10px 16px; font: 600 0.68rem 'JetBrains Mono', monospace; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.08em; }
+    .sd-wiring-card .wiring-cap { padding: 8px 14px; font: 400 0.72rem 'JetBrains Mono', monospace; color: #718096; border-top: 1px solid #dee2e6; }
+    .wiring-slot { width: 100%; height: 380px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px; color: #a0aec0; font: 400 0.82rem 'JetBrains Mono', monospace; border: 2px dashed #dee2e6; cursor: pointer; position: relative; overflow: hidden; }
+    .wiring-slot img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .wiring-slot input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+    .wiring-slot .placeholder { display: flex; flex-direction: column; align-items: center; gap: 8px; pointer-events: none; }
+
+    .sd-bom { border: 1px solid #dee2e6; border-radius: 10px; overflow: hidden; }
+    .sd-bom .bom-header { display: grid; grid-template-columns: 60px 1fr 130px; background: #1e3a5f; padding: 12px 20px; }
+    .sd-bom .bom-header div { font: 600 0.7rem 'JetBrains Mono', monospace; color: rgba(255,255,255,0.45); text-transform: uppercase; }
+    .sd-bom .bom-row { display: grid; grid-template-columns: 60px 1fr 130px; padding: 13px 20px; border-top: 1px solid #dee2e6; background: white; align-items: center; }
+    .sd-bom .bom-qty { font: 600 0.85rem 'JetBrains Mono', monospace; color: #d35400; }
+    .sd-bom .bom-part { font: 500 0.92rem 'Outfit', sans-serif; color: #1e3a5f; }
+    .sd-bom .bom-cat { font: 400 0.78rem 'Outfit', sans-serif; color: #718096; background: #f0f6fb; padding: 3px 10px; border-radius: 20px; width: fit-content; }
+
+    .sd-footer-nav { background: #f0f6fb; padding: 36px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 3px solid #1e3a5f; }
+    .sd-footer-nav .all-projects { display: flex; align-items: center; gap: 8px; font: 600 0.88rem 'Outfit', sans-serif; color: #4a90e2; text-decoration: none; }
+    .sd-footer-nav .all-projects:hover { color: #1e3a5f; }
+    .sd-footer-nav .next-label { font: 400 0.72rem 'JetBrains Mono', monospace; color: #718096; margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .sd-footer-nav .next-link { font: 700 0.95rem 'Outfit', sans-serif; color: #1e3a5f; display: flex; align-items: center; gap: 6px; justify-content: flex-end; text-decoration: none; }
+    .sd-footer-nav .next-link:hover { color: #d35400; }
+    .sd-footer-nav .next-link i { color: #d35400; font-size: 0.82rem; }
+
+    .site-footer { background: #0d1b2e; padding: 32px 48px; text-align: center; }
+    .site-footer .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 12px; }
+    .site-footer .footer-links a { font: 500 0.85rem 'Outfit', sans-serif; color: rgba(255,255,255,0.5); text-decoration: none; }
+    .site-footer .footer-links a:hover { color: #f39c12; }
+    .site-footer p { font: 400 0.78rem 'Outfit', sans-serif; color: rgba(255,255,255,0.25); }
+
+    @media (max-width: 900px) {
+      .sd-nav { padding: 16px 24px; }
+      .sd-hero .content { padding: 40px 24px 32px; }
+      .sd-overview-grid { grid-template-columns: 1fr; gap: 24px; }
+      .sd-specs-grid { grid-template-columns: 1fr 1fr; }
+      .sd-code-grid { grid-template-columns: 1fr; }
+      .sd-section, .sd-section-light { padding: 40px 24px; }
+      .sd-footer-nav { padding: 28px 24px; flex-direction: column; gap: 16px; align-items: flex-start; }
+    }
+    @media (max-width: 580px) {
+      .sd-nav .nav-links { display: none; }
+      .sd-specs-grid { grid-template-columns: 1fr; }
+      .sd-hero h1 { font-size: 2rem; }
+    }
+  </style>
 </head>
 <body>
 
-  <nav class="site-nav">
-    <div class="container nav-inner">
-      <a href="../index.html" class="nav-logo">J<span>.</span>StFleur</a>
-      <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
-      <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../projects.html">Projects</a></li>
-        <li><a href="../teams.html">Teams</a></li>
-        <li><a href="../gallery.html">Gallery</a></li>
-        <li><a href="../contact.html">Contact</a></li>
-      </ul>
+<!-- NAV -->
+<nav class="sd-nav">
+  <a href="../index.html" class="logo">J<span>.</span>StFleur</a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../projects.html" class="active">Projects</a>
+    <a href="../teams.html">Teams</a>
+    <a href="../gallery.html">Gallery</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="sd-hero">
+  <img class="bg" src="../images/servo-motor/servo-final-design.png" alt="">
+  <div class="overlay"></div>
+  <div class="content">
+    <a href="../projects.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+    <div class="label"><i class="fas fa-sync-alt"></i> Personal Project</div>
+    <h1>Custom 360&deg; Positioning Servo Motor</h1>
+    <div class="subtitle">Closed-Loop Actuator from Component Selection to Control</div>
+    <div class="sd-meta">
+      <span><i class="fas fa-calendar"></i> Nov 2024 &ndash; Dec 2024</span>
+      <span><i class="fas fa-tag"></i> Robotics &amp; Mechanical Design</span>
     </div>
-  </nav>
+    <div class="sd-tags">
+      <span>Actuator Design</span>
+      <span>PID Control</span>
+      <span>Gear Design</span>
+      <span>3D Printing</span>
+      <span>System Integration</span>
+    </div>
+  </div>
+</div>
 
-  <section class="project-hero">
-    <div class="container">
-      <a href="../projects.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
-      <div class="hero-label"><i class="fas fa-sync-alt"></i> Personal Project</div>
-      <h1 style="font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;">Custom 360&deg; <span>Positioning Servo Motor</span></h1>
-      <p style="color:var(--text-secondary);max-width:640px;font-size:1.05rem;">Design and fabrication of a high-precision, continuous-rotation robotic actuator from component selection to closed-loop control.</p>
-      <div class="project-meta">
-        <span><i class="fas fa-calendar"></i> Nov 2024 - Dec 2024</span>
-        <span><i class="fas fa-tag"></i> Robotics &amp; Mechanical Design</span>
+<!-- OVERVIEW -->
+<div class="sd-section">
+  <div class="sd-overview-grid">
+    <div>
+      <h2 class="sd-h2">Project Overview</h2>
+      <p>Design and fabrication of a high-precision, continuous-rotation robotic actuator from component selection to closed-loop control. The actuator features a fully 3D-printed housing with integrated mounting, a magnetic encoder for full 360&deg; position sensing, and a potentiometer-driven setpoint with an exponential smoothing filter for deceleration behavior. The gear train was later upgraded from spur to helical gears, improving efficiency, reducing backlash, and quieting operation significantly.</p>
+    </div>
+    <div class="sd-img-card">
+      <img src="../images/servo-motor/servo-final-design.png" alt="Final 360° servo assembly">
+      <div class="sd-img-cap">Final 360&deg; servo assembly</div>
+    </div>
+  </div>
+</div>
+
+<!-- HARDWARE GALLERY -->
+<div class="sd-section-light">
+  <div style="margin-bottom:32px">
+    <h2 class="sd-h2">Hardware &amp; Build</h2>
+  </div>
+
+  <div class="sd-carousel" id="smCarousel">
+    <div class="sd-carousel-track" id="smTrack">
+      <figure>
+        <img src="../images/servo-motor/servo-test-setup.jpg" alt="Test bench configuration">
+        <figcaption>Test bench configuration</figcaption>
+      </figure>
+      <figure>
+        <img src="../images/servo-motor/servo-housing.png" alt="3D-printed housing design">
+        <figcaption>3D-printed housing design</figcaption>
+      </figure>
+      <figure>
+        <img src="../images/servo-motor/servo-cad-inner-workings.png" alt="CAD model showing inner workings">
+        <figcaption>CAD model &mdash; inner workings</figcaption>
+      </figure>
+      <figure>
+        <img src="../images/servo-motor/servo-orthographic-view.png" alt="Orthographic view of servo motor">
+        <figcaption>Orthographic view</figcaption>
+      </figure>
+    </div>
+    <button class="sd-carousel-btn prev" id="smPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+    <button class="sd-carousel-btn next" id="smNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+  </div>
+  <div class="sd-carousel-dots" id="smDots">
+    <button class="active" aria-label="Slide 1"></button>
+    <button aria-label="Slide 2"></button>
+    <button aria-label="Slide 3"></button>
+    <button aria-label="Slide 4"></button>
+  </div>
+
+  <div style="margin-top:24px; display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+    <div>
+      <video controls muted style="width:100%;border-radius:10px;display:block;background:#000" preload="metadata">
+        <source src="../images/servo-motor/servo-breadboard-demo.mp4" type="video/mp4">
+      </video>
+      <p style="font:400 0.78rem 'JetBrains Mono',monospace;color:#718096;margin-top:8px;">Breadboard prototype &mdash; early servo control demo</p>
+    </div>
+    <div>
+      <video controls muted style="width:100%;border-radius:10px;display:block;background:#000" preload="metadata">
+        <source src="../images/servo-motor/servo-testing.mp4" type="video/mp4">
+      </video>
+      <p style="font:400 0.78rem 'JetBrains Mono',monospace;color:#718096;margin-top:8px;">Final 3D-printed servo motor &mdash; full rotation testing</p>
+    </div>
+  </div>
+</div>
+
+<!-- TECH SPECS -->
+<div class="sd-section">
+  <div style="margin-bottom:32px">
+    <h2 class="sd-h2">Technical Specifications</h2>
+  </div>
+  <div class="sd-specs-grid">
+    <div class="sd-spec-card">
+      <div class="s-label">Microcontroller</div>
+      <div class="s-value">Arduino</div>
+      <div class="s-sub">Analog I/O, serial monitor at 115200 baud</div>
+    </div>
+    <div class="sd-spec-card">
+      <div class="s-label">Motor</div>
+      <div class="s-value">12V DC w/ Gearbox</div>
+      <div class="s-sub">Planetary gear reduction</div>
+    </div>
+    <div class="sd-spec-card">
+      <div class="s-label">Position Feedback</div>
+      <div class="s-value">Magnetic Encoder</div>
+      <div class="s-sub">Analog output, 0&ndash;359&deg; continuous sensing</div>
+    </div>
+    <div class="sd-spec-card">
+      <div class="s-label">Control</div>
+      <div class="s-value">P-Controller</div>
+      <div class="s-sub">Exponential smoothing filter (5/95 split)</div>
+    </div>
+    <div class="sd-spec-card">
+      <div class="s-label">Setpoint Input</div>
+      <div class="s-value">Potentiometer</div>
+      <div class="s-sub">Mapped 0&ndash;1023 &rarr; 0&ndash;360&deg;</div>
+    </div>
+    <div class="sd-spec-card">
+      <div class="s-label">Housing</div>
+      <div class="s-value">3D-Printed PLA</div>
+      <div class="s-sub">Helical gear train, integrated mounting</div>
+    </div>
+  </div>
+
+  <div style="margin-top:40px">
+    <h2 class="sd-h2">Performance Metrics</h2>
+    <div class="sd-specs-grid" style="margin-top:16px">
+      <div class="sd-spec-card">
+        <div class="s-label">Positional Accuracy</div>
+        <div class="s-value">&plusmn;2&deg;</div>
+        <div class="s-sub">Across full 360&deg; range</div>
       </div>
-      <div class="tags" style="margin-top:20px;">
-        <span class="tag">Actuator Design</span>
-        <span class="tag">PID Control</span>
-        <span class="tag">Gear Design</span>
-        <span class="tag">System Integration</span>
+      <div class="sd-spec-card">
+        <div class="s-label">Repeatability</div>
+        <div class="s-value">&plusmn;0.5&deg;</div>
+        <div class="s-sub">Return-to-position operations</div>
+      </div>
+      <div class="sd-spec-card">
+        <div class="s-label">Speed</div>
+        <div class="s-value">0.8 sec</div>
+        <div class="s-sub">0&ndash;180&deg; with minimal overshoot</div>
+      </div>
+      <div class="sd-spec-card">
+        <div class="s-label">Stall Torque</div>
+        <div class="s-value">2.5 N&middot;m</div>
+        <div class="s-sub">At 12V input</div>
+      </div>
+      <div class="sd-spec-card">
+        <div class="s-label">Gear Efficiency</div>
+        <div class="s-value">94%</div>
+        <div class="s-sub">Helical vs. 85% spur gear design</div>
+      </div>
+      <div class="sd-spec-card">
+        <div class="s-label">PWM Dead Zone</div>
+        <div class="s-value">&lt;25 counts</div>
+        <div class="s-sub">Output clamped to 0 to prevent drift</div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <section style="padding-top:0;">
-    <div class="container">
-      <div class="project-body-content">
-
-        <h3>Project Overview</h3>
-        <p>This project involved designing, fabricating, and testing a custom continuous-rotation servo motor capable of precise 360-degree positioning. The actuator was built from individually selected components and features a fully 3D-printed housing with integrated mounting.</p>
-
-        <div class="media-grid cols-3">
-          <figure class="media-figure">
-            <img src="../images/servo-motor/servo-final-design.png" alt="Servo motor final design">
-            <figcaption>Final 360° servo assembly</figcaption>
-          </figure>
-          <figure class="media-figure">
-            <img src="../images/servo-motor/servo-housing.png" alt="Servo motor housing">
-            <figcaption>3D-printed housing design</figcaption>
-          </figure>
-          <figure class="media-figure">
-            <img src="../images/servo-motor/servo-test-setup.jpg" alt="Servo motor test setup">
-            <figcaption>Test bench configuration</figcaption>
-          </figure>
-        </div>
-
-        <h3>Technical Specifications</h3>
-        <ul>
-          <li><strong>Motor:</strong> 12V DC motor with planetary gearbox</li>
-          <li><strong>Gear Train:</strong> Custom helical gear reduction for high efficiency</li>
-          <li><strong>Position Feedback:</strong> Magnetic encoder for continuous rotation sensing</li>
-          <li><strong>Control:</strong> PID controller with smoothing filter</li>
-          <li><strong>Housing:</strong> Fully 3D-printed for easy assembly and modification</li>
-        </ul>
-
-        <h3>Testing &amp; Validation</h3>
-        <div class="media-grid cols-2">
-          <figure class="media-figure">
-            <img src="../images/servo-motor/servo-test.png" alt="Servo test">
-            <figcaption>Closed-loop control test results</figcaption>
-          </figure>
-        </div>
-
-        <div class="media-grid cols-2">
-          <figure class="media-figure">
-            <video controls muted style="width:100%;display:block;">
-              <source src="../images/servo-motor/servo-breadboard-demo.mp4" type="video/mp4">
-            </video>
-            <figcaption>Breadboard prototype — early servo control demo</figcaption>
-          </figure>
-          <figure class="media-figure">
-            <video controls muted style="width:100%;display:block;">
-              <source src="../images/servo-motor/servo-testing.mp4" type="video/mp4">
-            </video>
-            <figcaption>Final 3D-printed servo motor — full rotation testing</figcaption>
-          </figure>
-        </div>
-
-        <h3>Performance Upgrade: Helical Gears</h3>
-        <p>The original spur gear design was replaced with helical gears, resulting in significant improvements across all metrics. The helical tooth profile provides smoother engagement, reduced backlash, and quieter operation compared to straight-cut gears.</p>
-
-        <h3>Performance Metrics</h3>
-        <ul>
-          <li><strong>Positional Accuracy:</strong> &plusmn;2&deg; across full 360&deg; range</li>
-          <li><strong>Repeatability:</strong> &plusmn;0.5&deg; for return-to-position operations</li>
-          <li><strong>Speed:</strong> 0-180&deg; in 0.8 seconds with minimal overshoot</li>
-          <li><strong>Torque:</strong> 2.5 N&middot;m stall torque at 12V input</li>
-          <li><strong>Efficiency:</strong> 94% mechanical efficiency (vs. 85% for spur gear design)</li>
-        </ul>
-
-        <h3>Applications &amp; Future Development</h3>
-        <ul>
-          <li>Primary application: Robotic joint actuator for 4-DOF robotic arm</li>
-          <li>Potential: Camera gimbal control, automated valve positioning, precision pointing</li>
-          <li>Future: Integrated encoder for higher resolution, CAN bus communication, torque sensing</li>
-        </ul>
-
-        <div style="margin-top:48px;">
-          <a href="../projects.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> All Projects</a>
-        </div>
+<!-- FIRMWARE + WIRING -->
+<div class="sd-section" style="background:#f8f9fa">
+  <div style="margin-bottom:26px">
+    <h2 class="sd-h2">Position_Control.ino</h2>
+    <p style="font:400 0.9rem 'Outfit',sans-serif;color:#718096;margin-top:6px">Proportional closed-loop controller &mdash; potentiometer setpoint mapped to 360&deg;, exponential smoothing for deceleration, shortest-path error resolution for CW/CCW selection</p>
+  </div>
+  <div class="sd-code-grid">
+    <div class="sd-code-block">
+      <div class="sd-code-header">
+        <div class="dot" style="background:#ff5f57"></div>
+        <div class="dot" style="background:#febc2e"></div>
+        <div class="dot" style="background:#28c840"></div>
+        <span class="filename">Position_Control.ino</span>
+        <span class="lang">C++ / Arduino</span>
+      </div>
+      <div class="sd-code-body">
+        <div><span class="c-comment">// pins</span></div>
+        <div><span class="c-kw">int</span> <span class="c-macro">ENA</span> = <span class="c-num">2</span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-comment">// enable pin</span></div>
+        <div><span class="c-kw">int</span> <span class="c-macro">pwm</span>[<span class="c-num">2</span>] = { <span class="c-num">5</span>, <span class="c-num">6</span> };&nbsp;&nbsp;<span class="c-comment">// motor driver pwm pins</span></div>
+        <div><span class="c-kw">int</span> <span class="c-macro">encoder</span> = A0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-comment">// encoder pin</span></div>
+        <div><span class="c-kw">int</span> <span class="c-macro">pot</span> = A1;</div>
+        <div><span class="c-kw">float</span> <span class="c-macro">Pot_Value</span> = <span class="c-num">0</span>, <span class="c-macro">offset</span> = <span class="c-num">0</span>;</div>
+        <div><span class="c-kw">float</span> <span class="c-macro">position</span>, <span class="c-macro">Prev_position</span>, <span class="c-macro">Position_Smoothed</span>;</div>
+        <div>&nbsp;</div>
+        <div><span class="c-kw">void</span> <span class="c-fn">setup</span>() {</div>
+        <div>&nbsp;&nbsp;<span class="c-fn">pinMode</span>(<span class="c-macro">ENA</span>, OUTPUT);</div>
+        <div>&nbsp;&nbsp;<span class="c-fn">pinMode</span>(<span class="c-macro">pot</span>, INPUT);</div>
+        <div>&nbsp;&nbsp;Serial.<span class="c-fn">begin</span>(<span class="c-num">115200</span>);</div>
+        <div>}</div>
+        <div>&nbsp;</div>
+        <div><span class="c-kw">void</span> <span class="c-fn">loop</span>() {</div>
+        <div>&nbsp;&nbsp;<span class="c-macro">Pot_Value</span> = <span class="c-fn">analogRead</span>(<span class="c-macro">pot</span>);</div>
+        <div>&nbsp;&nbsp;<span class="c-macro">position</span> = <span class="c-fn">map</span>(<span class="c-macro">Pot_Value</span>, <span class="c-num">0</span>, <span class="c-num">1023</span>, <span class="c-num">0</span>, <span class="c-num">360</span>);</div>
+        <div>&nbsp;&nbsp;<span class="c-comment">// exponential smoothing — servo decelerates</span></div>
+        <div>&nbsp;&nbsp;<span class="c-macro">Position_Smoothed</span> = (<span class="c-macro">position</span> * <span class="c-num">0.05</span>) + (<span class="c-macro">Prev_position</span> * <span class="c-num">0.95</span>);</div>
+        <div>&nbsp;&nbsp;<span class="c-macro">Prev_position</span> = <span class="c-macro">Position_Smoothed</span>;</div>
+        <div>&nbsp;&nbsp;<span class="c-fn">moveTo</span>(<span class="c-macro">Position_Smoothed</span>);</div>
+        <div>&nbsp;&nbsp;Serial.<span class="c-fn">println</span>(<span class="c-macro">Position_Smoothed</span>);</div>
+        <div>&nbsp;&nbsp;<span class="c-fn">delay</span>(<span class="c-num">15</span>);</div>
+        <div>}</div>
+        <div>&nbsp;</div>
+        <div><span class="c-kw">float</span> <span class="c-fn">moveTo</span>(<span class="c-kw">float</span> setpoint) {</div>
+        <div>&nbsp;&nbsp;<span class="c-kw">float</span> error, out;</div>
+        <div>&nbsp;&nbsp;<span class="c-comment">// shortest-path error resolution</span></div>
+        <div>&nbsp;&nbsp;<span class="c-kw">float</span> <span class="c-macro">CW_error</span>&nbsp; = setpoint - <span class="c-fn">getPos</span>();</div>
+        <div>&nbsp;&nbsp;<span class="c-kw">if</span> (<span class="c-macro">CW_error</span> &lt; <span class="c-num">0</span>) <span class="c-macro">CW_error</span> += <span class="c-num">360</span>;</div>
+        <div>&nbsp;&nbsp;<span class="c-kw">float</span> <span class="c-macro">CCW_error</span> = <span class="c-fn">getPos</span>() - setpoint;</div>
+        <div>&nbsp;&nbsp;<span class="c-kw">if</span> (<span class="c-macro">CCW_error</span> &lt; <span class="c-num">0</span>) <span class="c-macro">CCW_error</span> += <span class="c-num">360</span>;</div>
+        <div>&nbsp;&nbsp;<span class="c-kw">if</span> (<span class="c-macro">CW_error</span> &lt;= <span class="c-macro">CCW_error</span>) error = <span class="c-macro">CW_error</span>;</div>
+        <div>&nbsp;&nbsp;<span class="c-kw">else</span> error = -<span class="c-num">1</span> * <span class="c-macro">CCW_error</span>;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;&nbsp;out = <span class="c-num">1.5</span> * error;</div>
+        <div>&nbsp;&nbsp;out = <span class="c-fn">constrain</span>(out, -<span class="c-num">255</span>, <span class="c-num">255</span>);</div>
+        <div>&nbsp;&nbsp;<span class="c-kw">if</span> (<span class="c-fn">abs</span>(out) &lt; <span class="c-num">25</span>) out = <span class="c-num">0</span>;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;&nbsp;<span class="c-fn">digitalWrite</span>(<span class="c-macro">ENA</span>, HIGH);</div>
+        <div>&nbsp;&nbsp;<span class="c-kw">if</span> (out &gt; <span class="c-num">0</span>) {</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">analogWrite</span>(<span class="c-macro">pwm</span>[<span class="c-num">0</span>], <span class="c-num">0</span>); <span class="c-fn">analogWrite</span>(<span class="c-macro">pwm</span>[<span class="c-num">1</span>], out);</div>
+        <div>&nbsp;&nbsp;} <span class="c-kw">else if</span> (out &lt; <span class="c-num">0</span>) {</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">analogWrite</span>(<span class="c-macro">pwm</span>[<span class="c-num">0</span>], <span class="c-fn">abs</span>(out)); <span class="c-fn">analogWrite</span>(<span class="c-macro">pwm</span>[<span class="c-num">1</span>], <span class="c-num">0</span>);</div>
+        <div>&nbsp;&nbsp;} <span class="c-kw">else</span> {</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">analogWrite</span>(<span class="c-macro">pwm</span>[<span class="c-num">0</span>], <span class="c-num">0</span>); <span class="c-fn">analogWrite</span>(<span class="c-macro">pwm</span>[<span class="c-num">1</span>], <span class="c-num">0</span>);</div>
+        <div>&nbsp;&nbsp;}</div>
+        <div>}</div>
+        <div>&nbsp;</div>
+        <div><span class="c-kw">float</span> <span class="c-fn">getPos</span>() {</div>
+        <div>&nbsp;&nbsp;<span class="c-kw">float</span> pos = <span class="c-fn">map</span>(<span class="c-fn">analogRead</span>(<span class="c-macro">encoder</span>), <span class="c-num">0</span>, <span class="c-num">1023</span>, <span class="c-num">0</span>, <span class="c-num">359</span>) + <span class="c-macro">offset</span>;</div>
+        <div>&nbsp;&nbsp;<span class="c-kw">if</span> (pos &lt; <span class="c-num">0</span>) pos = <span class="c-num">359</span> + pos;</div>
+        <div>&nbsp;&nbsp;<span class="c-kw">else if</span> (pos &gt; <span class="c-num">359</span>) pos = pos - <span class="c-num">359</span>;</div>
+        <div>&nbsp;&nbsp;<span class="c-kw">return</span> pos;</div>
+        <div>}</div>
       </div>
     </div>
-  </section>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-links">
-        <a href="https://www.linkedin.com/in/jstfleur" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.3dprintclub.org" target="_blank"><i class="fas fa-print"></i></a>
-        <a href="mailto:Jeremiahstfleur@ufl.edu"><i class="fas fa-envelope"></i></a>
+    <div class="sd-wiring-card">
+      <div class="wiring-header">Wiring Diagram</div>
+      <div class="wiring-slot" id="wiringSlot">
+        <img id="wiringImg" src="../images/servo-motor/circuit-diagram.png" alt="Servo motor circuit diagram" style="display:block">
+        <div class="placeholder" id="wiringPlaceholder" style="display:none">
+          <i class="fas fa-image" style="font-size:2rem;color:#cbd5e0"></i>
+          <span>Drop wiring diagram here</span>
+          <span style="font-size:0.68rem;color:#cbd5e0">or click to upload</span>
+        </div>
+        <input type="file" accept="image/*" id="wiringInput" title="Upload wiring diagram">
       </div>
-      <p class="footer-copy">&copy; <span id="currentYear"></span> Jeremiah L. St. Fleur. All rights reserved.</p>
+      <div class="wiring-cap">Power + signal routing</div>
     </div>
-  </footer>
+  </div>
+</div>
 
-  <script src="../js/main.js"></script>
+<!-- BOM -->
+<div class="sd-section-light">
+  <div style="margin-bottom:28px">
+    <h2 class="sd-h2">Bill of Materials</h2>
+  </div>
+  <div class="sd-bom">
+    <div class="bom-header">
+      <div>Qty</div>
+      <div>Component</div>
+      <div>Category</div>
+    </div>
+    <div class="bom-row"><div class="bom-qty">&times;1</div><div class="bom-part">Arduino (Uno or compatible)</div><div class="bom-cat">Electronics</div></div>
+    <div class="bom-row"><div class="bom-qty">&times;1</div><div class="bom-part">12V DC Motor w/ Planetary Gearbox</div><div class="bom-cat">Actuation</div></div>
+    <div class="bom-row"><div class="bom-qty">&times;1</div><div class="bom-part">Motor Driver (L298N or similar)</div><div class="bom-cat">Electronics</div></div>
+    <div class="bom-row"><div class="bom-qty">&times;1</div><div class="bom-part">Magnetic Encoder (analog output)</div><div class="bom-cat">Sensors</div></div>
+    <div class="bom-row"><div class="bom-qty">&times;1</div><div class="bom-part">10k&Omega; Potentiometer</div><div class="bom-cat">Input</div></div>
+    <div class="bom-row"><div class="bom-qty">&times;1</div><div class="bom-part">Step-Down Converter (Buck Converter)</div><div class="bom-cat">Power</div></div>
+    <div class="bom-row"><div class="bom-qty">&times;1</div><div class="bom-part">3D-Printed PLA Housing</div><div class="bom-cat">Mechanical</div></div>
+    <div class="bom-row"><div class="bom-qty">&times;1</div><div class="bom-part">Helical Gear Set (3D-Printed)</div><div class="bom-cat">Mechanical</div></div>
+  </div>
+</div>
+
+<!-- FOOTER NAV -->
+<div class="sd-footer-nav">
+  <a href="../projects.html" class="all-projects"><i class="fas fa-arrow-left"></i> All Projects</a>
+  <div style="text-align:right">
+    <div class="next-label">Next Project</div>
+    <a href="air-engine.html" class="next-link">Air Engine <i class="fas fa-arrow-right"></i></a>
+  </div>
+</div>
+
+<!-- SITE FOOTER -->
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="https://linkedin.com/in/jstfleur" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <a href="https://github.com/SaintFStudios" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    <a href="https://3dprintclub.org" target="_blank"><i class="fas fa-print"></i> 3D Print Club</a>
+    <a href="mailto:Jeremiahstfleur@ufl.edu"><i class="fas fa-envelope"></i> Email</a>
+  </div>
+  <p>&copy; <span id="currentYear"></span> Jeremiah St. Fleur</p>
+</footer>
+
+<script>
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+  // Carousel
+  (function () {
+    var track = document.getElementById('smTrack');
+    var dots = Array.from(document.querySelectorAll('#smDots button'));
+    var current = 0;
+    var total = dots.length;
+    function goTo(i) {
+      current = (i + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach(function (d, idx) { d.classList.toggle('active', idx === current); });
+    }
+    document.getElementById('smPrev').addEventListener('click', function () { goTo(current - 1); });
+    document.getElementById('smNext').addEventListener('click', function () { goTo(current + 1); });
+    dots.forEach(function (d, i) { d.addEventListener('click', function () { goTo(i); }); });
+  })();
+
+  // Wiring diagram upload
+  (function () {
+    var input = document.getElementById('wiringInput');
+    var img = document.getElementById('wiringImg');
+    var placeholder = document.getElementById('wiringPlaceholder');
+    function loadFile(file) {
+      if (!file || !file.type.startsWith('image/')) return;
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        img.src = e.target.result;
+        img.style.display = 'block';
+        placeholder.style.display = 'none';
+      };
+      reader.readAsDataURL(file);
+    }
+    input.addEventListener('change', function () { loadFile(this.files[0]); });
+    var slot = document.getElementById('wiringSlot');
+    slot.addEventListener('dragover', function (e) { e.preventDefault(); slot.style.borderColor = '#1e3a5f'; });
+    slot.addEventListener('dragleave', function () { slot.style.borderColor = '#dee2e6'; });
+    slot.addEventListener('drop', function (e) {
+      e.preventDefault();
+      slot.style.borderColor = '#dee2e6';
+      loadFile(e.dataTransfer.files[0]);
+    });
+  })();
+</script>
 </body>
 </html>
