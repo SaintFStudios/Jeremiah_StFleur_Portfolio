@@ -1,123 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Potato Slicer CAD Project | Jeremiah L. St. Fleur</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Potato Slicer CAD Design — Jeremiah St. Fleur</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Outfit', sans-serif; background: #fff; color: #2d3436; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: #4a90e2; text-decoration: none; transition: color 0.2s; }
+    a:hover { color: #d35400; }
+    img { max-width: 100%; display: block; }
+
+    .sd-nav { background: rgba(30,58,95,0.97); padding: 18px 48px; display: flex; align-items: center; justify-content: space-between; }
+    .sd-nav .logo { font: 800 1.4rem 'Outfit', sans-serif; color: #f39c12; letter-spacing: -0.02em; text-decoration: none; }
+    .sd-nav .logo span { color: #4a90e2; }
+    .sd-nav .nav-links { display: flex; gap: 28px; align-items: center; }
+    .sd-nav .nav-links a { font: 500 0.9rem 'Outfit', sans-serif; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .sd-nav .nav-links a:hover { color: #fff; }
+    .sd-nav .nav-links a.active { color: #f39c12; padding-bottom: 3px; border-bottom: 2px solid #f39c12; }
+
+    .sd-hero { position: relative; overflow: hidden; min-height: 380px; display: flex; flex-direction: column; justify-content: flex-end; }
+    .sd-hero img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    .sd-hero .overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,27,46,0.95) 0%, rgba(30,58,95,0.92) 60%, rgba(44,82,130,0.85) 100%); }
+    .sd-hero .content { position: relative; padding: 56px 48px 48px; }
+    .sd-hero .back-link { display: flex; align-items: center; gap: 6px; font: 500 0.82rem 'Outfit', sans-serif; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 22px; width: fit-content; }
+    .sd-hero .back-link:hover { color: rgba(255,255,255,0.8); }
+    .sd-hero .label { color: #f39c12; font: 500 0.88rem 'Outfit', sans-serif; display: flex; align-items: center; gap: 6px; font-style: italic; margin-bottom: 14px; }
+    .sd-hero h1 { font: 800 2.8rem 'Outfit', sans-serif; letter-spacing: -0.03em; line-height: 1.1; color: white; margin-bottom: 6px; }
+    .sd-hero .subtitle { font: 400 1rem 'Outfit', sans-serif; color: rgba(243,156,18,0.85); margin-bottom: 14px; }
+    .sd-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+    .sd-meta span { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.8); font: 500 0.82rem 'Outfit', sans-serif; padding: 6px 14px; border-radius: 30px; display: flex; align-items: center; gap: 6px; }
+    .sd-meta span i { color: #f39c12; }
+    .sd-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .sd-tags span { background: rgba(243,156,18,0.18); border: 1px solid rgba(243,156,18,0.35); color: #f39c12; font: 600 0.76rem 'Outfit', sans-serif; padding: 4px 12px; border-radius: 20px; }
+
+    .sd-section { padding: 60px 48px; }
+    .sd-section-light { background: #f0f6fb; padding: 60px 48px; }
+    .sd-h2 { font: 700 1.55rem 'Outfit', sans-serif; color: #1e3a5f; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .sd-lead { font: 400 0.9rem 'Outfit', sans-serif; color: #718096; margin-top: 6px; margin-bottom: 26px; max-width: 640px; }
+
+    .sd-overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+    .sd-overview-grid p { font: 400 1.05rem 'Outfit', sans-serif; color: #4a5568; line-height: 1.9; }
+    .sd-img-card { border-radius: 10px; overflow: hidden; box-shadow: 0 8px 32px rgba(30,58,95,0.14); border: 1px solid #dee2e6; }
+    .sd-img-card img { width: 100%; height: 320px; object-fit: contain; background: #f8f9fa; display: block; }
+    .sd-img-cap { padding: 10px 16px; background: #f8f9fa; font: 400 0.78rem 'JetBrains Mono', monospace; color: #718096; border-top: 1px solid #dee2e6; }
+
+    .sd-carousel { position: relative; overflow: hidden; border-radius: 10px; border: 1px solid #dee2e6; }
+    .sd-carousel-track { display: flex; transition: transform 0.4s ease; }
+    .sd-carousel-track figure { min-width: 100%; margin: 0; background: #fff; overflow: hidden; }
+    .sd-carousel-track figure img { width: 100%; height: 460px; object-fit: contain; background: #f8f9fa; display: block; }
+    .sd-carousel-track figure figcaption { padding: 10px 14px; font: 400 0.75rem 'JetBrains Mono', monospace; color: #718096; border-top: 1px solid #dee2e6; background: #fff; }
+    .sd-carousel-btn { position: absolute; top: calc(50% - 16px); transform: translateY(-50%); width: 38px; height: 38px; border-radius: 50%; background: #1e3a5f; border: none; color: white; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.25); transition: background 0.2s; }
+    .sd-carousel-btn:hover { background: #d35400; }
+    .sd-carousel-btn.prev { left: 10px; }
+    .sd-carousel-btn.next { right: 10px; }
+    .sd-carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 12px; }
+    .sd-carousel-dots button { width: 8px; height: 8px; border-radius: 50%; border: none; background: #dee2e6; cursor: pointer; padding: 0; transition: background 0.2s; }
+    .sd-carousel-dots button.active { background: #1e3a5f; }
+
+    .sd-specs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .sd-spec-card { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 10px; padding: 20px 18px; border-top: 3px solid #d35400; }
+    .sd-spec-card .s-label { font: 600 0.7rem 'JetBrains Mono', monospace; color: #718096; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+    .sd-spec-card .s-value { font: 700 1.05rem 'Outfit', sans-serif; color: #1e3a5f; margin-bottom: 3px; }
+    .sd-spec-card .s-sub { font: 400 0.8rem 'Outfit', sans-serif; color: #718096; }
+
+    .sd-narrative p { font: 400 1rem 'Outfit', sans-serif; color: #4a5568; line-height: 1.9; margin-bottom: 20px; }
+    .sd-narrative p:last-child { margin-bottom: 0; }
+    .sd-narrative strong { color: #1e3a5f; }
+
+    .sd-doc-card { border-radius: 10px; overflow: hidden; border: 1px solid #dee2e6; background: #fff; }
+    .sd-doc-card .doc-header { background: #1e3a5f; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .sd-doc-card .doc-header .doc-title { font: 600 0.72rem 'JetBrains Mono', monospace; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.08em; }
+    .sd-doc-card .doc-header a { font: 600 0.8rem 'Outfit', sans-serif; color: #f39c12; display: flex; align-items: center; gap: 6px; }
+    .sd-doc-card .doc-header a:hover { color: #fff; }
+    .sd-doc-card iframe { width: 100%; height: 780px; border: none; display: block; }
+
+    .sd-takeaways { list-style: none; display: grid; gap: 14px; }
+    .sd-takeaways li { background: #fff; border: 1px solid #dee2e6; border-left: 3px solid #4a90e2; border-radius: 8px; padding: 16px 20px; font: 400 0.95rem 'Outfit', sans-serif; color: #4a5568; line-height: 1.7; }
+    .sd-takeaways li strong { color: #1e3a5f; }
+
+    .sd-footer-nav { background: #f0f6fb; padding: 36px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 3px solid #1e3a5f; }
+    .sd-footer-nav .all-projects { display: flex; align-items: center; gap: 8px; font: 600 0.88rem 'Outfit', sans-serif; color: #4a90e2; text-decoration: none; }
+    .sd-footer-nav .all-projects:hover { color: #1e3a5f; }
+    .sd-footer-nav .next-label { font: 400 0.72rem 'JetBrains Mono', monospace; color: #718096; margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .sd-footer-nav .next-link { font: 700 0.95rem 'Outfit', sans-serif; color: #1e3a5f; display: flex; align-items: center; gap: 6px; justify-content: flex-end; text-decoration: none; }
+    .sd-footer-nav .next-link:hover { color: #d35400; }
+    .sd-footer-nav .next-link i { color: #d35400; font-size: 0.82rem; }
+
+    .site-footer { background: #0d1b2e; padding: 32px 48px; text-align: center; }
+    .site-footer .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 12px; }
+    .site-footer .footer-links a { font: 500 0.85rem 'Outfit', sans-serif; color: rgba(255,255,255,0.5); text-decoration: none; }
+    .site-footer .footer-links a:hover { color: #f39c12; }
+    .site-footer p { font: 400 0.78rem 'Outfit', sans-serif; color: rgba(255,255,255,0.25); }
+
+    @media (max-width: 900px) {
+      .sd-nav { padding: 16px 24px; }
+      .sd-hero .content { padding: 40px 24px 32px; }
+      .sd-overview-grid { grid-template-columns: 1fr; gap: 24px; }
+      .sd-specs-grid { grid-template-columns: 1fr 1fr; }
+      .sd-section, .sd-section-light { padding: 40px 24px; }
+      .sd-doc-card iframe { height: 600px; }
+      .sd-footer-nav { padding: 28px 24px; flex-direction: column; gap: 16px; align-items: flex-start; }
+    }
+    @media (max-width: 580px) {
+      .sd-nav .nav-links { display: none; }
+      .sd-specs-grid { grid-template-columns: 1fr; }
+      .sd-hero h1 { font-size: 2rem; }
+      .sd-doc-card iframe { height: 480px; }
+    }
+  </style>
 </head>
 <body>
 
-  <nav class="site-nav">
-    <div class="container nav-inner">
-      <a href="../index.html" class="nav-logo">J<span>.</span>StFleur</a>
-      <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
-      <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../projects.html">Projects</a></li>
-        <li><a href="../teams.html">Teams</a></li>
-        <li><a href="../gallery.html">Gallery</a></li>
-        <li><a href="../contact.html">Contact</a></li>
-      </ul>
+<!-- NAV -->
+<nav class="sd-nav">
+  <a href="../index.html" class="logo">J<span>.</span>StFleur</a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../projects.html" class="active">Projects</a>
+    <a href="../teams.html">Teams</a>
+    <a href="../gallery.html">Gallery</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="sd-hero">
+  <img class="bg" src="../images/potato-slicer/concept-01.jpg" alt="">
+  <div class="overlay"></div>
+  <div class="content">
+    <a href="../projects.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+    <div class="label"><i class="fas fa-drafting-compass"></i> Course Project (EML2023)</div>
+    <h1>Potato Slicer <span style="color:#f39c12">CAD Design</span></h1>
+    <div class="subtitle">Hand-Powered French Fry Slicer — EML2023 Final Project</div>
+    <div class="sd-meta">
+      <span><i class="fas fa-calendar"></i> Fall 2023</span>
+      <span><i class="fas fa-tag"></i> CAD &amp; Mechanical Design</span>
     </div>
-  </nav>
-
-  <section class="project-hero">
-    <div class="container">
-      <a href="../projects.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
-      <div class="hero-label"><i class="fas fa-drafting-compass"></i> Course Project (EML2023)</div>
-      <h1 style="font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;">Potato Slicer <span>CAD Design</span></h1>
-      <p style="color:var(--text-secondary);max-width:640px;font-size:1.05rem;">A self-conceived, hand-powered French fry slicer designed and fully modeled in SolidWorks — final project for EML2023, my first real exposure to solid modeling and GD&amp;T.</p>
-      <div class="project-meta">
-        <span><i class="fas fa-calendar"></i> Fall 2023</span>
-        <span><i class="fas fa-tag"></i> CAD &amp; Mechanical Design</span>
-      </div>
-      <div class="tags" style="margin-top:20px;">
-        <span class="tag">CAD</span>
-        <span class="tag">SolidWorks</span>
-        <span class="tag">Mechanism Design</span>
-        <span class="tag">Intro Engineering</span>
-      </div>
+    <div class="sd-tags">
+      <span>CAD</span>
+      <span>SolidWorks</span>
+      <span>Mechanism Design</span>
+      <span>GD&amp;T</span>
+      <span>Intro Engineering</span>
     </div>
-  </section>
+  </div>
+</div>
 
-  <section style="padding-top:0;">
-    <div class="container">
-      <div class="project-body-content">
-
-        <h3>Project Overview</h3>
-        <p>This was the final project for EML2023 (Computer Aided Graphics and Design) at the University of Florida, taught by Dr. Ashok V. Kumar — the course where I was formally taught SolidWorks and the fundamentals of solid modeling, assembly design, and GD&amp;T, though I was already fairly comfortable with CAD going in. The assignment was open-ended: independently design any slicing mechanism and fully model it. I designed a hand-powered potato slicer built to cut French fries quickly in a home kitchen, submitted November 28, 2023.</p>
-
-        <h3>Design Objective</h3>
-        <p>The goal was a slicer that could cut small-to-medium potatoes (1.5–3 in / 38–76 mm diameter) into 1/4-inch French fries, compact enough to store under a cabinet like a mixer or food processor. Slices needed to drop directly into a detachable storage container, with the container and blades both removable and dishwasher-safe. I also constrained the design to very few parts and minimal assembly — fewer parts means fewer places for grime to collect — and required the cutting action itself to be entirely user-powered, with no levers, gears, or other mechanisms doing the work.</p>
-
-        <h3>Concept Selection</h3>
-        <p>My first idea was a guillotine — a blade slamming down to actively cut the potato. It was simple and fully hand-powered, but I couldn't find a clean way to deposit the slices into a container, so I abandoned it before it ever got sketched. I revised it into a <strong>reverse guillotine</strong>: instead of the blade moving, a pusher plate pushes the potato down onto stationary blades, cutting passively. The plate rides in slots — I started with square slots, then switched to a dovetail profile for better guidance — and the whole cutting mechanism sits at a 35° angle to the top plane so gravity naturally holds the potato in place and keeps it from falling out or misaligning.</p>
-
-        <div class="media-grid cols-2">
-          <figure class="media-figure">
-            <img src="../images/potato-slicer/concept-01.jpg" alt="Potato slicer main body sketch — right section view">
-            <figcaption>Main body concept — right-section view showing the angled pusher/blade path and dovetail slot detail</figcaption>
-          </figure>
-          <figure class="media-figure">
-            <img src="../images/potato-slicer/concept-02.jpg" alt="Potato slicer front auxiliary and section view sketch">
-            <figcaption>Front auxiliary view and right-side section — pusher plate sliding down onto the blade grid</figcaption>
-          </figure>
-        </div>
-
-        <p>I later added return springs, housed in the same slots the pusher plate runs in, so the plate snaps back to the top on its own after each cut — pushing is easier than pulling, so I let the spring do the harder job. For the blades, I wanted them removable and dishwasher-safe, so they sit in a rectangular slot that lines them up flush with the back face of the slicer in a roughly 1/4-inch square grid pattern, held in place by gravity and friction, with a handle on one end (with a hole for wall storage) for easy insertion and removal.</p>
-
-        <div class="media-grid cols-2">
-          <figure class="media-figure">
-            <img src="../images/potato-slicer/concept-04.jpg" alt="Potato slicer blade component sketch — interchangeable grid blades">
-            <figcaption>Blade component — interchangeable 1/4-in and 3/8-in grid blades in the removable slot</figcaption>
-          </figure>
-          <figure class="media-figure">
-            <img src="../images/potato-slicer/concept-03.jpg" alt="Potato slicer basket drawer sketch">
-            <figcaption>Basket/drawer concept — pull-out design with undercut handle and guide ledge</figcaption>
-          </figure>
-        </div>
-
-        <p>The basket shared the same requirements as the blade component: removable, dishwasher-safe, and sized to hold a useful amount of fries. I settled on a drawer that slides into a slot on the main body, with a handle that has a semi-circle undercut to make it easy to pull out and empty.</p>
-
-        <h3>Assembly</h3>
-        <p>The main body is the base of the whole slicer and, because of its complex angled geometry, is designed to be 3D-printed rather than injection molded. The springs are off-the-shelf, paired with injection-molded spring covers that press-fit into slots on either side of the main body (with adhesive at the base to keep them from working loose over time) to form the return-spring subassembly. From there, the blade and basket components simply slide into their dedicated slots with free-running clearance — no tools required, and both can be pulled back out just as easily for cleaning.</p>
-
-        <h3>Operation</h3>
-        <p>With the blade and basket fully seated, a potato is placed in the angled slot at the center of the main body, where gravity holds it in position. The user aligns the pusher plate with the top slots and spring covers and applies steady downward force — the springs compress as the plate travels down the dovetail slots and guide it back up once the cut is complete. Fry slices drop straight into the basket below, and the process repeats until the basket is full.</p>
-
-        <h3>Materials</h3>
-        <p>All components other than the springs are ABS (acrylonitrile butadiene styrene) with a polycarbonate coating — ABS is inexpensive, common in food-contact manufacturing, and strong enough for both injection molding and 3D printing, while the PC coating keeps it food-safe. The blades and springs are 304 stainless steel for its low cost, corrosion resistance, and standard use in food production equipment.</p>
-
-        <h3>Key Takeaways</h3>
-        <ul>
-          <li><strong>Solid Modeling Fundamentals:</strong> EML2023 formally taught me SolidWorks — part studios, mate relationships, and driven dimensions — building on CAD instincts I already had going in.</li>
-          <li><strong>Design-for-Assembly:</strong> Constraining myself to few parts and simple, tool-free assembly shaped every downstream decision, from the dovetail slots to the drawer-style basket.</li>
-          <li><strong>Passive Mechanism Reasoning:</strong> The reverse-guillotine concept came from iterating past a design that couldn't solve its own deposit problem — a reminder to pressure-test an idea's weakest link early.</li>
-          <li><strong>Material Selection:</strong> First project where I had to justify material choices (ABS+PC, 304 stainless) against real constraints like food safety, cost, and manufacturability.</li>
-        </ul>
-
-        <div style="margin-top:48px;display:flex;gap:16px;flex-wrap:wrap;">
-          <a href="https://docs.google.com/document/d/1qPwu-U8ONhNgBc7jWFGIJqTu3a-2TT03rieIqW53fNk/edit?usp=sharing" target="_blank" rel="noopener" class="btn"><i class="fas fa-file-alt"></i> View Full Design Report</a>
-          <a href="../projects.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> All Projects</a>
-        </div>
-      </div>
+<!-- OVERVIEW -->
+<div class="sd-section">
+  <div class="sd-overview-grid">
+    <div>
+      <h2 class="sd-h2">Project Overview</h2>
+      <p>Final project for EML2023 (Computer Aided Graphics and Design) at the University of Florida, taught by Dr. Ashok V. Kumar — the course where I was formally taught SolidWorks and the fundamentals of solid modeling, assembly design, and GD&amp;T, though I was already fairly comfortable with CAD going in. The assignment was open-ended: independently design any slicing mechanism and fully model it. I designed a hand-powered potato slicer built to cut French fries quickly in a home kitchen, submitted November 28, 2023.</p>
     </div>
-  </section>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-links">
-        <a href="https://www.linkedin.com/in/jstfleur" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.3dprintclub.org" target="_blank"><i class="fas fa-print"></i></a>
-        <a href="mailto:Jeremiahstfleur@ufl.edu"><i class="fas fa-envelope"></i></a>
-      </div>
-      <p class="footer-copy">&copy; <span id="currentYear"></span> Jeremiah L. St. Fleur. All rights reserved.</p>
+    <div class="sd-img-card">
+      <img src="../images/potato-slicer/concept-01.jpg" alt="Main body concept sketch — right section view">
+      <div class="sd-img-cap">Main body — right-section view, angled pusher/blade path</div>
     </div>
-  </footer>
+  </div>
+</div>
 
-  <script src="../js/main.js"></script>
+<!-- DESIGN SKETCHES -->
+<div class="sd-section-light">
+  <div style="margin-bottom:8px">
+    <h2 class="sd-h2">Design Sketches &amp; Development</h2>
+    <p class="sd-lead">Hand sketches developed before modeling — mechanism layout, blade grid, and basket geometry.</p>
+  </div>
+
+  <div class="sd-carousel" id="psCarousel">
+    <div class="sd-carousel-track" id="psTrack">
+      <figure>
+        <img src="../images/potato-slicer/concept-01.jpg" alt="Main body sketch — right section view">
+        <figcaption>Main body concept — right-section view showing the angled pusher/blade path and dovetail slot detail</figcaption>
+      </figure>
+      <figure>
+        <img src="../images/potato-slicer/concept-02.jpg" alt="Front auxiliary and section view sketch">
+        <figcaption>Front auxiliary view and right-side section — pusher plate sliding down onto the blade grid</figcaption>
+      </figure>
+      <figure>
+        <img src="../images/potato-slicer/concept-03.jpg" alt="Basket drawer sketch">
+        <figcaption>Basket/drawer concept — pull-out design with undercut handle and guide ledge</figcaption>
+      </figure>
+      <figure>
+        <img src="../images/potato-slicer/concept-04.jpg" alt="Blade component sketch — interchangeable grid blades">
+        <figcaption>Blade component — interchangeable 1/4-in and 3/8-in grid blades in the removable slot</figcaption>
+      </figure>
+    </div>
+    <button class="sd-carousel-btn prev" id="psPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+    <button class="sd-carousel-btn next" id="psNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+  </div>
+  <div class="sd-carousel-dots" id="psDots">
+    <button class="active" aria-label="Slide 1"></button>
+    <button aria-label="Slide 2"></button>
+    <button aria-label="Slide 3"></button>
+    <button aria-label="Slide 4"></button>
+  </div>
+</div>
+
+<!-- DESIGN PARAMETERS -->
+<div class="sd-section">
+  <div style="margin-bottom:32px">
+    <h2 class="sd-h2">Design Parameters</h2>
+  </div>
+  <div class="sd-specs-grid">
+    <div class="sd-spec-card">
+      <div class="s-label">Cutting Output</div>
+      <div class="s-value">1/4" Fry Cut</div>
+      <div class="s-sub">Interchangeable 1/4" &amp; 3/8" blade grids</div>
+    </div>
+    <div class="sd-spec-card">
+      <div class="s-label">Potato Size</div>
+      <div class="s-value">1.5–3 in. dia.</div>
+      <div class="s-sub">Small to medium potatoes</div>
+    </div>
+    <div class="sd-spec-card">
+      <div class="s-label">Mechanism</div>
+      <div class="s-value">Reverse Guillotine</div>
+      <div class="s-sub">Hand-powered, spring-return pusher plate</div>
+    </div>
+    <div class="sd-spec-card">
+      <div class="s-label">Cutting Angle</div>
+      <div class="s-value">35°</div>
+      <div class="s-sub">Gravity-aligned potato slot</div>
+    </div>
+    <div class="sd-spec-card">
+      <div class="s-label">Body Material</div>
+      <div class="s-value">ABS + PC Coating</div>
+      <div class="s-sub">3D-printed, food-safe</div>
+    </div>
+    <div class="sd-spec-card">
+      <div class="s-label">Blade / Spring Material</div>
+      <div class="s-value">304 Stainless Steel</div>
+      <div class="s-sub">Corrosion &amp; heat resistant</div>
+    </div>
+  </div>
+</div>
+
+<!-- DESIGN NARRATIVE -->
+<div class="sd-section-light">
+  <div style="margin-bottom:26px">
+    <h2 class="sd-h2">From Guillotine to Reverse Guillotine</h2>
+  </div>
+  <div class="sd-narrative">
+    <p>My first idea was a guillotine — a blade slamming down to actively cut the potato. It was simple and fully hand-powered, but I couldn't find a clean way to deposit the slices into a container, so I abandoned it before it ever got sketched. I revised it into a <strong>reverse guillotine</strong>: instead of the blade moving, a pusher plate pushes the potato down onto stationary blades, cutting passively. The plate rides in slots — I started with square slots, then switched to a dovetail profile for better guidance — and the whole cutting mechanism sits at a 35° angle to the top plane so gravity naturally holds the potato in place and keeps it from falling out or misaligning.</p>
+    <p>I later added return springs, housed in the same slots the pusher plate runs in, so the plate snaps back to the top on its own after each cut — pushing is easier than pulling, so I let the spring do the harder job. For the blades, I wanted them removable and dishwasher-safe, so they sit in a rectangular slot that lines them up flush with the back face of the slicer in a roughly 1/4-inch square grid pattern, held in place by gravity and friction, with a handle on one end (with a hole for wall storage) for easy insertion and removal. The basket shared the same requirements: removable, dishwasher-safe, and sized to hold a useful amount of fries. I settled on a drawer that slides into a slot on the main body, with a handle that has a semi-circle undercut to make it easy to pull out and empty.</p>
+    <p><strong>Assembly:</strong> the main body is the base of the whole slicer and, because of its complex angled geometry, is designed to be 3D-printed rather than injection molded. The springs are off-the-shelf, paired with injection-molded spring covers that press-fit into slots on either side of the main body (with adhesive at the base to keep them from working loose over time) to form the return-spring subassembly. From there, the blade and basket components simply slide into their dedicated slots with free-running clearance — no tools required, and both can be pulled back out just as easily for cleaning.</p>
+    <p><strong>Operation:</strong> with the blade and basket fully seated, a potato is placed in the angled slot at the center of the main body, where gravity holds it in position. The user aligns the pusher plate with the top slots and spring covers and applies steady downward force — the springs compress as the plate travels down the dovetail slots and guide it back up once the cut is complete. Fry slices drop straight into the basket below, and the process repeats until the basket is full.</p>
+  </div>
+</div>
+
+<!-- FULL DESIGN REPORT -->
+<div class="sd-section">
+  <div style="margin-bottom:26px">
+    <h2 class="sd-h2">Full Design Report</h2>
+    <p class="sd-lead">Complete write-up submitted for EML2023 — objective, concept selection, assembly, operation, and material justification.</p>
+  </div>
+  <div class="sd-doc-card">
+    <div class="doc-header">
+      <span class="doc-title">Final Project Potato Slicer — Jeremiah L. St. Fleur</span>
+      <a href="https://docs.google.com/document/d/1qPwu-U8ONhNgBc7jWFGIJqTu3a-2TT03rieIqW53fNk/edit?usp=sharing" target="_blank" rel="noopener">Open in Google Docs <i class="fas fa-up-right-from-square"></i></a>
+    </div>
+    <iframe src="https://docs.google.com/document/d/1qPwu-U8ONhNgBc7jWFGIJqTu3a-2TT03rieIqW53fNk/preview" title="Potato Slicer Design Report" loading="lazy"></iframe>
+  </div>
+</div>
+
+<!-- KEY TAKEAWAYS -->
+<div class="sd-section-light">
+  <div style="margin-bottom:26px">
+    <h2 class="sd-h2">Key Takeaways</h2>
+  </div>
+  <ul class="sd-takeaways">
+    <li><strong>Solid Modeling Fundamentals:</strong> EML2023 formally taught me SolidWorks — part studios, mate relationships, and driven dimensions — building on CAD instincts I already had going in.</li>
+    <li><strong>Design-for-Assembly:</strong> Constraining myself to few parts and simple, tool-free assembly shaped every downstream decision, from the dovetail slots to the drawer-style basket.</li>
+    <li><strong>Passive Mechanism Reasoning:</strong> The reverse-guillotine concept came from iterating past a design that couldn't solve its own deposit problem — a reminder to pressure-test an idea's weakest link early.</li>
+    <li><strong>Material Selection:</strong> First project where I had to justify material choices (ABS+PC, 304 stainless) against real constraints like food safety, cost, and manufacturability.</li>
+  </ul>
+</div>
+
+<!-- FOOTER NAV -->
+<div class="sd-footer-nav">
+  <a href="../projects.html" class="all-projects"><i class="fas fa-arrow-left"></i> All Projects</a>
+  <div style="text-align:right">
+    <div class="next-label">Next Project</div>
+    <a href="mil-rover.html" class="next-link">TerraGator Autonomous UGV <i class="fas fa-arrow-right"></i></a>
+  </div>
+</div>
+
+<!-- SITE FOOTER -->
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="https://linkedin.com/in/jstfleur" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <a href="https://github.com/SaintFStudios" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    <a href="https://3dprintclub.org" target="_blank"><i class="fas fa-print"></i> 3D Print Club</a>
+    <a href="mailto:Jeremiahstfleur@ufl.edu"><i class="fas fa-envelope"></i> Email</a>
+  </div>
+  <p>&copy; <span id="currentYear"></span> Jeremiah St. Fleur</p>
+</footer>
+
+<script>
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+  (function () {
+    var track = document.getElementById('psTrack');
+    var dots = Array.from(document.querySelectorAll('#psDots button'));
+    var current = 0;
+    var total = dots.length;
+    function goTo(i) {
+      current = (i + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach(function (d, idx) { d.classList.toggle('active', idx === current); });
+    }
+    document.getElementById('psPrev').addEventListener('click', function () { goTo(current - 1); });
+    document.getElementById('psNext').addEventListener('click', function () { goTo(current + 1); });
+    dots.forEach(function (d, i) { d.addEventListener('click', function () { goTo(i); }); });
+  })();
+</script>
 </body>
 </html>
