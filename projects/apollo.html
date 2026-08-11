@@ -1,121 +1,387 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <template id="__bundler_thumbnail" data-bg-color="#0d1b2e">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="800" fill="#0d1b2e"/>
+      <circle cx="600" cy="400" r="180" fill="#1e3a5f"/>
+      <path d="M600 220 L660 460 L600 500 L540 460 Z" fill="#f39c12"/>
+      <circle cx="600" cy="300" r="40" fill="#0d1b2e"/>
+    </svg>
+  </template>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apollo 11 3D Animation | Jeremiah L. St. Fleur</title>
+  <title>Apollo 11 3D Animation — Jeremiah St. Fleur</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Outfit', sans-serif; background: #fff; color: #2d3436; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: #4a90e2; text-decoration: none; transition: color 0.2s; }
+    a:hover { color: #d35400; }
+    img { max-width: 100%; display: block; }
+
+    /* NAV */
+    .ap-nav { background: rgba(30,58,95,0.97); padding: 18px 48px; display: flex; align-items: center; justify-content: space-between; }
+    .ap-nav .logo { font: 800 1.4rem 'Outfit', sans-serif; color: #f39c12; letter-spacing: -0.02em; text-decoration: none; }
+    .ap-nav .logo span { color: #4a90e2; }
+    .ap-nav .nav-links { display: flex; gap: 28px; align-items: center; }
+    .ap-nav .nav-links a { font: 500 0.9rem 'Outfit', sans-serif; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .ap-nav .nav-links a:hover { color: #fff; }
+    .ap-nav .nav-links a.active { color: #f39c12; padding-bottom: 3px; border-bottom: 2px solid #f39c12; }
+
+    /* HERO */
+    .ap-hero { position: relative; overflow: hidden; min-height: 420px; display: flex; flex-direction: column; justify-content: flex-end; }
+    .ap-hero img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+    .ap-hero .overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(5,10,20,0.96) 0%, rgba(13,27,46,0.90) 55%, rgba(30,58,95,0.78) 100%); }
+    .ap-hero .content { position: relative; padding: 56px 48px 52px; }
+    .ap-hero .back-link { display: flex; align-items: center; gap: 6px; font: 500 0.82rem 'Outfit', sans-serif; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 22px; width: fit-content; }
+    .ap-hero .back-link:hover { color: rgba(255,255,255,0.8); }
+    .ap-hero .label { color: #f39c12; font: 500 0.88rem 'Outfit', sans-serif; display: flex; align-items: center; gap: 6px; font-style: italic; margin-bottom: 14px; }
+    .ap-hero h1 { font: 800 2.8rem 'Outfit', sans-serif; letter-spacing: -0.03em; line-height: 1.1; color: white; margin-bottom: 6px; }
+    .ap-hero .subtitle { font: 400 1rem 'Outfit', sans-serif; color: rgba(243,156,18,0.85); margin-bottom: 14px; }
+    .ap-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+    .ap-meta span { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.8); font: 500 0.82rem 'Outfit', sans-serif; padding: 6px 14px; border-radius: 30px; display: flex; align-items: center; gap: 6px; }
+    .ap-meta span i { color: #f39c12; }
+    .ap-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .ap-tags span { background: rgba(243,156,18,0.18); border: 1px solid rgba(243,156,18,0.35); color: #f39c12; font: 600 0.76rem 'Outfit', sans-serif; padding: 4px 12px; border-radius: 20px; }
+
+    /* SECTIONS */
+    .ap-section { padding: 60px 48px; }
+    .ap-section-light { background: #f0f6fb; padding: 60px 48px; }
+    .ap-h2 { font: 700 1.55rem 'Outfit', sans-serif; color: #1e3a5f; letter-spacing: -0.02em; margin-bottom: 16px; }
+
+    /* OVERVIEW */
+    .ap-overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+    .ap-overview-grid p { font: 400 1.05rem 'Outfit', sans-serif; color: #4a5568; line-height: 1.9; margin-bottom: 14px; }
+    .ap-overview-grid p:last-child { margin-bottom: 0; }
+    .ap-img-card { border-radius: 10px; overflow: hidden; box-shadow: 0 8px 32px rgba(30,58,95,0.14); border: 1px solid #dee2e6; }
+    .ap-img-card img { width: 100%; height: 340px; object-fit: cover; display: block; }
+    .ap-img-cap { padding: 10px 16px; background: #f8f9fa; font: 400 0.78rem 'JetBrains Mono', monospace; color: #718096; border-top: 1px solid #dee2e6; }
+
+    /* CAROUSEL */
+    .ap-carousel { position: relative; overflow: hidden; border-radius: 10px; border: 1px solid #dee2e6; }
+    .ap-carousel-track { display: flex; transition: transform 0.4s ease; }
+    .ap-carousel-track figure { min-width: 100%; margin: 0; overflow: hidden; }
+    .ap-carousel-track figure img { width: 100%; height: 440px; object-fit: cover; display: block; }
+    .ap-carousel-track figure figcaption { padding: 10px 14px; font: 400 0.75rem 'JetBrains Mono', monospace; color: #718096; border-top: 1px solid #dee2e6; background: #fff; }
+    .ap-carousel-btn { position: absolute; top: calc(50% - 20px); transform: translateY(-50%); width: 38px; height: 38px; border-radius: 50%; background: #1e3a5f; border: none; color: white; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.35); transition: background 0.2s; }
+    .ap-carousel-btn:hover { background: #d35400; }
+    .ap-carousel-btn.prev { left: 10px; }
+    .ap-carousel-btn.next { right: 10px; }
+    .ap-carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 12px; }
+    .ap-carousel-dots button { width: 8px; height: 8px; border-radius: 50%; border: none; background: #dee2e6; cursor: pointer; padding: 0; transition: background 0.2s; }
+    .ap-carousel-dots button.active { background: #1e3a5f; }
+
+    /* SCOPE CARDS */
+    .ap-specs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .ap-spec-card { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 10px; padding: 20px 18px; border-top: 3px solid #d35400; }
+    .ap-spec-card .s-label { font: 600 0.7rem 'JetBrains Mono', monospace; color: #718096; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+    .ap-spec-card .s-value { font: 700 1.05rem 'Outfit', sans-serif; color: #1e3a5f; margin-bottom: 3px; }
+    .ap-spec-card .s-sub { font: 400 0.8rem 'Outfit', sans-serif; color: #718096; }
+
+    /* CHALLENGES GRID */
+    .ap-docs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .ap-doc-card { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 10px; padding: 22px 20px; }
+    .ap-doc-card .d-label { font: 600 0.7rem 'JetBrains Mono', monospace; color: #d35400; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+    .ap-doc-card ul { list-style: none; }
+    .ap-doc-card ul li { font: 400 0.88rem 'Outfit', sans-serif; color: #4a5568; padding: 5px 0 5px 16px; position: relative; border-bottom: 1px dashed #dee2e6; line-height: 1.6; }
+    .ap-doc-card ul li:last-child { border-bottom: none; }
+    .ap-doc-card ul li::before { content: ''; position: absolute; left: 0; top: 13px; width: 6px; height: 6px; border-radius: 50%; background: #f39c12; }
+    .ap-doc-card ul li strong { color: #1e3a5f; }
+
+    /* OUTCOME */
+    .ap-outcome-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .ap-outcome-list li { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 16px 18px 16px 44px; position: relative; font: 400 0.92rem 'Outfit', sans-serif; color: #4a5568; line-height: 1.6; }
+    .ap-outcome-list li::before { content: ''; position: absolute; left: 18px; top: 20px; width: 8px; height: 8px; border-radius: 50%; background: #f39c12; }
+    .ap-outcome-list li strong { color: #1e3a5f; }
+
+    /* FOOTER NAV */
+    .ap-footer-nav { background: #f0f6fb; padding: 36px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 3px solid #1e3a5f; }
+    .ap-footer-nav .all-projects { display: flex; align-items: center; gap: 8px; font: 600 0.88rem 'Outfit', sans-serif; color: #4a90e2; text-decoration: none; }
+    .ap-footer-nav .all-projects:hover { color: #1e3a5f; }
+    .ap-footer-nav .next-label { font: 400 0.72rem 'JetBrains Mono', monospace; color: #718096; margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .ap-footer-nav .next-link { font: 700 0.95rem 'Outfit', sans-serif; color: #1e3a5f; display: flex; align-items: center; gap: 6px; justify-content: flex-end; text-decoration: none; }
+    .ap-footer-nav .next-link:hover { color: #d35400; }
+    .ap-footer-nav .next-link i { color: #d35400; font-size: 0.82rem; }
+
+    .site-footer { background: #0d1b2e; padding: 32px 48px; text-align: center; }
+    .site-footer .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 12px; }
+    .site-footer .footer-links a { font: 500 0.85rem 'Outfit', sans-serif; color: rgba(255,255,255,0.5); text-decoration: none; }
+    .site-footer .footer-links a:hover { color: #f39c12; }
+    .site-footer p { font: 400 0.78rem 'Outfit', sans-serif; color: rgba(255,255,255,0.25); }
+
+    @media (max-width: 900px) {
+      .ap-nav { padding: 16px 24px; }
+      .ap-hero .content { padding: 40px 24px 36px; }
+      .ap-overview-grid { grid-template-columns: 1fr; gap: 24px; }
+      .ap-specs-grid { grid-template-columns: 1fr 1fr; }
+      .ap-docs-grid { grid-template-columns: 1fr; }
+      .ap-outcome-list { grid-template-columns: 1fr; }
+      .ap-section, .ap-section-light { padding: 40px 24px; }
+      .ap-footer-nav { padding: 28px 24px; flex-direction: column; gap: 16px; align-items: flex-start; }
+    }
+    @media (max-width: 580px) {
+      .ap-nav .nav-links { display: none; }
+      .ap-specs-grid { grid-template-columns: 1fr; }
+      .ap-hero h1 { font-size: 2rem; }
+      .ap-carousel-track figure img { height: 260px; }
+    }
+  </style>
 </head>
 <body>
 
-  <nav class="site-nav">
-    <div class="container nav-inner">
-      <a href="../index.html" class="nav-logo">J<span>.</span>StFleur</a>
-      <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
-      <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../projects.html">Projects</a></li>
-        <li><a href="../teams.html">Teams</a></li>
-        <li><a href="../gallery.html">Gallery</a></li>
-        <li><a href="../contact.html">Contact</a></li>
-      </ul>
+<!-- NAV -->
+<nav class="ap-nav">
+  <a href="../index.html" class="logo">J<span>.</span>StFleur</a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../projects.html" class="active">Projects</a>
+    <a href="../teams.html">Teams</a>
+    <a href="../gallery.html">Gallery</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="ap-hero">
+  <img class="bg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Apollo_11_Saturn_V_SN_SA506_%2869-HC-620%29.jpg" alt="Saturn V on launchpad">
+  <div class="overlay"></div>
+  <div class="content">
+    <a href="../projects.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+    <div class="label"><i class="fas fa-rocket"></i> MITES Summer Intensive &mdash; MIT</div>
+    <h1>Apollo 11 3D Animation</h1>
+    <div class="subtitle">Saturn V Launch &middot; Lunar Transit &middot; Eagle's Descent</div>
+    <div class="ap-meta">
+      <span><i class="fas fa-calendar"></i> Summer 2023</span>
+      <span><i class="fas fa-tag"></i> 3D Animation &amp; Visual Storytelling</span>
     </div>
-  </nav>
-
-  <section class="project-hero">
-    <div class="container">
-      <a href="../projects.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
-      <div class="hero-label"><i class="fas fa-rocket"></i> MITES Summer Intensive &mdash; MIT</div>
-      <h1 style="font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;">Apollo 11 <span>3D Animation</span></h1>
-      <p style="color:var(--text-secondary);max-width:640px;font-size:1.05rem;">A fully original 3D animated recreation of the Apollo 11 Saturn V launch and lunar landing, built from scratch in Autodesk Maya over 6 weeks as part of the MITES summer program at MIT.</p>
-      <div class="project-meta">
-        <span><i class="fas fa-calendar"></i> Summer 2023</span>
-        <span><i class="fas fa-tag"></i> 3D Animation &amp; Visual Storytelling</span>
-      </div>
-      <div class="tags" style="margin-top:20px;">
-        <span class="tag">Autodesk Maya</span>
-        <span class="tag">3D Modeling</span>
-        <span class="tag">Animation</span>
-        <span class="tag">MITES @ MIT</span>
-        <span class="tag">Rendering</span>
-      </div>
+    <div class="ap-tags">
+      <span>Autodesk Maya</span>
+      <span>3D Modeling</span>
+      <span>Keyframe Animation</span>
+      <span>MITES @ MIT</span>
+      <span>Rendering</span>
     </div>
-  </section>
+  </div>
+</div>
 
-  <section style="padding-top:0;">
-    <div class="container">
-      <div class="project-body-content">
+<!-- OVERVIEW -->
+<div class="ap-section">
+  <div class="ap-overview-grid">
+    <div>
+      <h2 class="ap-h2">Program Context</h2>
+      <p>MITES (Minority Introduction to Engineering and Science) is a rigorous six-week residential STEM program hosted at MIT. Accepted students take college-level courses, work on intensive projects, and engage with researchers and engineers across disciplines. I was selected to participate in the summer of 2023.</p>
+      <p>As part of the program, I enrolled in a 3D animation and visual storytelling course where the capstone deliverable was a fully original animated short — modeled, rigged, lit, and rendered from scratch with no pre-built assets.</p>
+    </div>
+    <div class="ap-img-card">
+      <img src="https://images-assets.nasa.gov/image/as11-40-5931/as11-40-5931~orig.jpg" alt="Buzz Aldrin on the lunar surface — Apollo 11">
+      <div class="ap-img-cap">NASA &mdash; Buzz Aldrin on the lunar surface, Apollo 11 (July 20, 1969)</div>
+    </div>
+  </div>
+</div>
 
-        <h3>Program Context</h3>
-        <p>MITES (Minority Introduction to Engineering and Science) is a rigorous six-week residential STEM enrichment program hosted at MIT. Accepted students take college-level courses, work on intensive projects, and engage with researchers and engineers across disciplines. I was selected to participate in the summer of 2023.</p>
-        <p>As part of the program, I enrolled in a 3D animation and visual storytelling course where the capstone deliverable was a fully original animated short — modeled, rigged, lit, and rendered entirely from scratch with no pre-built assets.</p>
+<!-- NASA REFERENCE GALLERY -->
+<div class="ap-section-light">
+  <div style="margin-bottom:32px">
+    <h2 class="ap-h2">Apollo 11 &mdash; Historical Reference</h2>
+    <p style="font:400 0.9rem 'Outfit',sans-serif;color:#718096;margin-top:4px">NASA imagery used as primary visual reference throughout the project — guiding rocket geometry, launch sequence timing, and lunar surface environment.</p>
+  </div>
 
-        <h3>Project Scope &amp; Timeline</h3>
-        <ul>
-          <li><strong>Duration:</strong> 6 weeks, beginning with zero prior Maya experience</li>
-          <li><strong>Software:</strong> Autodesk Maya (modeling, rigging, animation, rendering)</li>
-          <li><strong>Subject:</strong> Apollo 11 mission — Saturn V launch through lunar landing</li>
-          <li><strong>Deliverable:</strong> Fully rendered animated short film, original soundtrack</li>
-          <li><strong>Assets:</strong> All 3D models, environments, and materials built from scratch</li>
-        </ul>
+  <div class="ap-carousel" id="apCarousel">
+    <div class="ap-carousel-track" id="apTrack">
+      <figure>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Apollo_11_Saturn_V_SN_SA506_%2869-HC-620%29.jpg" alt="Saturn V on Launch Complex 39A">
+        <figcaption>Saturn V on Launch Complex 39A &mdash; dawn, Kennedy Space Center</figcaption>
+      </figure>
+      <figure>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Apollo_11_Launch_-_GPN-2000-000630.jpg" alt="Apollo 11 Saturn V liftoff">
+        <figcaption>Saturn V liftoff &mdash; July 16, 1969, 9:32 AM EDT</figcaption>
+      </figure>
+      <figure>
+        <img src="https://images-assets.nasa.gov/image/as11-40-5931/as11-40-5931~orig.jpg" alt="Buzz Aldrin on the Moon">
+        <figcaption>Buzz Aldrin on the lunar surface &mdash; photographed by Neil Armstrong</figcaption>
+      </figure>
+      <figure>
+        <img src="https://images-assets.nasa.gov/image/as08-14-2383/as08-14-2383~orig.jpg" alt="Earthrise — Apollo 8">
+        <figcaption>Earthrise &mdash; Apollo 8, December 24, 1968 (environmental reference)</figcaption>
+      </figure>
+      <figure>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Apollo_11_lunar_module.jpg" alt="Eagle lunar module in orbit">
+        <figcaption>Eagle lunar module in lunar orbit &mdash; prior to descent</figcaption>
+      </figure>
+    </div>
+    <button class="ap-carousel-btn prev" id="apPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+    <button class="ap-carousel-btn next" id="apNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+  </div>
+  <div class="ap-carousel-dots" id="apDots">
+    <button class="active" aria-label="Slide 1"></button>
+    <button aria-label="Slide 2"></button>
+    <button aria-label="Slide 3"></button>
+    <button aria-label="Slide 4"></button>
+    <button aria-label="Slide 5"></button>
+  </div>
+</div>
 
-        <h3>Animation</h3>
-        <p>The animation covers the full Apollo 11 mission arc: pre-launch on the launchpad, Saturn V ignition and liftoff, stage separation in orbit, lunar transit, and the Eagle's descent to the lunar surface. Each sequence was keyframe-animated and rendered with attention to scale, lighting, and historical accuracy.</p>
-
-        <figure class="media-full">
-          <video controls poster="">
+<!-- ANIMATION -->
+<div class="ap-section">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:flex-start">
+    <div>
+      <h2 class="ap-h2">Original Animation</h2>
+      <p style="font:400 0.9rem 'Outfit',sans-serif;color:#718096;margin-top:6px;margin-bottom:18px">Full Apollo 11 mission arc — launchpad, Saturn V ignition, stage separation, lunar transit, and the Eagle's descent — keyframe-animated and rendered in Autodesk Maya.</p>
+      <div style="border:1px solid #dee2e6;border-radius:10px;overflow:hidden;background:#000">
+        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden">
+          <video controls style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000">
             <source src="../images/apollo/apollo-animation.mp4" type="video/mp4">
           </video>
-          <figcaption>Apollo 11 — original 3D animation created in Autodesk Maya (MITES @ MIT, Summer 2023)</figcaption>
-        </figure>
-
-        <h3>Reference Material</h3>
-        <p>Historical footage of the Apollo 11 mission served as the primary visual reference throughout the project, guiding the recreation of the Saturn V rocket geometry, launch sequence timing, and the lunar surface environment.</p>
-
-        <figure class="media-full">
-          <video controls>
-            <source src="../images/apollo/apollo-reference.mp4" type="video/mp4">
-          </video>
-          <figcaption>Apollo 11 — historical Saturn V launch and Moon landing reference footage</figcaption>
-        </figure>
-
-        <h3>Technical Challenges &amp; Solutions</h3>
-        <ul>
-          <li><strong>Zero Prior Experience:</strong> Learned Maya fundamentals — polygon modeling, UV unwrapping, material nodes, keyframe animation, and camera rigging — within the first two weeks while simultaneously developing the concept.</li>
-          <li><strong>Scale &amp; Proportion:</strong> Accurately representing the Saturn V (363 ft tall) relative to the launchpad and lunar module required careful reference study and scene unit management.</li>
-          <li><strong>Rocket Engine Exhaust:</strong> Simulated engine plume effects using Maya's particle and fluid systems — the most technically complex element of the project.</li>
-          <li><strong>Lunar Environment:</strong> Built a procedural lunar surface using displacement maps and custom shaders to achieve the correct low-albedo, cratered appearance without texture libraries.</li>
-          <li><strong>Render Optimization:</strong> Managed render times on shared lab hardware by optimizing polygon counts, using instancing for repeated geometry, and baking lighting where possible.</li>
-        </ul>
-
-        <h3>Outcome &amp; Reflection</h3>
-        <ul>
-          <li>Completed a polished, fully rendered animated short within the 6-week program timeline</li>
-          <li>Gained proficiency in Maya from zero — a skill that now informs how I think about 3D geometry in mechanical CAD</li>
-          <li>Presented the final animation to MITES faculty, staff, and peers at the end-of-program showcase</li>
-          <li>Experience deepened appreciation for the intersection of engineering accuracy and visual communication</li>
-        </ul>
-
-        <div style="margin-top:48px;">
-          <a href="../projects.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> All Projects</a>
+        </div>
+        <div style="padding:10px 16px;background:#1e3a5f;display:flex;align-items:center;gap:8px">
+          <i class="fas fa-video" style="color:#f39c12;font-size:0.8rem"></i>
+          <span style="font:400 0.75rem 'JetBrains Mono',monospace;color:rgba(255,255,255,0.45)">Apollo 11 Animation &mdash; Autodesk Maya, MITES @ MIT, Summer 2023</span>
         </div>
       </div>
     </div>
-  </section>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-links">
-        <a href="https://www.linkedin.com/in/jstfleur" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.3dprintclub.org" target="_blank"><i class="fas fa-print"></i></a>
-        <a href="mailto:Jeremiahstfleur@ufl.edu"><i class="fas fa-envelope"></i></a>
+    <div>
+      <h2 class="ap-h2">Reference Footage</h2>
+      <p style="font:400 0.9rem 'Outfit',sans-serif;color:#718096;margin-top:6px;margin-bottom:18px">Historical NASA footage of the actual Apollo 11 mission — primary source for rocket geometry, launch timing, and lunar surface environment design.</p>
+      <div style="border:1px solid #dee2e6;border-radius:10px;overflow:hidden;background:#000">
+        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden">
+          <iframe src="https://www.youtube.com/embed/UExTN3_UOIY" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Apollo 11 reference footage"></iframe>
+        </div>
+        <div style="padding:10px 16px;background:#1e3a5f;display:flex;align-items:center;gap:8px">
+          <i class="fas fa-film" style="color:#f39c12;font-size:0.8rem"></i>
+          <span style="font:400 0.75rem 'JetBrains Mono',monospace;color:rgba(255,255,255,0.45)">Apollo 11 &mdash; historical Saturn V launch &amp; lunar landing reference footage</span>
+        </div>
       </div>
-      <p class="footer-copy">&copy; <span id="currentYear"></span> Jeremiah L. St. Fleur. All rights reserved.</p>
     </div>
-  </footer>
+  </div>
+</div>
 
-  <script src="../js/main.js"></script>
+<!-- PROJECT SCOPE -->
+<div class="ap-section-light">
+  <div style="margin-bottom:32px">
+    <h2 class="ap-h2">Project Scope</h2>
+  </div>
+  <div class="ap-specs-grid">
+    <div class="ap-spec-card">
+      <div class="s-label">Duration</div>
+      <div class="s-value">6 Weeks</div>
+      <div class="s-sub">Zero prior Maya experience at start</div>
+    </div>
+    <div class="ap-spec-card">
+      <div class="s-label">Software</div>
+      <div class="s-value">Autodesk Maya</div>
+      <div class="s-sub">Modeling, rigging, animation, rendering</div>
+    </div>
+    <div class="ap-spec-card">
+      <div class="s-label">Subject</div>
+      <div class="s-value">Apollo 11 Mission</div>
+      <div class="s-sub">Saturn V launch through lunar landing</div>
+    </div>
+    <div class="ap-spec-card">
+      <div class="s-label">Deliverable</div>
+      <div class="s-value">Animated Short Film</div>
+      <div class="s-sub">Fully rendered, original soundtrack</div>
+    </div>
+    <div class="ap-spec-card">
+      <div class="s-label">Program</div>
+      <div class="s-value">MITES @ MIT</div>
+      <div class="s-sub">Summer 2023 intensive</div>
+    </div>
+    <div class="ap-spec-card">
+      <div class="s-label">Assets</div>
+      <div class="s-value">100% Original</div>
+      <div class="s-sub">All models, environments &amp; materials from scratch</div>
+    </div>
+  </div>
+</div>
+
+<!-- TECHNICAL CHALLENGES -->
+<div class="ap-section" style="background:#f8f9fa">
+  <div style="margin-bottom:28px">
+    <h2 class="ap-h2">Technical Challenges &amp; Solutions</h2>
+  </div>
+  <div class="ap-docs-grid">
+    <div class="ap-doc-card">
+      <div class="d-label">Modeling &amp; Scale</div>
+      <ul>
+        <li><strong>Zero Prior Experience:</strong> Learned polygon modeling, UV unwrapping, material nodes, keyframe animation, and camera rigging within the first two weeks</li>
+        <li><strong>Scale &amp; Proportion:</strong> Accurately representing the Saturn V (363 ft tall) relative to the launchpad required careful reference study and scene unit management</li>
+      </ul>
+    </div>
+    <div class="ap-doc-card">
+      <div class="d-label">VFX &amp; Environments</div>
+      <ul>
+        <li><strong>Rocket Engine Exhaust:</strong> Simulated engine plume effects using Maya's particle and fluid systems — the most technically complex element of the project</li>
+        <li><strong>Lunar Surface:</strong> Built a procedural lunar environment using displacement maps and custom shaders to achieve the correct low-albedo, cratered appearance without texture libraries</li>
+      </ul>
+    </div>
+    <div class="ap-doc-card">
+      <div class="d-label">Rendering &amp; Performance</div>
+      <ul>
+        <li><strong>Render Optimization:</strong> Managed render times on shared lab hardware by optimizing polygon counts, using instancing for repeated geometry, and baking lighting where possible</li>
+        <li><strong>Hardware Constraints:</strong> Delivered a full multi-sequence render on lab computers within the program's timeline</li>
+      </ul>
+    </div>
+    <div class="ap-doc-card">
+      <div class="d-label">Storytelling &amp; Accuracy</div>
+      <ul>
+        <li><strong>Historical Reference:</strong> Cross-referenced NASA footage and mission documentation to ensure accurate sequence timing across all five mission phases</li>
+        <li><strong>Camera Work:</strong> Developed multiple camera rigs to capture the scale contrast between the Saturn V and the lunar surface</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- OUTCOME -->
+<div class="ap-section">
+  <div style="margin-bottom:28px">
+    <h2 class="ap-h2">Outcome &amp; Reflection</h2>
+  </div>
+  <ul class="ap-outcome-list">
+    <li><strong>Delivered on time:</strong> Completed a polished, fully rendered animated short within the 6-week program timeline</li>
+    <li><strong>Skill acquisition:</strong> Gained Maya proficiency from zero — a skill that now informs how I think about 3D geometry in mechanical CAD</li>
+    <li><strong>Presented publicly:</strong> Screened the final animation at the MITES end-of-program showcase for faculty, staff, and peers</li>
+    <li><strong>Cross-disciplinary insight:</strong> Deepened appreciation for the intersection of engineering accuracy and visual communication</li>
+  </ul>
+</div>
+
+<!-- FOOTER NAV -->
+<div class="ap-footer-nav">
+  <a href="../projects.html" class="all-projects"><i class="fas fa-arrow-left"></i> All Projects</a>
+  <div style="text-align:right">
+    <div class="next-label">Next Project</div>
+    <a href="scan-drone.html" class="next-link">S.C.A.N. Drone <i class="fas fa-arrow-right"></i></a>
+  </div>
+</div>
+
+<!-- SITE FOOTER -->
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="https://linkedin.com/in/jstfleur" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <a href="https://github.com/SaintFStudios" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    <a href="https://3dprintclub.org" target="_blank"><i class="fas fa-print"></i> 3D Print Club</a>
+    <a href="mailto:Jeremiahstfleur@ufl.edu"><i class="fas fa-envelope"></i> Email</a>
+  </div>
+  <p>&copy; <span id="currentYear"></span> Jeremiah St. Fleur</p>
+</footer>
+
+<script>
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+  (function () {
+    var track = document.getElementById('apTrack');
+    var dots = document.querySelectorAll('#apDots button');
+    var current = 0;
+    var total = dots.length;
+    function goTo(i) {
+      current = (i + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach(function (d, idx) { d.classList.toggle('active', idx === current); });
+    }
+    document.getElementById('apPrev').addEventListener('click', function () { goTo(current - 1); });
+    document.getElementById('apNext').addEventListener('click', function () { goTo(current + 1); });
+    dots.forEach(function (d, i) { d.addEventListener('click', function () { goTo(i); }); });
+  })();
+</script>
 </body>
 </html>
