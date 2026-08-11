@@ -26,16 +26,16 @@
   <section class="project-hero">
     <div class="container">
       <a href="../projects.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
-      <div class="hero-label"><i class="fas fa-drafting-compass"></i> Course Project (EGN2020C)</div>
+      <div class="hero-label"><i class="fas fa-drafting-compass"></i> Course Project (EML2023)</div>
       <h1 style="font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;">Potato Slicer <span>CAD Design</span></h1>
-      <p style="color:var(--text-secondary);max-width:640px;font-size:1.05rem;">An introductory CAD project designing a fully modeled, self-conceived potato slicer mechanism — my first exposure to parametric 3D modeling.</p>
+      <p style="color:var(--text-secondary);max-width:640px;font-size:1.05rem;">A self-conceived, hand-powered French fry slicer designed and fully modeled in SolidWorks — final project for EML2023, my first real exposure to solid modeling and GD&amp;T.</p>
       <div class="project-meta">
         <span><i class="fas fa-calendar"></i> Fall 2023</span>
         <span><i class="fas fa-tag"></i> CAD &amp; Mechanical Design</span>
       </div>
       <div class="tags" style="margin-top:20px;">
         <span class="tag">CAD</span>
-        <span class="tag">Onshape</span>
+        <span class="tag">SolidWorks</span>
         <span class="tag">Mechanism Design</span>
         <span class="tag">Intro Engineering</span>
       </div>
@@ -47,67 +47,59 @@
       <div class="project-body-content">
 
         <h3>Project Overview</h3>
-        <p>As part of EGN2020C (Introduction to Engineering Concepts), students were tasked with independently designing any slicing mechanism of their choice and fully modeling it in CAD. I designed a potato slicer from scratch — conceiving the mechanism layout, sketching initial concepts, and building out a complete parametric model in Onshape. This was my first significant exposure to 3D parametric CAD modeling.</p>
+        <p>This was the final project for EML2023 (Computer Aided Graphics and Design) at the University of Florida, taught by Dr. Ashok V. Kumar — the course where I was formally taught SolidWorks and the fundamentals of solid modeling, assembly design, and GD&amp;T, though I was already fairly comfortable with CAD going in. The assignment was open-ended: independently design any slicing mechanism and fully model it. I designed a hand-powered potato slicer built to cut French fries quickly in a home kitchen, submitted November 28, 2023.</p>
 
-        <h3>Design Concepts</h3>
-        <p>Before moving to CAD, I developed multiple hand-sketched concepts exploring different blade configurations, handle geometries, and structural approaches. The goal was to arrive at a design that was mechanically sound, manufacturable, and safe to operate.</p>
+        <h3>Design Objective</h3>
+        <p>The goal was a slicer that could cut small-to-medium potatoes (1.5–3 in / 38–76 mm diameter) into 1/4-inch French fries, compact enough to store under a cabinet like a mixer or food processor. Slices needed to drop directly into a detachable storage container, with the container and blades both removable and dishwasher-safe. I also constrained the design to very few parts and minimal assembly — fewer parts means fewer places for grime to collect — and required the cutting action itself to be entirely user-powered, with no levers, gears, or other mechanisms doing the work.</p>
 
-        <div class="media-grid cols-2">
-          <figure class="media-figure">
-            <img src="../images/potato-slicer/sketch-01.png" alt="Potato slicer concept sketch 1">
-            <figcaption>Initial concept sketch — mechanism layout</figcaption>
-          </figure>
-          <figure class="media-figure">
-            <img src="../images/potato-slicer/sketch-02.png" alt="Potato slicer concept sketch 2">
-            <figcaption>Refined sketch — handle and blade geometry</figcaption>
-          </figure>
-        </div>
-
-        <h3>CAD Modeling</h3>
-        <p>Using Onshape, I translated my hand sketches into a fully parametric 3D model. The process included defining part studios for each component, applying mate connectors for assembly, and iterating on geometry to resolve clearance and fit issues.</p>
+        <h3>Concept Selection</h3>
+        <p>My first idea was a guillotine — a blade slamming down to actively cut the potato. It was simple and fully hand-powered, but I couldn't find a clean way to deposit the slices into a container, so I abandoned it before it ever got sketched. I revised it into a <strong>reverse guillotine</strong>: instead of the blade moving, a pusher plate pushes the potato down onto stationary blades, cutting passively. The plate rides in slots — I started with square slots, then switched to a dovetail profile for better guidance — and the whole cutting mechanism sits at a 35° angle to the top plane so gravity naturally holds the potato in place and keeps it from falling out or misaligning.</p>
 
         <div class="media-grid cols-2">
           <figure class="media-figure">
-            <img src="../images/potato-slicer/concepts-01.jpg" alt="EGN2020C CAD concept 1">
-            <figcaption>CAD model — primary assembly view</figcaption>
+            <img src="../images/potato-slicer/concept-01.jpg" alt="Potato slicer main body sketch — right section view">
+            <figcaption>Main body concept — right-section view showing the angled pusher/blade path and dovetail slot detail</figcaption>
           </figure>
           <figure class="media-figure">
-            <img src="../images/potato-slicer/concepts-02.jpg" alt="EGN2020C CAD concept 2">
-            <figcaption>CAD model — detail and section view</figcaption>
+            <img src="../images/potato-slicer/concept-02.jpg" alt="Potato slicer front auxiliary and section view sketch">
+            <figcaption>Front auxiliary view and right-side section — pusher plate sliding down onto the blade grid</figcaption>
           </figure>
         </div>
 
-        <h3>Design Iterations</h3>
-        <p>Multiple design variations were explored throughout the modeling process, refining blade angle, handle ergonomics, and structural wall thickness to meet basic manufacturability criteria.</p>
+        <p>I later added return springs, housed in the same slots the pusher plate runs in, so the plate snaps back to the top on its own after each cut — pushing is easier than pulling, so I let the spring do the harder job. For the blades, I wanted them removable and dishwasher-safe, so they sit in a rectangular slot that lines them up flush with the back face of the slicer in a roughly 1/4-inch square grid pattern, held in place by gravity and friction, with a handle on one end (with a hole for wall storage) for easy insertion and removal.</p>
 
         <div class="media-grid cols-2">
           <figure class="media-figure">
-            <img src="../images/potato-slicer/concept-01.jpg" alt="Design iteration 1">
-            <figcaption>Iteration 1 — initial geometry</figcaption>
+            <img src="../images/potato-slicer/concept-04.jpg" alt="Potato slicer blade component sketch — interchangeable grid blades">
+            <figcaption>Blade component — interchangeable 1/4-in and 3/8-in grid blades in the removable slot</figcaption>
           </figure>
           <figure class="media-figure">
-            <img src="../images/potato-slicer/concept-02.jpg" alt="Design iteration 2">
-            <figcaption>Iteration 2 — blade angle refinement</figcaption>
-          </figure>
-          <figure class="media-figure">
-            <img src="../images/potato-slicer/concept-03.jpg" alt="Design iteration 3">
-            <figcaption>Iteration 3 — handle geometry update</figcaption>
-          </figure>
-          <figure class="media-figure">
-            <img src="../images/potato-slicer/concept-04.jpg" alt="Design iteration 4">
-            <figcaption>Iteration 4 — final design</figcaption>
+            <img src="../images/potato-slicer/concept-03.jpg" alt="Potato slicer basket drawer sketch">
+            <figcaption>Basket/drawer concept — pull-out design with undercut handle and guide ledge</figcaption>
           </figure>
         </div>
+
+        <p>The basket shared the same requirements as the blade component: removable, dishwasher-safe, and sized to hold a useful amount of fries. I settled on a drawer that slides into a slot on the main body, with a handle that has a semi-circle undercut to make it easy to pull out and empty.</p>
+
+        <h3>Assembly</h3>
+        <p>The main body is the base of the whole slicer and, because of its complex angled geometry, is designed to be 3D-printed rather than injection molded. The springs are off-the-shelf, paired with injection-molded spring covers that press-fit into slots on either side of the main body (with adhesive at the base to keep them from working loose over time) to form the return-spring subassembly. From there, the blade and basket components simply slide into their dedicated slots with free-running clearance — no tools required, and both can be pulled back out just as easily for cleaning.</p>
+
+        <h3>Operation</h3>
+        <p>With the blade and basket fully seated, a potato is placed in the angled slot at the center of the main body, where gravity holds it in position. The user aligns the pusher plate with the top slots and spring covers and applies steady downward force — the springs compress as the plate travels down the dovetail slots and guide it back up once the cut is complete. Fry slices drop straight into the basket below, and the process repeats until the basket is full.</p>
+
+        <h3>Materials</h3>
+        <p>All components other than the springs are ABS (acrylonitrile butadiene styrene) with a polycarbonate coating — ABS is inexpensive, common in food-contact manufacturing, and strong enough for both injection molding and 3D printing, while the PC coating keeps it food-safe. The blades and springs are 304 stainless steel for its low cost, corrosion resistance, and standard use in food production equipment.</p>
 
         <h3>Key Takeaways</h3>
         <ul>
-          <li><strong>Parametric Thinking:</strong> Learned to build models with driven dimensions so design changes propagate automatically through the assembly.</li>
-          <li><strong>Sketch-to-CAD Workflow:</strong> Developed the habit of fully resolving a design on paper before committing to a 3D model — a practice that carried forward into every subsequent project.</li>
-          <li><strong>Mechanism Reasoning:</strong> Gained early intuition for clearance fits, blade geometry, and how part geometry affects assembly behavior.</li>
-          <li><strong>Foundation:</strong> This project directly informed how I approach all subsequent CAD work in Fusion 360, Onshape, and SolidWorks.</li>
+          <li><strong>Solid Modeling Fundamentals:</strong> EML2023 formally taught me SolidWorks — part studios, mate relationships, and driven dimensions — building on CAD instincts I already had going in.</li>
+          <li><strong>Design-for-Assembly:</strong> Constraining myself to few parts and simple, tool-free assembly shaped every downstream decision, from the dovetail slots to the drawer-style basket.</li>
+          <li><strong>Passive Mechanism Reasoning:</strong> The reverse-guillotine concept came from iterating past a design that couldn't solve its own deposit problem — a reminder to pressure-test an idea's weakest link early.</li>
+          <li><strong>Material Selection:</strong> First project where I had to justify material choices (ABS+PC, 304 stainless) against real constraints like food safety, cost, and manufacturability.</li>
         </ul>
 
-        <div style="margin-top:48px;">
+        <div style="margin-top:48px;display:flex;gap:16px;flex-wrap:wrap;">
+          <a href="https://docs.google.com/document/d/1qPwu-U8ONhNgBc7jWFGIJqTu3a-2TT03rieIqW53fNk/edit?usp=sharing" target="_blank" rel="noopener" class="btn"><i class="fas fa-file-alt"></i> View Full Design Report</a>
           <a href="../projects.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> All Projects</a>
         </div>
       </div>
