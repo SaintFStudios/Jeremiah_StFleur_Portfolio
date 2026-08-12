@@ -39,8 +39,9 @@ images/                 ← All media (subdirs per project)
 ```
 
 ## Nav Links (all pages)
-Home | Projects | Teams | Gallery | Contact
+Home | Projects | Teams | Contact
 - NO About link (about.html unlinked but kept on disk)
+- NO Gallery link (gallery.html unlinked but kept on disk — in progress, not ready)
 - Active page gets `class="active"` on its nav `<a>`
 
 ## Path Conventions
@@ -113,7 +114,6 @@ All cards use `data-category="..."` for JS filter. Categories in use:
 |------|------|--------|
 | High-Strike Group Project | teams/high-strike.html | Done |
 | TerraGator — MIL | teams/terragator.html | Done |
-| Battle Bot | — | Coming Soon (no link, no detail page yet) |
 
 ## Footer (all pages)
 Links: LinkedIn (`linkedin.com/in/jstfleur`), GitHub (`github.com`), 3D Print Club (`3dprintclub.org`), Email (`Jeremiahstfleur@ufl.edu`)
